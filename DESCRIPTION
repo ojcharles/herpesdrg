@@ -1,0 +1,47 @@
+Package: herpesdrg
+Type: Package
+Title: HerpesviridaeDrug Resistance Genotyping
+Version: 0.1
+Authors@R: c(
+    person("OJ", "Charles", email = "oscar.charles.18@ucl.ac.uk", role = c("aut", "cre")))
+Maintainer: Charles OJ <oscar.charles.18@ucl.ac.uk>
+Description: Resistance Genotyping tool for HCMV HSV1 HSV2 VZV sequencing data, a command line, website and database.
+    The package includes
+    Database: Simple Resistance or Polymorphism against a gene, mutation & drug.
+    Shiny app: An intuitive way for scientists to call resitance on their data. Includes a clinical overview of the resistance phenotype, as well as some plots that may be of interest.
+    Functions: Users happy running R code or using the terminal, can ofcourse interact with the packages functionality. This will return the resistance dataframes without any of the plotting or overviews. It's the same back end as the shiny app.
+    Cite: Please cite us in your work, if you used this tool or database.
+License: GPL-3 + file LICENSE
+Encoding: UTF-8
+biocViews:
+Depends:
+  R (>= 3.4.0),
+	shiny
+Imports:
+	  VariantAnnotation,
+    ggplot2,
+    stringr,
+    DT (>= 0.5),
+    reshape2,
+    Biostrings,
+    dplyr,
+    IRanges,
+    GenomicRanges,
+    GenomeInfoDb,
+    GenomicFeatures,
+    Rsamtools,
+    readr,
+    ggrepel,
+    AnnotationDbi,
+    S4Vectors,
+    utils,
+    rlang,
+    magrittr
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 7.1.0
+URL: https://github.com/ojcharles/herpesdg
+BugReports: https://github.com/ojcharles/herpesdrg/issues

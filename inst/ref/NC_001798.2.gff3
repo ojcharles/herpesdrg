@@ -1,0 +1,278 @@
+##sequence-region NC_001798.2 1 154675
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=10310
+NC_001798.2	RefSeq	region	1	154675	.	+	.	ID=NC_001798.2:1..154675;Dbxref=taxon:10310;acronym=HSV-2;collected-by=J.F. Peutherer or C.A.C. Ross;country=United Kingdom;gb-synonym=Herpes simplex virus 2;gbkey=Src;genome=genomic;isolation-source=herpetic ulcer near a woman's anus;mol_type=genomic DNA;nat-host=Homo sapiens;note=collected prior to 1971%3B originally called strain HSG 52%3B genes UL41 and US8 are frameshifted in majority and minority populations%2C respectively%3B original sequence (INSD accession Z86099) determined by Sanger sequencing of plasmids amended by Illumina sequencing of both viral DNA and polyA RNA harvested at 10 h after infection;old-name=Human herpesvirus 2;strain=HG52
+NC_001798.2	RefSeq	inverted_repeat	1	9300	.	+	.	ID=id-NC_001798.2:1..9300;Note=TRL%3B inverted repeat flanking UL;gbkey=repeat_region;rpt_type=inverted
+NC_001798.2	RefSeq	gene	1	7814	.	-	.	ID=gene-HHV2s01;Dbxref=GeneID:24271495;Name=LAT;gbkey=Gene;gene=LAT;gene_biotype=ncRNA;locus_tag=HHV2s01;partial=true;start_range=.,1
+NC_001798.2	RefSeq	sequence_alteration	11	11	.	+	.	ID=id-NC_001798.2:11..11;Dbxref=GeneID:24271495;gbkey=variation;gene=LAT;locus_tag=HHV2s01;replace=c
+NC_001798.2	RefSeq	ncRNA	1	7767	.	-	.	ID=rna-HHV2s01;Parent=gene-HHV2s01;Dbxref=GeneID:24271495;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s01;partial=true;product=LAT;start_range=.,1
+NC_001798.2	RefSeq	exon	7065	7767	.	-	.	ID=exon-HHV2s01-1;Parent=rna-HHV2s01;Dbxref=GeneID:24271495;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s01;part=1;partial=true;product=LAT
+NC_001798.2	RefSeq	exon	1	4838	.	-	.	ID=exon-HHV2s01-2;Parent=rna-HHV2s01;Dbxref=GeneID:24271495;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s01;part=2;partial=true;product=LAT;start_range=.,1
+NC_001798.2	RefSeq	TATA_box	7809	7814	.	-	.	ID=id-HHV2s01;Parent=gene-HHV2s01;Dbxref=GeneID:24271495;gbkey=regulatory;gene=LAT;locus_tag=HHV2s01;regulatory_class=TATA_box
+NC_001798.2	RefSeq	repeat_region	1	254	.	+	.	ID=id-NC_001798.2:1..254;Note='a' sequence;gbkey=repeat_region;rpt_type=terminal
+NC_001798.2	RefSeq	gene	440	1743	.	+	.	ID=gene-HHV2p77;Dbxref=GeneID:1487286;Name=RL1;gbkey=Gene;gene=RL1;gene_biotype=protein_coding;locus_tag=HHV2p77
+NC_001798.2	RefSeq	CDS	440	934	.	+	0	ID=cds-YP_009137150.1;Parent=gene-HHV2p77;Dbxref=Genbank:YP_009137150.1,GeneID:1487286;Name=YP_009137150.1;gbkey=CDS;gene=RL1;locus_tag=HHV2p77;part=1;product=neurovirulence protein ICP34.5;protein_id=YP_009137150.1
+NC_001798.2	RefSeq	CDS	1089	1379	.	+	0	ID=cds-YP_009137150.1;Parent=gene-HHV2p77;Dbxref=Genbank:YP_009137150.1,GeneID:1487286;Name=YP_009137150.1;gbkey=CDS;gene=RL1;locus_tag=HHV2p77;part=2;product=neurovirulence protein ICP34.5;protein_id=YP_009137150.1
+NC_001798.2	RefSeq	repeat_region	444	477	.	+	.	ID=id-HHV2p77;Dbxref=GeneID:1487286;Note=RL reiteration set 7;gbkey=repeat_region;gene=RL1;locus_tag=HHV2p77;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	484	546	.	+	.	ID=id-HHV2p77-2;Dbxref=GeneID:1487286;Note=RL reiteration set 6;gbkey=repeat_region;gene=RL1;locus_tag=HHV2p77;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	943	1070	.	+	.	ID=id-HHV2p77-3;Dbxref=GeneID:1487286;Note=RL reiteration set 5;gbkey=repeat_region;gene=RL1;locus_tag=HHV2p77;rpt_type=tandem
+NC_001798.2	RefSeq	polyA_signal_sequence	1738	1743	.	+	.	ID=id-HHV2p77-4;Parent=gene-HHV2p77;Dbxref=GeneID:1487286;gbkey=regulatory;gene=RL1;locus_tag=HHV2p77;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	2303	5643	.	+	.	ID=gene-HHV2p76;Dbxref=GeneID:1487288;Name=RL2;Note=immediate early gene;gbkey=Gene;gene=RL2;gene_biotype=protein_coding;locus_tag=HHV2p76
+NC_001798.2	RefSeq	CDS	2303	2377	.	+	0	ID=cds-YP_009137151.1;Parent=gene-HHV2p76;Dbxref=Genbank:YP_009137151.1,GeneID:1487288;Name=YP_009137151.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p76;part=1;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137151.1
+NC_001798.2	RefSeq	CDS	2785	3463	.	+	0	ID=cds-YP_009137151.1;Parent=gene-HHV2p76;Dbxref=Genbank:YP_009137151.1,GeneID:1487288;Name=YP_009137151.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p76;part=2;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137151.1
+NC_001798.2	RefSeq	CDS	3645	5395	.	+	2	ID=cds-YP_009137151.1;Parent=gene-HHV2p76;Dbxref=Genbank:YP_009137151.1,GeneID:1487288;Name=YP_009137151.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p76;part=3;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137151.1
+NC_001798.2	RefSeq	repeat_region	3471	3607	.	+	.	ID=id-HHV2p76;Dbxref=GeneID:1487288;Note=RL reiteration set 4;gbkey=repeat_region;gene=RL2;locus_tag=HHV2p76;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	4653	4797	.	+	.	ID=id-HHV2p76-2;Dbxref=GeneID:1487288;Note=RL reiteration set 3;gbkey=repeat_region;gene=RL2;locus_tag=HHV2p76;rpt_type=tandem
+NC_001798.2	RefSeq	polyA_signal_sequence	5638	5643	.	+	.	ID=id-HHV2p76-3;Parent=gene-HHV2p76;Dbxref=GeneID:1487288;gbkey=regulatory;gene=RL2;locus_tag=HHV2p76;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	sequence_alteration	8023	8023	.	+	.	ID=id-NC_001798.2:8023..8023;gbkey=variation;replace=t
+NC_001798.2	RefSeq	sequence_alteration	9016	9016	.	+	.	ID=id-NC_001798.2:9016..9016;gbkey=variation;replace=t
+NC_001798.2	RefSeq	repeat_region	9083	9229	.	+	.	ID=id-NC_001798.2:9083..9229;Note=RL reiteration set 2;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	9278	9333	.	+	.	ID=id-NC_001798.2:9278..9333;Note=RL reiteration set 1;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	sequence_feature	9301	118020	.	+	.	ID=id-NC_001798.2:9301..118020;Note=UL%3B long unique region;gbkey=misc_feature
+NC_001798.2	RefSeq	gene	9463	11060	.	+	.	ID=gene-HHV2p75;Dbxref=GeneID:1487292;Name=UL1;Note=core gene;gbkey=Gene;gene=UL1;gene_biotype=protein_coding;locus_tag=HHV2p75
+NC_001798.2	RefSeq	CDS	9463	10137	.	+	0	ID=cds-YP_009137152.1;Parent=gene-HHV2p75;Dbxref=Genbank:YP_009137152.1,GeneID:1487292;Name=YP_009137152.1;gbkey=CDS;gene=UL1;locus_tag=HHV2p75;product=envelope glycoprotein L;protein_id=YP_009137152.1
+NC_001798.2	RefSeq	gene	10010	11060	.	+	.	ID=gene-HHV2p74;Dbxref=GeneID:1487303;Name=UL2;Note=core gene;gbkey=Gene;gene=UL2;gene_biotype=protein_coding;locus_tag=HHV2p74
+NC_001798.2	RefSeq	CDS	10010	11014	.	+	0	ID=cds-YP_009137153.1;Parent=gene-HHV2p74;Dbxref=Genbank:YP_009137153.1,GeneID:1487303;Name=YP_009137153.1;gbkey=CDS;gene=UL2;locus_tag=HHV2p74;product=uracil-DNA glycosylase;protein_id=YP_009137153.1
+NC_001798.2	RefSeq	polyA_signal_sequence	11055	11060	.	+	.	ID=id-NC_001798.2:11055..11060;Note=UL1%2C UL2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	11102	11843	.	+	.	ID=gene-HHV2p73;Dbxref=GeneID:24271453;Name=UL3;Note=alpha gene;gbkey=Gene;gene=UL3;gene_biotype=protein_coding;locus_tag=HHV2p73
+NC_001798.2	RefSeq	CDS	11102	11770	.	+	0	ID=cds-YP_009137154.1;Parent=gene-HHV2p73;Dbxref=Genbank:YP_009137154.1,GeneID:24271453;Name=YP_009137154.1;gbkey=CDS;gene=UL3;locus_tag=HHV2p73;product=nuclear protein UL3;protein_id=YP_009137154.1
+NC_001798.2	RefSeq	polyA_signal_sequence	11838	11843	.	+	.	ID=id-HHV2p73;Parent=gene-HHV2p73;Dbxref=GeneID:24271453;gbkey=regulatory;gene=UL3;locus_tag=HHV2p73;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	11884	15287	.	-	.	ID=gene-HHV2p72;Dbxref=GeneID:1487338;Name=UL5;Note=core gene;gbkey=Gene;gene=UL5;gene_biotype=protein_coding;locus_tag=HHV2p72
+NC_001798.2	RefSeq	CDS	12642	15287	.	-	0	ID=cds-YP_009137156.1;Parent=gene-HHV2p72;Dbxref=Genbank:YP_009137156.1,GeneID:1487338;Name=YP_009137156.1;gbkey=CDS;gene=UL5;locus_tag=HHV2p72;product=helicase-primase helicase subunit;protein_id=YP_009137156.1
+NC_001798.2	RefSeq	gene	11884	12575	.	-	.	ID=gene-HHV2p71;Dbxref=GeneID:1487326;Name=UL4;Note=alpha gene;gbkey=Gene;gene=UL4;gene_biotype=protein_coding;locus_tag=HHV2p71
+NC_001798.2	RefSeq	CDS	11970	12575	.	-	0	ID=cds-YP_009137155.1;Parent=gene-HHV2p71;Dbxref=Genbank:YP_009137155.1,GeneID:1487326;Name=YP_009137155.1;gbkey=CDS;gene=UL4;locus_tag=HHV2p71;product=nuclear protein UL4;protein_id=YP_009137155.1
+NC_001798.2	RefSeq	polyA_signal_sequence	11884	11889	.	-	.	ID=id-NC_001798.2:11884..11889;Note=UL4%2C UL5;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	15286	18201	.	+	.	ID=gene-HHV2p70;Dbxref=GeneID:1487346;Name=UL6;Note=core gene;gbkey=Gene;gene=UL6;gene_biotype=protein_coding;locus_tag=HHV2p70
+NC_001798.2	RefSeq	CDS	15286	17322	.	+	0	ID=cds-YP_009137157.1;Parent=gene-HHV2p70;Dbxref=Genbank:YP_009137157.1,GeneID:1487346;Name=YP_009137157.1;gbkey=CDS;gene=UL6;locus_tag=HHV2p70;product=capsid portal protein;protein_id=YP_009137157.1
+NC_001798.2	RefSeq	gene	17297	18201	.	+	.	ID=gene-HHV2p69;Dbxref=GeneID:1487347;Name=UL7;Note=core gene;gbkey=Gene;gene=UL7;gene_biotype=protein_coding;locus_tag=HHV2p69
+NC_001798.2	RefSeq	CDS	17297	18187	.	+	0	ID=cds-YP_009137158.1;Parent=gene-HHV2p69;Dbxref=Genbank:YP_009137158.1,GeneID:1487347;Name=YP_009137158.1;gbkey=CDS;gene=UL7;locus_tag=HHV2p69;product=tegument protein UL7;protein_id=YP_009137158.1
+NC_001798.2	RefSeq	polyA_signal_sequence	18196	18201	.	+	.	ID=id-NC_001798.2:18196..18201;Note=UL6%2C UL7;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	18431	23368	.	-	.	ID=gene-HHV2p68;Dbxref=GeneID:1487349;Name=UL9;Note=core gene;gbkey=Gene;gene=UL9;gene_biotype=protein_coding;locus_tag=HHV2p68
+NC_001798.2	RefSeq	CDS	20753	23368	.	-	0	ID=cds-YP_009137160.1;Parent=gene-HHV2p68;Dbxref=Genbank:YP_009137160.1,GeneID:1487349;Name=YP_009137160.1;gbkey=CDS;gene=UL9;locus_tag=HHV2p68;product=DNA replication origin-binding helicase;protein_id=YP_009137160.1
+NC_001798.2	RefSeq	gene	18431	20703	.	-	.	ID=gene-HHV2p67;Dbxref=GeneID:1487348;Name=UL8;Note=core gene;gbkey=Gene;gene=UL8;gene_biotype=protein_coding;locus_tag=HHV2p67
+NC_001798.2	RefSeq	CDS	18445	20703	.	-	0	ID=cds-YP_009137159.1;Parent=gene-HHV2p67;Dbxref=Genbank:YP_009137159.1,GeneID:1487348;Name=YP_009137159.1;gbkey=CDS;gene=UL8;locus_tag=HHV2p67;product=helicase-primase subunit;protein_id=YP_009137159.1
+NC_001798.2	RefSeq	polyA_signal_sequence	18431	18436	.	-	.	ID=id-NC_001798.2:18431..18436;Note=UL8%2C UL9;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	23247	24672	.	+	.	ID=gene-HHV2p66;Dbxref=GeneID:1487293;Name=UL10;Note=core gene;gbkey=Gene;gene=UL10;gene_biotype=protein_coding;locus_tag=HHV2p66
+NC_001798.2	RefSeq	CDS	23247	24650	.	+	0	ID=cds-YP_009137161.1;Parent=gene-HHV2p66;Dbxref=Genbank:YP_009137161.1,GeneID:1487293;Name=YP_009137161.1;gbkey=CDS;gene=UL10;locus_tag=HHV2p66;product=envelope glycoprotein M;protein_id=YP_009137161.1
+NC_001798.2	RefSeq	polyA_signal_sequence	24667	24672	.	+	.	ID=id-HHV2p66;Parent=gene-HHV2p66;Dbxref=GeneID:1487293;gbkey=regulatory;gene=UL10;locus_tag=HHV2p66;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	24847	28926	.	-	.	ID=gene-HHV2p65;Dbxref=GeneID:1487297;Name=UL14;Note=core gene;gbkey=Gene;gene=UL14;gene_biotype=protein_coding;locus_tag=HHV2p65
+NC_001798.2	RefSeq	CDS	28267	28926	.	-	0	ID=cds-YP_009137165.1;Parent=gene-HHV2p65;Dbxref=Genbank:YP_009137165.1,GeneID:1487297;Name=YP_009137165.1;gbkey=CDS;gene=UL14;locus_tag=HHV2p65;product=tegument protein UL14;protein_id=YP_009137165.1
+NC_001798.2	RefSeq	gene	24847	28513	.	-	.	ID=gene-HHV2p64;Dbxref=GeneID:1487296;Name=UL13;Note=core gene;gbkey=Gene;gene=UL13;gene_biotype=protein_coding;locus_tag=HHV2p64
+NC_001798.2	RefSeq	CDS	26957	28513	.	-	0	ID=cds-YP_009137164.1;Parent=gene-HHV2p64;Dbxref=Genbank:YP_009137164.1,GeneID:1487296;Name=YP_009137164.1;Note=PK family;gbkey=CDS;gene=UL13;locus_tag=HHV2p64;product=tegument serine/threonine protein kinase;protein_id=YP_009137164.1
+NC_001798.2	RefSeq	gene	24847	26916	.	-	.	ID=gene-HHV2p63;Dbxref=GeneID:1487295;Name=UL12;Note=core gene;gbkey=Gene;gene=UL12;gene_biotype=protein_coding;locus_tag=HHV2p63
+NC_001798.2	RefSeq	CDS	25054	26916	.	-	0	ID=cds-YP_009137163.1;Parent=gene-HHV2p63;Dbxref=Genbank:YP_009137163.1,GeneID:1487295;Name=YP_009137163.1;gbkey=CDS;gene=UL12;locus_tag=HHV2p63;product=deoxyribonuclease;protein_id=YP_009137163.1
+NC_001798.2	RefSeq	gene	24847	25138	.	-	.	ID=gene-HHV2p62;Dbxref=GeneID:24271454;Name=UL11;Note=core gene;gbkey=Gene;gene=UL11;gene_biotype=protein_coding;locus_tag=HHV2p62
+NC_001798.2	RefSeq	CDS	24848	25138	.	-	0	ID=cds-YP_009137162.1;Parent=gene-HHV2p62;Dbxref=Genbank:YP_009137162.1,GeneID:24271454;Name=YP_009137162.1;gbkey=CDS;gene=UL11;locus_tag=HHV2p62;product=myristylated tegument protein;protein_id=YP_009137162.1
+NC_001798.2	RefSeq	polyA_signal_sequence	24847	24852	.	-	.	ID=id-NC_001798.2:24847..24852;Note=UL11%2C UL12%2C UL13%2C UL14;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	29007	34867	.	+	.	ID=gene-HHV2p61;Dbxref=GeneID:1487298;Name=UL15;Note=core gene;gbkey=Gene;gene=UL15;gene_biotype=protein_coding;locus_tag=HHV2p61
+NC_001798.2	RefSeq	CDS	29007	30035	.	+	0	ID=cds-YP_009137166.1;Parent=gene-HHV2p61;Dbxref=Genbank:YP_009137166.1,GeneID:1487298;Name=YP_009137166.1;gbkey=CDS;gene=UL15;locus_tag=HHV2p61;part=1;product=DNA packaging terminase subunit 1;protein_id=YP_009137166.1
+NC_001798.2	RefSeq	CDS	33635	34810	.	+	0	ID=cds-YP_009137166.1;Parent=gene-HHV2p61;Dbxref=Genbank:YP_009137166.1,GeneID:1487298;Name=YP_009137166.1;gbkey=CDS;gene=UL15;locus_tag=HHV2p61;part=2;product=DNA packaging terminase subunit 1;protein_id=YP_009137166.1
+NC_001798.2	RefSeq	polyA_signal_sequence	34862	34867	.	+	.	ID=id-HHV2p61;Parent=gene-HHV2p61;Dbxref=GeneID:1487298;gbkey=regulatory;gene=UL15;locus_tag=HHV2p61;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	30180	33509	.	-	.	ID=gene-HHV2p60;Dbxref=GeneID:1487300;Name=UL17;Note=core gene;gbkey=Gene;gene=UL17;gene_biotype=protein_coding;locus_tag=HHV2p60
+NC_001798.2	RefSeq	CDS	31401	33509	.	-	0	ID=cds-YP_009137168.1;Parent=gene-HHV2p60;Dbxref=Genbank:YP_009137168.1,GeneID:1487300;Name=YP_009137168.1;gbkey=CDS;gene=UL17;locus_tag=HHV2p60;product=DNA packaging tegument protein UL17;protein_id=YP_009137168.1
+NC_001798.2	RefSeq	gene	30180	31299	.	-	.	ID=gene-HHV2p59;Dbxref=GeneID:1487299;Name=UL16;Note=core gene;gbkey=Gene;gene=UL16;gene_biotype=protein_coding;locus_tag=HHV2p59
+NC_001798.2	RefSeq	CDS	30181	31299	.	-	0	ID=cds-YP_009137167.1;Parent=gene-HHV2p59;Dbxref=Genbank:YP_009137167.1,GeneID:1487299;Name=YP_009137167.1;Note=CTG initiation codon;gbkey=CDS;gene=UL16;locus_tag=HHV2p59;product=tegument protein UL16;protein_id=YP_009137167.1
+NC_001798.2	RefSeq	polyA_signal_sequence	30180	30185	.	-	.	ID=id-NC_001798.2:30180..30185;Note=UL16%2C UL17;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	35087	41590	.	-	.	ID=gene-HHV2p57;Dbxref=GeneID:24271455;Name=UL20;Note=alpha gene;gbkey=Gene;gene=UL20;gene_biotype=protein_coding;locus_tag=HHV2p57
+NC_001798.2	RefSeq	CDS	40922	41590	.	-	0	ID=cds-YP_009137171.1;Parent=gene-HHV2p57;Dbxref=Genbank:YP_009137171.1,GeneID:24271455;Name=YP_009137171.1;gbkey=CDS;gene=UL20;locus_tag=HHV2p57;product=envelope protein UL20;protein_id=YP_009137171.1
+NC_001798.2	RefSeq	gene	35087	40610	.	-	.	ID=gene-HHV2p56;Dbxref=GeneID:24271456;Name=UL19;Note=core gene;gbkey=Gene;gene=UL19;gene_biotype=protein_coding;locus_tag=HHV2p56
+NC_001798.2	RefSeq	CDS	36486	40610	.	-	0	ID=cds-YP_009137170.1;Parent=gene-HHV2p56;Dbxref=Genbank:YP_009137170.1,GeneID:24271456;Name=YP_009137170.1;gbkey=CDS;gene=UL19;locus_tag=HHV2p56;product=major capsid protein;protein_id=YP_009137170.1
+NC_001798.2	RefSeq	gene	35087	36109	.	-	.	ID=gene-HHV2p58;Dbxref=GeneID:1487301;Name=UL18;Note=core gene;gbkey=Gene;gene=UL18;gene_biotype=protein_coding;locus_tag=HHV2p58
+NC_001798.2	RefSeq	CDS	35153	36109	.	-	0	ID=cds-YP_009137169.1;Parent=gene-HHV2p58;Dbxref=Genbank:YP_009137169.1,GeneID:1487301;Name=YP_009137169.1;gbkey=CDS;gene=UL18;locus_tag=HHV2p58;product=capsid triplex subunit 2;protein_id=YP_009137169.1
+NC_001798.2	RefSeq	polyA_signal_sequence	35087	35092	.	-	.	ID=id-NC_001798.2:35087..35092;Note=UL18%2C UL19%2C UL20;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	42239	43851	.	+	.	ID=gene-HHV2p55;Dbxref=GeneID:1487305;Name=UL21;Note=alpha gene;gbkey=Gene;gene=UL21;gene_biotype=protein_coding;locus_tag=HHV2p55
+NC_001798.2	RefSeq	CDS	42239	43837	.	+	0	ID=cds-YP_009137172.1;Parent=gene-HHV2p55;Dbxref=Genbank:YP_009137172.1,GeneID:1487305;Name=YP_009137172.1;gbkey=CDS;gene=UL21;locus_tag=HHV2p55;product=tegument protein UL21;protein_id=YP_009137172.1
+NC_001798.2	RefSeq	polyA_signal_sequence	43846	43851	.	+	.	ID=id-HHV2p55;Parent=gene-HHV2p55;Dbxref=GeneID:1487305;gbkey=regulatory;gene=UL21;locus_tag=HHV2p55;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	44053	46570	.	-	.	ID=gene-HHV2p54;Dbxref=GeneID:1487306;Name=UL22;Note=core gene;gbkey=Gene;gene=UL22;gene_biotype=protein_coding;locus_tag=HHV2p54
+NC_001798.2	RefSeq	CDS	44054	46570	.	-	0	ID=cds-YP_009137173.1;Parent=gene-HHV2p54;Dbxref=Genbank:YP_009137173.1,GeneID:1487306;Name=YP_009137173.1;gbkey=CDS;gene=UL22;locus_tag=HHV2p54;product=envelope glycoprotein H;protein_id=YP_009137173.1
+NC_001798.2	RefSeq	sequence_alteration	46120	46120	.	+	.	ID=id-NC_001798.2:46120..46120;Dbxref=GeneID:1487306;gbkey=variation;gene=UL22;locus_tag=HHV2p54;replace=t
+NC_001798.2	RefSeq	polyA_signal_sequence	44053	44058	.	-	.	ID=id-HHV2p54;Parent=gene-HHV2p54;Dbxref=GeneID:1487306;gbkey=regulatory;gene=UL22;locus_tag=HHV2p54;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	46845	48039	.	-	.	ID=gene-HHV2p53;Dbxref=GeneID:1487307;Name=UL23;Note=core gene;gbkey=Gene;gene=UL23;gene_biotype=protein_coding;locus_tag=HHV2p53
+NC_001798.2	RefSeq	CDS	46909	48039	.	-	0	ID=cds-YP_009137174.1;Parent=gene-HHV2p53;Dbxref=Genbank:YP_009137174.1,GeneID:1487307;Name=YP_009137174.1;gbkey=CDS;gene=UL23;locus_tag=HHV2p53;product=thymidine kinase;protein_id=YP_009137174.1
+NC_001798.2	RefSeq	polyA_signal_sequence	46845	46850	.	-	.	ID=id-HHV2p53;Parent=gene-HHV2p53;Dbxref=GeneID:1487307;gbkey=regulatory;gene=UL23;locus_tag=HHV2p53;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	polyA_signal_sequence	46858	46863	.	-	.	ID=id-HHV2p53-2;Parent=gene-HHV2p53;Dbxref=GeneID:1487307;gbkey=regulatory;gene=UL23;locus_tag=HHV2p53;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	47941	53035	.	+	.	ID=gene-HHV2p52;Dbxref=GeneID:1487308;Name=UL24;Note=core gene;gbkey=Gene;gene=UL24;gene_biotype=protein_coding;locus_tag=HHV2p52
+NC_001798.2	RefSeq	CDS	47941	48786	.	+	0	ID=cds-YP_009137175.1;Parent=gene-HHV2p52;Dbxref=Genbank:YP_009137175.1,GeneID:1487308;Name=YP_009137175.1;gbkey=CDS;gene=UL24;locus_tag=HHV2p52;product=nuclear protein UL24;protein_id=YP_009137175.1
+NC_001798.2	RefSeq	gene	49074	53035	.	+	.	ID=gene-HHV2p51;Dbxref=GeneID:1487309;Name=UL25;Note=core gene;gbkey=Gene;gene=UL25;gene_biotype=protein_coding;locus_tag=HHV2p51
+NC_001798.2	RefSeq	CDS	49074	50831	.	+	0	ID=cds-YP_009137176.1;Parent=gene-HHV2p51;Dbxref=Genbank:YP_009137176.1,GeneID:1487309;Name=YP_009137176.1;gbkey=CDS;gene=UL25;locus_tag=HHV2p51;product=DNA packaging tegument protein UL25;protein_id=YP_009137176.1
+NC_001798.2	RefSeq	gene	51065	53035	.	+	.	ID=gene-HHV2p50;Dbxref=GeneID:1487310;Name=UL26;Note=core gene;gbkey=Gene;gene=UL26;gene_biotype=protein_coding;locus_tag=HHV2p50
+NC_001798.2	RefSeq	CDS	51065	52978	.	+	0	ID=cds-YP_009137177.1;Parent=gene-HHV2p50;Dbxref=Genbank:YP_009137177.1,GeneID:1487310;Name=YP_009137177.1;gbkey=CDS;gene=UL26;locus_tag=HHV2p50;product=capsid maturation protease;protein_id=YP_009137177.1
+NC_001798.2	RefSeq	gene	51989	53035	.	+	.	ID=gene-HHV2p49;Dbxref=GeneID:1487311;Name=UL26.5;Note=core gene;gbkey=Gene;gene=UL26.5;gene_biotype=protein_coding;locus_tag=HHV2p49
+NC_001798.2	RefSeq	CDS	51989	52978	.	+	0	ID=cds-YP_009137178.1;Parent=gene-HHV2p49;Dbxref=Genbank:YP_009137178.1,GeneID:1487311;Name=YP_009137178.1;gbkey=CDS;gene=UL26.5;locus_tag=HHV2p49;product=capsid scaffold protein;protein_id=YP_009137178.1
+NC_001798.2	RefSeq	polyA_signal_sequence	53030	53035	.	+	.	ID=id-NC_001798.2:53030..53035;Note=UL24%2C UL25%2C UL26%2C UL26.5;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	53402	58517	.	-	.	ID=gene-HHV2p47;Dbxref=GeneID:1487313;Name=UL28;Note=core gene;gbkey=Gene;gene=UL28;gene_biotype=protein_coding;locus_tag=HHV2p47
+NC_001798.2	RefSeq	CDS	56160	58517	.	-	0	ID=cds-YP_009137180.1;Parent=gene-HHV2p47;Dbxref=Genbank:YP_009137180.1,GeneID:1487313;Name=YP_009137180.1;gbkey=CDS;gene=UL28;locus_tag=HHV2p47;product=DNA packaging terminase subunit 2;protein_id=YP_009137180.1
+NC_001798.2	RefSeq	gene	53402	56152	.	-	.	ID=gene-HHV2p48;Dbxref=GeneID:1487312;Name=UL27;Note=core gene;gbkey=Gene;gene=UL27;gene_biotype=protein_coding;locus_tag=HHV2p48
+NC_001798.2	RefSeq	CDS	53438	56152	.	-	0	ID=cds-YP_009137179.1;Parent=gene-HHV2p48;Dbxref=Genbank:YP_009137179.1,GeneID:1487312;Name=YP_009137179.1;gbkey=CDS;gene=UL27;locus_tag=HHV2p48;product=envelope glycoprotein B;protein_id=YP_009137179.1
+NC_001798.2	RefSeq	sequence_alteration	54700	54700	.	+	.	ID=id-NC_001798.2:54700..54700;Dbxref=GeneID:1487312;gbkey=variation;gene=UL27;locus_tag=HHV2p48;replace=t
+NC_001798.2	RefSeq	polyA_signal_sequence	53402	53407	.	-	.	ID=id-NC_001798.2:53402..53407;Note=UL27%2C UL28;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	58840	62482	.	-	.	ID=gene-HHV2p46;Dbxref=GeneID:1487314;Name=UL29;Note=core gene;gbkey=Gene;gene=UL29;gene_biotype=protein_coding;locus_tag=HHV2p46
+NC_001798.2	RefSeq	CDS	58892	62482	.	-	0	ID=cds-YP_009137181.1;Parent=gene-HHV2p46;Dbxref=Genbank:YP_009137181.1,GeneID:1487314;Name=YP_009137181.1;gbkey=CDS;gene=UL29;locus_tag=HHV2p46;product=single-stranded DNA-binding protein;protein_id=YP_009137181.1
+NC_001798.2	RefSeq	polyA_signal_sequence	58840	58845	.	-	.	ID=id-HHV2p46;Parent=gene-HHV2p46;Dbxref=GeneID:1487314;gbkey=regulatory;gene=UL29;locus_tag=HHV2p46;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	stem_loop	62897	63032	.	+	.	ID=id-NC_001798.2:62897..63032;Note=oriL palindrome;gbkey=stem_loop
+NC_001798.2	RefSeq	gene	63300	67061	.	+	.	ID=gene-HHV2p45;Dbxref=GeneID:1487316;Name=UL30;Note=core gene;gbkey=Gene;gene=UL30;gene_biotype=protein_coding;locus_tag=HHV2p45
+NC_001798.2	RefSeq	CDS	63300	67022	.	+	0	ID=cds-YP_009137182.1;Parent=gene-HHV2p45;Dbxref=Genbank:YP_009137182.1,GeneID:1487316;Name=YP_009137182.1;gbkey=CDS;gene=UL30;locus_tag=HHV2p45;product=DNA polymerase catalytic subunit;protein_id=YP_009137182.1
+NC_001798.2	RefSeq	polyA_signal_sequence	67056	67061	.	+	.	ID=id-HHV2p45;Parent=gene-HHV2p45;Dbxref=GeneID:1487316;gbkey=regulatory;gene=UL30;locus_tag=HHV2p45;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	66885	69673	.	-	.	ID=gene-HHV2p44;Dbxref=GeneID:1487318;Name=UL32;Note=core gene;gbkey=Gene;gene=UL32;gene_biotype=protein_coding;locus_tag=HHV2p44
+NC_001798.2	RefSeq	CDS	67877	69673	.	-	0	ID=cds-YP_009137184.1;Parent=gene-HHV2p44;Dbxref=Genbank:YP_009137184.1,GeneID:1487318;Name=YP_009137184.1;gbkey=CDS;gene=UL32;locus_tag=HHV2p44;product=DNA packaging protein UL32;protein_id=YP_009137184.1
+NC_001798.2	RefSeq	gene	66885	67884	.	-	.	ID=gene-HHV2p43;Dbxref=GeneID:1487317;Name=UL31;Note=core gene;gbkey=Gene;gene=UL31;gene_biotype=protein_coding;locus_tag=HHV2p43
+NC_001798.2	RefSeq	CDS	66967	67884	.	-	0	ID=cds-YP_009137183.1;Parent=gene-HHV2p43;Dbxref=Genbank:YP_009137183.1,GeneID:1487317;Name=YP_009137183.1;gbkey=CDS;gene=UL31;locus_tag=HHV2p43;product=nuclear egress lamina protein;protein_id=YP_009137183.1
+NC_001798.2	RefSeq	polyA_signal_sequence	66885	66890	.	-	.	ID=id-NC_001798.2:66885..66890;Note=UL31%2C UL32;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	69672	71504	.	+	.	ID=gene-HHV2p42;Dbxref=GeneID:1487319;Name=UL33;Note=core gene;gbkey=Gene;gene=UL33;gene_biotype=protein_coding;locus_tag=HHV2p42
+NC_001798.2	RefSeq	CDS	69672	70064	.	+	0	ID=cds-YP_009137185.1;Parent=gene-HHV2p42;Dbxref=Genbank:YP_009137185.1,GeneID:1487319;Name=YP_009137185.1;gbkey=CDS;gene=UL33;locus_tag=HHV2p42;product=DNA packaging protein UL33;protein_id=YP_009137185.1
+NC_001798.2	RefSeq	gene	70154	71504	.	+	.	ID=gene-HHV2p41;Dbxref=GeneID:1487320;Name=UL34;Note=core gene;gbkey=Gene;gene=UL34;gene_biotype=protein_coding;locus_tag=HHV2p41
+NC_001798.2	RefSeq	CDS	70154	70984	.	+	0	ID=cds-YP_009137186.1;Parent=gene-HHV2p41;Dbxref=Genbank:YP_009137186.1,GeneID:1487320;Name=YP_009137186.1;gbkey=CDS;gene=UL34;locus_tag=HHV2p41;product=nuclear egress membrane protein;protein_id=YP_009137186.1
+NC_001798.2	RefSeq	gene	71096	71504	.	+	.	ID=gene-HHV2p40;Dbxref=GeneID:24271457;Name=UL35;Note=core gene;gbkey=Gene;gene=UL35;gene_biotype=protein_coding;locus_tag=HHV2p40
+NC_001798.2	RefSeq	CDS	71096	71434	.	+	0	ID=cds-YP_009137187.1;Parent=gene-HHV2p40;Dbxref=Genbank:YP_009137187.1,GeneID:24271457;Name=YP_009137187.1;gbkey=CDS;gene=UL35;locus_tag=HHV2p40;product=small capsid protein;protein_id=YP_009137187.1
+NC_001798.2	RefSeq	polyA_signal_sequence	71499	71504	.	+	.	ID=id-NC_001798.2:71499..71504;Note=UL33%2C UL34%2C UL35;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	71538	80969	.	-	.	ID=gene-HHV2p39;Dbxref=GeneID:1487322;Name=UL36;Note=core gene;gbkey=Gene;gene=UL36;gene_biotype=protein_coding;locus_tag=HHV2p39
+NC_001798.2	RefSeq	CDS	71601	80969	.	-	0	ID=cds-YP_009137188.1;Parent=gene-HHV2p39;Dbxref=Genbank:YP_009137188.1,GeneID:1487322;Name=YP_009137188.1;Note=VP1/2;gbkey=CDS;gene=UL36;locus_tag=HHV2p39;product=large tegument protein;protein_id=YP_009137188.1
+NC_001798.2	RefSeq	sequence_alteration	74138	74138	.	+	.	ID=id-NC_001798.2:74138..74138;Dbxref=GeneID:1487322;gbkey=variation;gene=UL36;locus_tag=HHV2p39;replace=c
+NC_001798.2	RefSeq	sequence_alteration	77375	77375	.	+	.	ID=id-NC_001798.2:77375..77375;Dbxref=GeneID:1487322;gbkey=variation;gene=UL36;locus_tag=HHV2p39;replace=t
+NC_001798.2	RefSeq	polyA_signal_sequence	71538	71543	.	-	.	ID=id-HHV2p39;Parent=gene-HHV2p39;Dbxref=GeneID:1487322;gbkey=regulatory;gene=UL36;locus_tag=HHV2p39;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	72133	72301	.	+	.	ID=id-NC_001798.2:72133..72301;Note=UL reiteration set 1;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	gene	81242	84614	.	-	.	ID=gene-HHV2p38;Dbxref=GeneID:1487323;Name=UL37;Note=core gene;gbkey=Gene;gene=UL37;gene_biotype=protein_coding;locus_tag=HHV2p38
+NC_001798.2	RefSeq	CDS	81270	84614	.	-	0	ID=cds-YP_009137189.1;Parent=gene-HHV2p38;Dbxref=Genbank:YP_009137189.1,GeneID:1487323;Name=YP_009137189.1;gbkey=CDS;gene=UL37;locus_tag=HHV2p38;product=tegument protein UL37;protein_id=YP_009137189.1
+NC_001798.2	RefSeq	polyA_signal_sequence	81242	81247	.	-	.	ID=id-HHV2p38;Parent=gene-HHV2p38;Dbxref=GeneID:1487323;gbkey=regulatory;gene=UL37;locus_tag=HHV2p38;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	85097	86619	.	+	.	ID=gene-HHV2p37;Dbxref=GeneID:1487324;Name=UL38;Note=core gene;gbkey=Gene;gene=UL38;gene_biotype=protein_coding;locus_tag=HHV2p37
+NC_001798.2	RefSeq	CDS	85097	86497	.	+	0	ID=cds-YP_009137190.1;Parent=gene-HHV2p37;Dbxref=Genbank:YP_009137190.1,GeneID:1487324;Name=YP_009137190.1;gbkey=CDS;gene=UL38;locus_tag=HHV2p37;product=capsid triplex subunit 1;protein_id=YP_009137190.1
+NC_001798.2	RefSeq	polyA_signal_sequence	86614	86619	.	+	.	ID=id-HHV2p37;Parent=gene-HHV2p37;Dbxref=GeneID:1487324;gbkey=regulatory;gene=UL38;locus_tag=HHV2p37;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	87060	91594	.	+	.	ID=gene-HHV2p36;Dbxref=GeneID:1487325;Name=UL39;Note=core gene;gbkey=Gene;gene=UL39;gene_biotype=protein_coding;locus_tag=HHV2p36
+NC_001798.2	RefSeq	CDS	87060	90488	.	+	0	ID=cds-YP_009137191.1;Parent=gene-HHV2p36;Dbxref=Genbank:YP_009137191.1,GeneID:1487325;Name=YP_009137191.1;gbkey=CDS;gene=UL39;locus_tag=HHV2p36;product=ribonucleotide reductase subunit 1;protein_id=YP_009137191.1
+NC_001798.2	RefSeq	gene	90541	91594	.	+	.	ID=gene-HHV2p35;Dbxref=GeneID:1487327;Name=UL40;Note=core gene;gbkey=Gene;gene=UL40;gene_biotype=protein_coding;locus_tag=HHV2p35
+NC_001798.2	RefSeq	CDS	90541	91554	.	+	0	ID=cds-YP_009137192.1;Parent=gene-HHV2p35;Dbxref=Genbank:YP_009137192.1,GeneID:1487327;Name=YP_009137192.1;gbkey=CDS;gene=UL40;locus_tag=HHV2p35;product=ribonucleotide reductase subunit 2;protein_id=YP_009137192.1
+NC_001798.2	RefSeq	polyA_signal_sequence	91589	91594	.	+	.	ID=id-NC_001798.2:91589..91594;Note=UL39%2C UL40;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	91764	93311	.	-	.	ID=gene-HHV2p34;Dbxref=GeneID:1487328;Name=UL41;Note=alpha gene;gbkey=Gene;gene=UL41;gene_biotype=protein_coding;locus_tag=HHV2p34
+NC_001798.2	RefSeq	CDS	91833	93311	.	-	0	ID=cds-YP_009137193.1;Parent=gene-HHV2p34;Dbxref=Genbank:YP_009137193.1,GeneID:1487328;Name=YP_009137193.1;gbkey=CDS;gene=UL41;locus_tag=HHV2p34;product=tegument host shutoff protein;protein_id=YP_009137193.1
+NC_001798.2	RefSeq	sequence_alteration	92285	92292	.	+	.	ID=id-NC_001798.2:92285..92292;Dbxref=GeneID:1487328;Note=95%25 of population%3B causes a frameshift;gbkey=variation;gene=UL41;locus_tag=HHV2p34;replace=ggggggg
+NC_001798.2	RefSeq	polyA_signal_sequence	91764	91769	.	-	.	ID=id-HHV2p34;Parent=gene-HHV2p34;Dbxref=GeneID:1487328;gbkey=regulatory;gene=UL41;locus_tag=HHV2p34;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	93805	95291	.	+	.	ID=gene-HHV2p33;Dbxref=GeneID:1487329;Name=UL42;Note=core gene;gbkey=Gene;gene=UL42;gene_biotype=protein_coding;locus_tag=HHV2p33
+NC_001798.2	RefSeq	CDS	93805	95217	.	+	0	ID=cds-YP_009137194.1;Parent=gene-HHV2p33;Dbxref=Genbank:YP_009137194.1,GeneID:1487329;Name=YP_009137194.1;gbkey=CDS;gene=UL42;locus_tag=HHV2p33;product=DNA polymerase processivity subunit;protein_id=YP_009137194.1
+NC_001798.2	RefSeq	polyA_signal_sequence	95282	95287	.	+	.	ID=id-HHV2p33;Parent=gene-HHV2p33;Dbxref=GeneID:1487329;gbkey=regulatory;gene=UL42;locus_tag=HHV2p33;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	polyA_signal_sequence	95286	95291	.	+	.	ID=id-HHV2p33-2;Parent=gene-HHV2p33;Dbxref=GeneID:1487329;gbkey=regulatory;gene=UL42;locus_tag=HHV2p33;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	95469	96730	.	+	.	ID=gene-HHV2p32;Dbxref=GeneID:1487330;Name=UL43;Note=core gene;gbkey=Gene;gene=UL43;gene_biotype=protein_coding;locus_tag=HHV2p32
+NC_001798.2	RefSeq	CDS	95469	96713	.	+	0	ID=cds-YP_009137195.1;Parent=gene-HHV2p32;Dbxref=Genbank:YP_009137195.1,GeneID:1487330;Name=YP_009137195.1;gbkey=CDS;gene=UL43;locus_tag=HHV2p32;product=envelope protein UL43;protein_id=YP_009137195.1
+NC_001798.2	RefSeq	polyA_signal_sequence	96725	96730	.	+	.	ID=id-HHV2p32;Parent=gene-HHV2p32;Dbxref=GeneID:1487330;gbkey=regulatory;gene=UL43;locus_tag=HHV2p32;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	97015	99336	.	+	.	ID=gene-HHV2p31;Dbxref=GeneID:1487331;Name=UL44;Note=alpha gene;gbkey=Gene;gene=UL44;gene_biotype=protein_coding;locus_tag=HHV2p31
+NC_001798.2	RefSeq	CDS	97015	98457	.	+	0	ID=cds-YP_009137196.1;Parent=gene-HHV2p31;Dbxref=Genbank:YP_009137196.1,GeneID:1487331;Name=YP_009137196.1;gbkey=CDS;gene=UL44;locus_tag=HHV2p31;product=envelope glycoprotein C;protein_id=YP_009137196.1
+NC_001798.2	RefSeq	gene	98687	99336	.	+	.	ID=gene-HHV2p30;Dbxref=GeneID:1487332;Name=UL45;Note=alpha gene;gbkey=Gene;gene=UL45;gene_biotype=protein_coding;locus_tag=HHV2p30
+NC_001798.2	RefSeq	CDS	98687	99205	.	+	0	ID=cds-YP_009137197.1;Parent=gene-HHV2p30;Dbxref=Genbank:YP_009137197.1,GeneID:1487332;Name=YP_009137197.1;gbkey=CDS;gene=UL45;locus_tag=HHV2p30;product=membrane protein UL45;protein_id=YP_009137197.1
+NC_001798.2	RefSeq	polyA_signal_sequence	99331	99336	.	+	.	ID=id-NC_001798.2:99331..99336;Note=UL44%2C UL45;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	99398	103809	.	-	.	ID=gene-HHV2p28;Dbxref=GeneID:1487334;Name=UL47;Note=alpha gene;gbkey=Gene;gene=UL47;gene_biotype=protein_coding;locus_tag=HHV2p28
+NC_001798.2	RefSeq	CDS	101719	103809	.	-	0	ID=cds-YP_009137199.1;Parent=gene-HHV2p28;Dbxref=Genbank:YP_009137199.1,GeneID:1487334;Name=YP_009137199.1;gbkey=CDS;gene=UL47;locus_tag=HHV2p28;product=tegument protein VP13/14;protein_id=YP_009137199.1
+NC_001798.2	RefSeq	gene	99398	101634	.	-	.	ID=gene-HHV2p29;Dbxref=GeneID:1487333;Name=UL46;Note=alpha gene;gbkey=Gene;gene=UL46;gene_biotype=protein_coding;locus_tag=HHV2p29
+NC_001798.2	RefSeq	CDS	99466	101634	.	-	0	ID=cds-YP_009137198.1;Parent=gene-HHV2p29;Dbxref=Genbank:YP_009137198.1,GeneID:1487333;Name=YP_009137198.1;gbkey=CDS;gene=UL46;locus_tag=HHV2p29;product=tegument protein VP11/12;protein_id=YP_009137198.1
+NC_001798.2	RefSeq	polyA_signal_sequence	99398	99403	.	-	.	ID=id-NC_001798.2:99398..99403;Note=UL46%2C UL47;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	104238	105802	.	-	.	ID=gene-HHV2p27;Dbxref=GeneID:1487335;Name=UL48;Note=alpha gene;gbkey=Gene;gene=UL48;gene_biotype=protein_coding;locus_tag=HHV2p27
+NC_001798.2	RefSeq	CDS	104330	105802	.	-	0	ID=cds-YP_009137200.1;Parent=gene-HHV2p27;Dbxref=Genbank:YP_009137200.1,GeneID:1487335;Name=YP_009137200.1;gbkey=CDS;gene=UL48;locus_tag=HHV2p27;product=transactivating tegument protein VP16;protein_id=YP_009137200.1
+NC_001798.2	RefSeq	polyA_signal_sequence	104238	104243	.	-	.	ID=id-HHV2p27;Parent=gene-HHV2p27;Dbxref=GeneID:1487335;gbkey=regulatory;gene=UL48;locus_tag=HHV2p27;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	106081	106201	.	+	.	ID=id-NC_001798.2:106081..106201;Note=UL reiteration set 2;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	gene	106249	107787	.	-	.	ID=gene-HHV2p26;Dbxref=GeneID:1487337;Name=UL49A;Note=core gene;gbkey=Gene;gene=UL49A;gene_biotype=protein_coding;locus_tag=HHV2p26
+NC_001798.2	RefSeq	CDS	107524	107787	.	-	0	ID=cds-YP_009137202.1;Parent=gene-HHV2p26;Dbxref=Genbank:YP_009137202.1,GeneID:1487337;Name=YP_009137202.1;gbkey=CDS;gene=UL49A;locus_tag=HHV2p26;product=envelope glycoprotein N;protein_id=YP_009137202.1
+NC_001798.2	RefSeq	gene	106249	107185	.	-	.	ID=gene-HHV2p25;Dbxref=GeneID:1487336;Name=UL49;Note=alpha gene;gbkey=Gene;gene=UL49;gene_biotype=protein_coding;locus_tag=HHV2p25
+NC_001798.2	RefSeq	CDS	106283	107185	.	-	0	ID=cds-YP_009137201.1;Parent=gene-HHV2p25;Dbxref=Genbank:YP_009137201.1,GeneID:1487336;Name=YP_009137201.1;gbkey=CDS;gene=UL49;locus_tag=HHV2p25;product=tegument protein VP22;protein_id=YP_009137201.1
+NC_001798.2	RefSeq	polyA_signal_sequence	106249	106254	.	-	.	ID=id-NC_001798.2:106249..106254;Note=UL49%2C UL49A;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	107795	108946	.	+	.	ID=gene-HHV2p24;Dbxref=GeneID:1487339;Name=UL50;Note=core gene;gbkey=Gene;gene=UL50;gene_biotype=protein_coding;locus_tag=HHV2p24
+NC_001798.2	RefSeq	CDS	107795	108904	.	+	0	ID=cds-YP_009137203.1;Parent=gene-HHV2p24;Dbxref=Genbank:YP_009137203.1,GeneID:1487339;Name=YP_009137203.1;Note=DURP family;gbkey=CDS;gene=UL50;locus_tag=HHV2p24;product=deoxyuridine triphosphatase;protein_id=YP_009137203.1
+NC_001798.2	RefSeq	polyA_signal_sequence	108941	108946	.	+	.	ID=id-HHV2p24;Parent=gene-HHV2p24;Dbxref=GeneID:1487339;gbkey=regulatory;gene=UL50;locus_tag=HHV2p24;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	109083	109842	.	-	.	ID=gene-HHV2p23;Dbxref=GeneID:1487340;Name=UL51;Note=core gene;gbkey=Gene;gene=UL51;gene_biotype=protein_coding;locus_tag=HHV2p23
+NC_001798.2	RefSeq	CDS	109108	109842	.	-	0	ID=cds-YP_009137204.1;Parent=gene-HHV2p23;Dbxref=Genbank:YP_009137204.1,GeneID:1487340;Name=YP_009137204.1;gbkey=CDS;gene=UL51;locus_tag=HHV2p23;product=tegument protein UL51;protein_id=YP_009137204.1
+NC_001798.2	RefSeq	polyA_signal_sequence	109083	109088	.	-	.	ID=id-HHV2p23;Parent=gene-HHV2p23;Dbxref=GeneID:1487340;gbkey=regulatory;gene=UL51;locus_tag=HHV2p23;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	109910	114349	.	+	.	ID=gene-HHV2p22;Dbxref=GeneID:1487341;Name=UL52;Note=core gene;gbkey=Gene;gene=UL52;gene_biotype=protein_coding;locus_tag=HHV2p22
+NC_001798.2	RefSeq	CDS	109910	113110	.	+	0	ID=cds-YP_009137205.1;Parent=gene-HHV2p22;Dbxref=Genbank:YP_009137205.1,GeneID:1487341;Name=YP_009137205.1;gbkey=CDS;gene=UL52;locus_tag=HHV2p22;product=helicase-primase primase subunit;protein_id=YP_009137205.1
+NC_001798.2	RefSeq	gene	113062	114349	.	+	.	ID=gene-HHV2p21;Dbxref=GeneID:1487342;Name=UL53;Note=alpha gene;gbkey=Gene;gene=UL53;gene_biotype=protein_coding;locus_tag=HHV2p21
+NC_001798.2	RefSeq	CDS	113062	114078	.	+	0	ID=cds-YP_009137206.1;Parent=gene-HHV2p21;Dbxref=Genbank:YP_009137206.1,GeneID:1487342;Name=YP_009137206.1;gbkey=CDS;gene=UL53;locus_tag=HHV2p21;product=envelope glycoprotein K;protein_id=YP_009137206.1
+NC_001798.2	RefSeq	polyA_signal_sequence	114344	114349	.	+	.	ID=id-NC_001798.2:114344..114349;Note=UL52%2C UL53;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	114624	116173	.	+	.	ID=gene-HHV2p20;Dbxref=GeneID:1487343;Name=UL54;Note=core gene%3B immediate early gene;gbkey=Gene;gene=UL54;gene_biotype=protein_coding;locus_tag=HHV2p20
+NC_001798.2	RefSeq	CDS	114624	116162	.	+	0	ID=cds-YP_009137207.1;Parent=gene-HHV2p20;Dbxref=Genbank:YP_009137207.1,GeneID:1487343;Name=YP_009137207.1;Note=MER family;gbkey=CDS;gene=UL54;locus_tag=HHV2p20;product=multifunctional expression regulator;protein_id=YP_009137207.1
+NC_001798.2	RefSeq	polyA_signal_sequence	116168	116173	.	+	.	ID=id-HHV2p20;Parent=gene-HHV2p20;Dbxref=GeneID:1487343;gbkey=regulatory;gene=UL54;locus_tag=HHV2p20;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	116377	116981	.	+	.	ID=gene-HHV2p19;Dbxref=GeneID:1487344;Name=UL55;gbkey=Gene;gene=UL55;gene_biotype=protein_coding;locus_tag=HHV2p19
+NC_001798.2	RefSeq	CDS	116377	116937	.	+	0	ID=cds-YP_009137208.1;Parent=gene-HHV2p19;Dbxref=Genbank:YP_009137208.1,GeneID:1487344;Name=YP_009137208.1;gbkey=CDS;gene=UL55;locus_tag=HHV2p19;product=nuclear protein UL55;protein_id=YP_009137208.1
+NC_001798.2	RefSeq	polyA_signal_sequence	116976	116981	.	+	.	ID=id-HHV2p19;Parent=gene-HHV2p19;Dbxref=GeneID:1487344;gbkey=regulatory;gene=UL55;locus_tag=HHV2p19;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	117079	117817	.	-	.	ID=gene-HHV2p18;Dbxref=GeneID:1487345;Name=UL56;Note=alpha gene;gbkey=Gene;gene=UL56;gene_biotype=protein_coding;locus_tag=HHV2p18
+NC_001798.2	RefSeq	CDS	117110	117817	.	-	0	ID=cds-YP_009137209.1;Parent=gene-HHV2p18;Dbxref=Genbank:YP_009137209.1,GeneID:1487345;Name=YP_009137209.1;Note=UL56 family;gbkey=CDS;gene=UL56;locus_tag=HHV2p18;product=membrane protein UL56;protein_id=YP_009137209.1
+NC_001798.2	RefSeq	polyA_signal_sequence	117079	117084	.	-	.	ID=id-HHV2p18;Parent=gene-HHV2p18;Dbxref=GeneID:1487345;gbkey=regulatory;gene=UL56;locus_tag=HHV2p18;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	inverted_repeat	118021	127320	.	+	.	ID=id-NC_001798.2:118021..127320;Note=IRL%3B inverted repeat flanking UL;gbkey=repeat_region;rpt_type=inverted
+NC_001798.2	RefSeq	repeat_region	118021	118043	.	+	.	ID=id-NC_001798.2:118021..118043;Note=RL reiteration set 1;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	118092	118235	.	+	.	ID=id-NC_001798.2:118092..118235;Note=RL reiteration set 2;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	sequence_alteration	118305	118305	.	+	.	ID=id-NC_001798.2:118305..118305;gbkey=variation;replace=a
+NC_001798.2	RefSeq	sequence_alteration	119298	119298	.	+	.	ID=id-NC_001798.2:119298..119298;gbkey=variation;replace=a
+NC_001798.2	RefSeq	gene	119507	127991	.	+	.	ID=gene-HHV2s02;Dbxref=GeneID:24271494;Name=LAT;gbkey=Gene;gene=LAT;gene_biotype=ncRNA;locus_tag=HHV2s02
+NC_001798.2	RefSeq	repeat_region	127750	127985	.	+	.	ID=id-HHV2s02;Dbxref=GeneID:24271494;Note=RS reiteration set 1;gbkey=repeat_region;gene=LAT;locus_tag=HHV2s02;rpt_type=tandem
+NC_001798.2	RefSeq	ncRNA	119554	127991	.	+	.	ID=rna-HHV2s02;Parent=gene-HHV2s02;Dbxref=GeneID:24271494;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s02;product=LAT
+NC_001798.2	RefSeq	exon	119554	120256	.	+	.	ID=exon-HHV2s02-1;Parent=rna-HHV2s02;Dbxref=GeneID:24271494;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s02;part=1;product=LAT
+NC_001798.2	RefSeq	exon	122483	127991	.	+	.	ID=exon-HHV2s02-2;Parent=rna-HHV2s02;Dbxref=GeneID:24271494;gbkey=ncRNA;gene=LAT;locus_tag=HHV2s02;part=2;product=LAT
+NC_001798.2	RefSeq	TATA_box	119507	119512	.	+	.	ID=id-HHV2s02-2;Parent=gene-HHV2s02;Dbxref=GeneID:24271494;gbkey=regulatory;gene=LAT;locus_tag=HHV2s02;regulatory_class=TATA_box
+NC_001798.2	RefSeq	polyA_signal_sequence	127986	127991	.	+	.	ID=id-HHV2s02-3;Parent=gene-HHV2s02;Dbxref=GeneID:24271494;gbkey=regulatory;gene=LAT;locus_tag=HHV2s02;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	121678	125018	.	-	.	ID=gene-HHV2p17;Dbxref=GeneID:1487289;Name=RL2;Note=immediate early gene;gbkey=Gene;gene=RL2;gene_biotype=protein_coding;locus_tag=HHV2p17
+NC_001798.2	RefSeq	CDS	124944	125018	.	-	0	ID=cds-YP_009137210.1;Parent=gene-HHV2p17;Dbxref=Genbank:YP_009137210.1,GeneID:1487289;Name=YP_009137210.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p17;part=1;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137210.1
+NC_001798.2	RefSeq	CDS	123858	124533	.	-	0	ID=cds-YP_009137210.1;Parent=gene-HHV2p17;Dbxref=Genbank:YP_009137210.1,GeneID:1487289;Name=YP_009137210.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p17;part=2;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137210.1
+NC_001798.2	RefSeq	CDS	121926	123676	.	-	2	ID=cds-YP_009137210.1;Parent=gene-HHV2p17;Dbxref=Genbank:YP_009137210.1,GeneID:1487289;Name=YP_009137210.1;gbkey=CDS;gene=RL2;locus_tag=HHV2p17;part=3;product=ubiquitin E3 ligase ICP0;protein_id=YP_009137210.1
+NC_001798.2	RefSeq	polyA_signal_sequence	121678	121683	.	-	.	ID=id-HHV2p17;Parent=gene-HHV2p17;Dbxref=GeneID:1487289;gbkey=regulatory;gene=RL2;locus_tag=HHV2p17;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	122524	122668	.	+	.	ID=id-NC_001798.2:122524..122668;Note=RL reiteration set 3;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	123714	123850	.	+	.	ID=id-NC_001798.2:123714..123850;Note=RL reiteration set 4;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	gene	125578	126881	.	-	.	ID=gene-HHV2p16;Dbxref=GeneID:1487287;Name=RL1;gbkey=Gene;gene=RL1;gene_biotype=protein_coding;locus_tag=HHV2p16
+NC_001798.2	RefSeq	CDS	126387	126881	.	-	0	ID=cds-YP_009137211.1;Parent=gene-HHV2p16;Dbxref=Genbank:YP_009137211.1,GeneID:1487287;Name=YP_009137211.1;gbkey=CDS;gene=RL1;locus_tag=HHV2p16;part=1;product=neurovirulence protein ICP34.5;protein_id=YP_009137211.1
+NC_001798.2	RefSeq	CDS	125942	126232	.	-	0	ID=cds-YP_009137211.1;Parent=gene-HHV2p16;Dbxref=Genbank:YP_009137211.1,GeneID:1487287;Name=YP_009137211.1;gbkey=CDS;gene=RL1;locus_tag=HHV2p16;part=2;product=neurovirulence protein ICP34.5;protein_id=YP_009137211.1
+NC_001798.2	RefSeq	polyA_signal_sequence	125578	125583	.	-	.	ID=id-HHV2p16;Parent=gene-HHV2p16;Dbxref=GeneID:1487287;gbkey=regulatory;gene=RL1;locus_tag=HHV2p16;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	126251	126378	.	+	.	ID=id-NC_001798.2:126251..126378;Note=RL reiteration set 5;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	126775	126837	.	+	.	ID=id-NC_001798.2:126775..126837;Note=RL reiteration set 6;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	126844	126877	.	+	.	ID=id-NC_001798.2:126844..126877;Note=RL reiteration set 7;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	inverted_repeat	127067	133708	.	+	.	ID=id-NC_001798.2:127067..133708;Note=IRS%3B inverted repeat flanking US;gbkey=repeat_region;rpt_type=inverted
+NC_001798.2	RefSeq	repeat_region	127067	127320	.	+	.	ID=id-NC_001798.2:127067..127320;Note='a' sequence;gbkey=repeat_region;rpt_type=inverted
+NC_001798.2	RefSeq	sequence_alteration	127310	127310	.	+	.	ID=id-NC_001798.2:127310..127310;gbkey=variation;replace=g
+NC_001798.2	RefSeq	gene	128027	132102	.	-	.	ID=gene-HHV2p15;Dbxref=GeneID:1487291;Name=RS1;Note=alpha gene%3B immediate early gene;gbkey=Gene;gene=RS1;gene_biotype=protein_coding;locus_tag=HHV2p15
+NC_001798.2	RefSeq	CDS	128146	132102	.	-	0	ID=cds-YP_009137212.1;Parent=gene-HHV2p15;Dbxref=Genbank:YP_009137212.1,GeneID:1487291;Name=YP_009137212.1;gbkey=CDS;gene=RS1;locus_tag=HHV2p15;product=transcriptional regulator ICP4;protein_id=YP_009137212.1
+NC_001798.2	RefSeq	polyA_signal_sequence	128027	128032	.	-	.	ID=id-HHV2p15;Parent=gene-HHV2p15;Dbxref=GeneID:1487291;gbkey=regulatory;gene=RS1;locus_tag=HHV2p15;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	132692	132982	.	+	.	ID=id-NC_001798.2:132692..132982;Note=oriS reiteration;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	stem_loop	132749	132794	.	+	.	ID=id-NC_001798.2:132749..132794;Note=oriS palindrome;gbkey=stem_loop
+NC_001798.2	RefSeq	stem_loop	132889	132934	.	+	.	ID=id-NC_001798.2:132889..132934;Note=oriS palindrome;gbkey=stem_loop
+NC_001798.2	RefSeq	intron	133287	133678	.	+	.	ID=id-NC_001798.2:133287..133678;Note=US1;gbkey=intron
+NC_001798.2	RefSeq	sequence_feature	133709	148033	.	+	.	ID=id-NC_001798.2:133709..148033;Note=US%3B short unique region;gbkey=misc_feature
+NC_001798.2	RefSeq	gene	133741	135029	.	+	.	ID=gene-HHV2p14;Dbxref=GeneID:1487350;Name=US1;Note=immediate early gene;gbkey=Gene;gene=US1;gene_biotype=protein_coding;locus_tag=HHV2p14
+NC_001798.2	RefSeq	CDS	133741	134985	.	+	0	ID=cds-YP_009137213.1;Parent=gene-HHV2p14;Dbxref=Genbank:YP_009137213.1,GeneID:1487350;Name=YP_009137213.1;gbkey=CDS;gene=US1;locus_tag=HHV2p14;product=regulatory protein ICP22;protein_id=YP_009137213.1
+NC_001798.2	RefSeq	polyA_signal_sequence	135024	135029	.	+	.	ID=id-HHV2p14;Parent=gene-HHV2p14;Dbxref=GeneID:1487350;gbkey=regulatory;gene=US1;locus_tag=HHV2p14;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	135148	136043	.	-	.	ID=gene-HHV2p13;Dbxref=GeneID:1487354;Name=US2;Note=alpha gene;gbkey=Gene;gene=US2;gene_biotype=protein_coding;locus_tag=HHV2p13
+NC_001798.2	RefSeq	CDS	135168	136043	.	-	0	ID=cds-YP_009137214.1;Parent=gene-HHV2p13;Dbxref=Genbank:YP_009137214.1,GeneID:1487354;Name=YP_009137214.1;gbkey=CDS;gene=US2;locus_tag=HHV2p13;product=virion protein US2;protein_id=YP_009137214.1
+NC_001798.2	RefSeq	polyA_signal_sequence	135148	135153	.	-	.	ID=id-HHV2p13;Parent=gene-HHV2p13;Dbxref=GeneID:1487354;gbkey=regulatory;gene=US2;locus_tag=HHV2p13;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	136329	140059	.	+	.	ID=gene-HHV2p12;Dbxref=GeneID:1487355;Name=US3;Note=alpha gene;gbkey=Gene;gene=US3;gene_biotype=protein_coding;locus_tag=HHV2p12
+NC_001798.2	RefSeq	CDS	136329	137774	.	+	0	ID=cds-YP_009137215.1;Parent=gene-HHV2p12;Dbxref=Genbank:YP_009137215.1,GeneID:1487355;Name=YP_009137215.1;Note=PK family;gbkey=CDS;gene=US3;locus_tag=HHV2p12;product=serine/threonine protein kinase US3;protein_id=YP_009137215.1
+NC_001798.2	RefSeq	gene	137882	140059	.	+	.	ID=gene-HHV2p11;Dbxref=GeneID:1487356;Name=US4;Note=alpha gene;gbkey=Gene;gene=US4;gene_biotype=protein_coding;locus_tag=HHV2p11
+NC_001798.2	RefSeq	CDS	137882	139981	.	+	0	ID=cds-YP_009137216.1;Parent=gene-HHV2p11;Dbxref=Genbank:YP_009137216.1,GeneID:1487356;Name=YP_009137216.1;Note=gD family;gbkey=CDS;gene=US4;locus_tag=HHV2p11;product=envelope glycoprotein G;protein_id=YP_009137216.1
+NC_001798.2	RefSeq	polyA_signal_sequence	140054	140059	.	+	.	ID=id-NC_001798.2:140054..140059;Note=US3%2C US4;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	140291	143588	.	+	.	ID=gene-HHV2p10;Dbxref=GeneID:1487357;Name=US5;Note=alpha gene;gbkey=Gene;gene=US5;gene_biotype=protein_coding;locus_tag=HHV2p10
+NC_001798.2	RefSeq	CDS	140291	140569	.	+	0	ID=cds-YP_009137217.1;Parent=gene-HHV2p10;Dbxref=Genbank:YP_009137217.1,GeneID:1487357;Name=YP_009137217.1;gbkey=CDS;gene=US5;locus_tag=HHV2p10;product=envelope glycoprotein J;protein_id=YP_009137217.1
+NC_001798.2	RefSeq	gene	141016	143588	.	+	.	ID=gene-HHV2p09;Dbxref=GeneID:1487358;Name=US6;Note=alpha gene;gbkey=Gene;gene=US6;gene_biotype=protein_coding;locus_tag=HHV2p09
+NC_001798.2	RefSeq	CDS	141016	142197	.	+	0	ID=cds-YP_009137218.1;Parent=gene-HHV2p09;Dbxref=Genbank:YP_009137218.1,GeneID:1487358;Name=YP_009137218.1;Note=gD family;gbkey=CDS;gene=US6;locus_tag=HHV2p09;product=envelope glycoprotein D;protein_id=YP_009137218.1
+NC_001798.2	RefSeq	gene	142399	143588	.	+	.	ID=gene-HHV2p08;Dbxref=GeneID:1487359;Name=US7;Note=alpha gene;gbkey=Gene;gene=US7;gene_biotype=protein_coding;locus_tag=HHV2p08
+NC_001798.2	RefSeq	CDS	142399	143517	.	+	0	ID=cds-YP_009137219.1;Parent=gene-HHV2p08;Dbxref=Genbank:YP_009137219.1,GeneID:1487359;Name=YP_009137219.1;Note=gD family;gbkey=CDS;gene=US7;locus_tag=HHV2p08;product=envelope glycoprotein I;protein_id=YP_009137219.1
+NC_001798.2	RefSeq	polyA_signal_sequence	143583	143588	.	+	.	ID=id-NC_001798.2:143583..143588;Note=US5%2C US6%2C US7;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	143840	146182	.	+	.	ID=gene-HHV2p07;Dbxref=GeneID:1487360;Name=US8;Note=alpha gene;gbkey=Gene;gene=US8;gene_biotype=protein_coding;locus_tag=HHV2p07
+NC_001798.2	RefSeq	CDS	143840	145477	.	+	0	ID=cds-YP_009137220.1;Parent=gene-HHV2p07;Dbxref=Genbank:YP_009137220.1,GeneID:1487360;Name=YP_009137220.1;Note=gE family;gbkey=CDS;gene=US8;locus_tag=HHV2p07;product=envelope glycoprotein E;protein_id=YP_009137220.1
+NC_001798.2	RefSeq	sequence_alteration	144414	144422	.	+	.	ID=id-HHV2p07;Dbxref=GeneID:1487360;Note=3%25 of population%3B causes a frameshift;gbkey=variation;gene=US8;locus_tag=HHV2p07;replace=cccccccc
+NC_001798.2	RefSeq	sequence_alteration	144414	144422	.	+	.	ID=id-HHV2p07-2;Dbxref=GeneID:1487360;Note=3%25 of population%3B causes a frameshift;gbkey=variation;gene=US8;locus_tag=HHV2p07;replace=cccccccccc
+NC_001798.2	RefSeq	gene	145326	146182	.	+	.	ID=gene-HHV2p06;Dbxref=GeneID:1487361;Name=US8A;Note=alpha gene;gbkey=Gene;gene=US8A;gene_biotype=protein_coding;locus_tag=HHV2p06
+NC_001798.2	RefSeq	CDS	145326	145766	.	+	0	ID=cds-YP_009137221.1;Parent=gene-HHV2p06;Dbxref=Genbank:YP_009137221.1,GeneID:1487361;Name=YP_009137221.1;gbkey=CDS;gene=US8A;locus_tag=HHV2p06;product=membrane protein US8A;protein_id=YP_009137221.1
+NC_001798.2	RefSeq	gene	145866	146182	.	+	.	ID=gene-HHV2p05;Dbxref=GeneID:24271460;Name=US9;gbkey=Gene;gene=US9;gene_biotype=protein_coding;locus_tag=HHV2p05
+NC_001798.2	RefSeq	CDS	145866	146135	.	+	0	ID=cds-YP_009137222.1;Parent=gene-HHV2p05;Dbxref=Genbank:YP_009137222.1,GeneID:24271460;Name=YP_009137222.1;gbkey=CDS;gene=US9;locus_tag=HHV2p05;product=membrane protein US9;protein_id=YP_009137222.1
+NC_001798.2	RefSeq	polyA_signal_sequence	146207	146212	.	+	.	ID=id-NC_001798.2:146207..146212;Note=US8%2C US8A%2C US9;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	gene	146616	148033	.	-	.	ID=gene-HHV2p02;Dbxref=GeneID:1487353;Name=US10;Note=alpha gene%3B immediate early gene;gbkey=Gene;gene=US10;gene_biotype=protein_coding;locus_tag=HHV2p02
+NC_001798.2	RefSeq	CDS	147773	148033	.	-	0	ID=cds-YP_009137225.1;Parent=gene-HHV2p02;Dbxref=Genbank:YP_009137225.1,GeneID:1487353;Name=YP_009137225.1;gbkey=CDS;gene=US10;locus_tag=HHV2p02;product=TAP transporter inhibitor ICP47;protein_id=YP_009137225.1
+NC_001798.2	RefSeq	gene	146616	147697	.	-	.	ID=gene-HHV2p03;Dbxref=GeneID:1487352;Name=US11;gbkey=Gene;gene=US11;gene_biotype=protein_coding;locus_tag=HHV2p03
+NC_001798.2	RefSeq	CDS	147242	147697	.	-	0	ID=cds-YP_009137224.1;Parent=gene-HHV2p03;Dbxref=Genbank:YP_009137224.1,GeneID:1487352;Name=YP_009137224.1;gbkey=CDS;gene=US11;locus_tag=HHV2p03;product=tegument protein US11;protein_id=YP_009137224.1
+NC_001798.2	RefSeq	gene	146616	147531	.	-	.	ID=gene-HHV2p04;Dbxref=GeneID:1487351;Name=US12;Note=immediate early gene;gbkey=Gene;gene=US12;gene_biotype=protein_coding;locus_tag=HHV2p04
+NC_001798.2	RefSeq	CDS	146623	147531	.	-	0	ID=cds-YP_009137223.1;Parent=gene-HHV2p04;Dbxref=Genbank:YP_009137223.1,GeneID:1487351;Name=YP_009137223.1;gbkey=CDS;gene=US12;locus_tag=HHV2p04;product=virion protein US10;protein_id=YP_009137223.1
+NC_001798.2	RefSeq	polyA_signal_sequence	146616	146621	.	-	.	ID=id-NC_001798.2:146616..146621;Note=US10%2C US11%2C US12;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	inverted_repeat	148034	154675	.	+	.	ID=id-NC_001798.2:148034..154675;Note=TRS%3B inverted repeat flanking US;gbkey=repeat_region;rpt_type=inverted
+NC_001798.2	RefSeq	intron	148064	148455	.	-	.	ID=id-NC_001798.2:148064..148455;Note=US12;gbkey=intron
+NC_001798.2	RefSeq	repeat_region	148093	148445	.	+	.	ID=id-NC_001798.2:148093..148445;Note=RS reiteration set 2;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	148760	149050	.	+	.	ID=id-NC_001798.2:148760..149050;Note=oriS reiteration set;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	stem_loop	148808	148853	.	+	.	ID=id-NC_001798.2:148808..148853;Note=oriS palindrome;gbkey=stem_loop
+NC_001798.2	RefSeq	stem_loop	148948	148993	.	+	.	ID=id-NC_001798.2:148948..148993;Note=oriS palindrome;gbkey=stem_loop
+NC_001798.2	RefSeq	gene	149640	153715	.	+	.	ID=gene-HHV2p01;Dbxref=GeneID:1487290;Name=RS1;Note=alpha gene%3B immediate early gene;gbkey=Gene;gene=RS1;gene_biotype=protein_coding;locus_tag=HHV2p01
+NC_001798.2	RefSeq	CDS	149640	153596	.	+	0	ID=cds-YP_009137226.1;Parent=gene-HHV2p01;Dbxref=Genbank:YP_009137226.1,GeneID:1487290;Name=YP_009137226.1;gbkey=CDS;gene=RS1;locus_tag=HHV2p01;product=transcriptional regulator ICP4;protein_id=YP_009137226.1
+NC_001798.2	RefSeq	polyA_signal_sequence	153710	153715	.	+	.	ID=id-HHV2p01;Parent=gene-HHV2p01;Dbxref=GeneID:1487290;gbkey=regulatory;gene=RS1;locus_tag=HHV2p01;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	polyA_signal_sequence	153751	153756	.	-	.	ID=id-NC_001798.2:153751..153756;Note=LAT;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_001798.2	RefSeq	repeat_region	153757	153992	.	+	.	ID=id-NC_001798.2:153757..153992;Note=RS reiteration set 1;gbkey=repeat_region;rpt_type=tandem
+NC_001798.2	RefSeq	repeat_region	154422	154675	.	+	.	ID=id-NC_001798.2:154422..154675;Note='a' sequence;gbkey=repeat_region;rpt_type=terminal
+NC_001798.2	RefSeq	sequence_alteration	154432	154432	.	+	.	ID=id-NC_001798.2:154432..154432;gbkey=variation;replace=c
+

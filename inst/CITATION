@@ -1,0 +1,17 @@
+citHeader("To cite the 'hsvdrg' package in publications use:")
+
+citEntry(
+  entry   = 'Article',
+  title   = 'hsvdrg - An R package for Herpes Simple Virus antiviral Drug Resistance Genotyping',
+  journal      = "bioRxiv",
+  author  = 'Charles OJ',
+  year    = '2020',
+  doi     = '10.1101/2020.05.15.097907',
+  url     = 'https://www.biorxiv.org/content/10.1101/2020.05.15.097907v1',
+  
+  
+  textVersion = paste('Charles OJ (2020)',
+                      'hsvdrg - An R package for Herpes Simple Virus antiviral Drug Resistance Genotyping',
+                      'URL https://www.biorxiv.org/content/10.1101/2020.05.15.097907v1',
+                      'doi 10.1101/2020.05.15.097907')
+)

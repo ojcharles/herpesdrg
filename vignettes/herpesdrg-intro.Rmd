@@ -1,0 +1,82 @@
+---
+title: "herpesdrg-intro"
+author: "OJ Charles"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{herpesdrg-intro}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Usage
+
+### vcf data
+
+```{r setup, message = F}
+library("herpesdrg")
+
+## call resistant variants
+my_sample = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+
+data = call_resistance(infile = my_sample, all_mutations = F, virus = "HSV1") # options are HSV1 HSV2 HCMV and VZV
+
+data[ , c("change", "freq", "Aciclovir", "Pencyclovir", "Foscarnet")]
+
+
+## call all variants
+mutations_all = call_resistance(infile = my_sample, all_mutations = T)
+
+#to view all mutations in resistance genes we can filter
+mutations_res = mutations_all[mutations_all$GENEID %in% c("UL30"),]
+
+head(mutations_res[,c(1,8,21,32:40)])
+
+
+## call nonsynonymous variants
+# are there any non-synonymous (DNA variants that result in a change of amino acid) variants in resistance genes
+mutations_res_nonsyn = mutations_res[mutations_res$CONSEQUENCE == "nonsynonymous",]
+
+
+# here the top 3 mutations are nonsynonymous, with no identified resistance effect.
+head(mutations_res_nonsyn[,c(1,8,21,32:40)])
+
+
+```
+
+
+### fasta sequences
+```{r}
+# herpesdrg accepts sequence fragments or whole-genomes, one fasta sequence at a time.
+
+# load example data
+my_sequence = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+
+dat = call_resistance(infile = my_sequence, all_mutations = T)
+
+head(dat)
+```
+
+
+### other features
+```{r}
+## view the full database
+db = herpesdrg_data()
+head(db$aa_change)
+
+
+## run the shiny application
+# runShinyHSV()
+
+```
+
+## Getting help
+
+If you encounter a clear bug, please file an issue with a minimal reproducible example on the GitHub Issues page. For questions and other discussions feel free to contact. [Oscar Charles - maintainer](mailto:oscar.charles.18@ucl.ac.uk)

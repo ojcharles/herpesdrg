@@ -1,0 +1,127 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# herpesdrg
+
+<!-- badges: start -->
+[![minimal R version](https://img.shields.io/badge/R%3E%3D-3.4.0-6666ff.svg)](https://cran.r-project.org/)
+![GitHub repo size](https://img.shields.io/github/repo-size/ojcharles/herpesdrg.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ojcharles/herpesdrg.svg)
+<!-- badges: end -->
+
+
+
+## Overview
+
+herpesdrg is a R package to enable antiviral drug resistance genotyping, with Herpes Simplex Virus 1, HSV 2, Human Cytomegalovirus and Varicella zoster virus sequencing data. Accepted inputs are FASTA (whole genomes & fragments) which will be mapped to RefSeq NC_001806.2. NGS variant data assembled to NC_001806.2 is accepted in VCF >= ver4.0 & Varscan2 tab formats.
+
+
+#### Database
+All data extracted from literature sources and contains the relationships between:
+
+ - Virus
+ - Gene
+ - Mutation
+ - Drug susceptibility fold change from sensitive strain or "Resistant" / "Polymorphism" as in publication
+ - The method for Resistance Phenotyping and strain generation
+ - Publication reference 
+ 
+
+#### Web service
+A user-friendly Shiny Applications has been bundled with this package. The same application is available over the internet here [http://cmv-resistance.ucl.ac.uk/herpesdrg/](http://cmv-resistance.ucl.ac.uk/herpesdrg/) where the terms of use are contained.
+
+
+## Installation
+
+You can install the current version from [GitHub](https://github.com/ojcharles/herpesdrg) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ojcharles/herpesdrg")
+```
+
+Dependencies for FASTA file handling are MAFFT and SNP-Sites available preferably via conda. snp-sites >= 2.3 has been tested.
+```{bash, eval=FALSE}
+conda config --add channels bioconda
+conda install snp-sites
+conda install mafft
+```
+
+
+## Usage
+
+### vcf data
+
+```{r setup, message = F}
+library("herpesdrg")
+
+## call resistant variants
+my_sample = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+
+data = call_resistance(infile = my_sample, all_mutations = T, virus = "HSV1") # options are HSV1 HSV2 HCMV and VZV
+
+data[ , c("change", "freq", "Aciclovir", "Pencyclovir", "Foscarnet")]
+
+
+## call all variants
+mutations_all = call_resistance(infile = my_sample, all_mutations = T)
+
+#to view all mutations in resistance genes we can filter
+mutations_res = mutations_all[mutations_all$GENEID %in% c("UL30"),]
+
+head(mutations_res[,c(1,8,21,32:40)])
+
+
+## call nonsynonymous variants
+# are there any non-synonymous (DNA variants that result in a change of amino acid) variants in resistance genes
+mutations_res_nonsyn = mutations_res[mutations_res$CONSEQUENCE == "nonsynonymous",]
+
+
+# here the top 3 mutations are nonsynonymous, with no identified resistance effect.
+head(mutations_res_nonsyn[,c(1,8,21,32:40)])
+
+
+```
+
+
+### fasta sequences
+```{r}
+# herpesdrg accepts sequence fragments or whole-genomes, one fasta sequence at a time.
+
+# load example data
+my_sequence = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+
+dat = call_resistance(infile = my_sequence, all_mutations = T)
+
+head(dat)
+```
+
+
+### other features
+```{r}
+## view the full database
+db = herpesdrg_data()
+head(db$aa_change)
+
+
+## run the shiny application
+# ShinyHerpes()
+
+```
+
+## Getting help
+
+If you encounter a clear bug, please file an issue with a minimal reproducible example on the GitHub Issues page. For questions and other discussions feel free to contact. [Oscar Charles - maintainer](mailto:oscar.charles.18@ucl.ac.uk)
+
