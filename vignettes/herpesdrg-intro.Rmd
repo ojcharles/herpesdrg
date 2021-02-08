@@ -16,6 +16,44 @@ knitr::opts_chunk$set(
 )
 ```
 
+
+## Overview
+
+herpesdrg is a R package to enable antiviral drug resistance genotyping, with Herpes Simplex Virus 1, HSV 2, Human Cytomegalovirus and Varicella zoster virus sequencing data. Accepted inputs are FASTA (whole genomes & fragments) which will be mapped to RefSeq NC_001806.2. NGS variant data assembled to NC_001806.2 is accepted in VCF >= ver4.0 & Varscan2 tab formats.
+
+
+#### Database
+All data extracted from literature sources and contains the relationships between:
+
+ - Virus
+ - Gene
+ - Mutation
+ - Drug susceptibility fold change from sensitive strain or "Resistant" / "Polymorphism" as in publication
+ - The method for Resistance Phenotyping and strain generation
+ - Publication reference 
+ 
+
+#### Web service
+A user-friendly Shiny Applications has been bundled with this package. The same application is available over the internet here [http://cmv-resistance.ucl.ac.uk/herpesdrg/](http://cmv-resistance.ucl.ac.uk/herpesdrg/) where the terms of use are contained.
+
+
+## Installation
+
+You can install the current version from [GitHub](https://github.com/ojcharles/herpesdrg) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("ojcharles/herpesdrg")
+```
+
+Dependencies for FASTA file handling are MAFFT and SNP-Sites available preferably via conda. snp-sites >= 2.3 has been tested.
+```{bash, eval=FALSE}
+conda config --add channels bioconda
+conda install snp-sites
+conda install mafft
+```
+
+
 ## Usage
 
 ### vcf data
@@ -24,29 +62,29 @@ knitr::opts_chunk$set(
 library("herpesdrg")
 
 ## call resistant variants
-my_sample = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+my_sample = system.file("testdata", "HCMV_A10.vcf", package = "herpesdrg")
 
-data = call_resistance(infile = my_sample, all_mutations = F, virus = "HSV1") # options are HSV1 HSV2 HCMV and VZV
+data = call_resistance(infile = my_sample, all_mutations = F, virus = "HCMV") # options are HSV1 HSV2 HCMV and VZV
 
-data[ , c("change", "freq", "Aciclovir", "Pencyclovir", "Foscarnet")]
+data[ , c("change", "freq", "Ganciclovir", "Cidofovir", "Foscarnet", "Letermovir", "Maribavir", "ref_link")]
 
 
 ## call all variants
-mutations_all = call_resistance(infile = my_sample, all_mutations = T)
+mutations_all = call_resistance(infile = my_sample, all_mutations = T, virus = "HCMV")
 
 #to view all mutations in resistance genes we can filter
-mutations_res = mutations_all[mutations_all$GENEID %in% c("UL30"),]
+mutations_res = mutations_all[mutations_all$GENEID %in% c("UL54", "UL97", "UL27", "UL51", "UL56", "UL89"),]
 
-head(mutations_res[,c(1,8,21,32:40)])
+head(mutations_res[,c(1,8,21,32:40)],)
 
 
 ## call nonsynonymous variants
 # are there any non-synonymous (DNA variants that result in a change of amino acid) variants in resistance genes
-mutations_res_nonsyn = mutations_res[mutations_res$CONSEQUENCE == "nonsynonymous",]
+mutations_res_nonsyn = mutations_all[mutations_all$GENEID == "UL54" & mutations_all$CONSEQUENCE == "nonsynonymous",]
 
 
-# here the top 3 mutations are nonsynonymous, with no identified resistance effect.
-head(mutations_res_nonsyn[,c(1,8,21,32:40)])
+# here the 6 mutations are nonsynonymous, with no identified resistance effect.
+head(mutations_res_nonsyn[,c("change", "freq", "CONSEQUENCE", "Ganciclovir", "Foscarnet", "ref_title")],)
 
 
 ```
@@ -57,11 +95,11 @@ head(mutations_res_nonsyn[,c(1,8,21,32:40)])
 # herpesdrg accepts sequence fragments or whole-genomes, one fasta sequence at a time.
 
 # load example data
-my_sequence = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg")
+my_sequence = system.file("testdata", "HSV1_F716L.fasta", package = "herpesdrg")
 
-dat = call_resistance(infile = my_sequence, all_mutations = T)
+dat = call_resistance(infile = my_sequence, all_mutations = F,virus = "HSV1")
 
-head(dat)
+head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Pencyclovir", "ref_doi")])
 ```
 
 
@@ -73,10 +111,11 @@ head(db$aa_change)
 
 
 ## run the shiny application
-# runShinyHSV()
+# ShinyHerpes()
 
 ```
 
 ## Getting help
 
 If you encounter a clear bug, please file an issue with a minimal reproducible example on the GitHub Issues page. For questions and other discussions feel free to contact. [Oscar Charles - maintainer](mailto:oscar.charles.18@ucl.ac.uk)
+
