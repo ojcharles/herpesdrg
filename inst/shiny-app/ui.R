@@ -15,20 +15,20 @@ shinyUI(
     navlistPanel(widths = c(2,6),
        "Resistance Genotyping",
        tabPanel("Homepage",
-                div("The Herpes Simplex Virus1 Drug Resistance Genotyping database website, part of the hsvdrg R package, allows researchers to investigate genetic variability and viral resistance in the context of current treatments. ", tags$br()),
+                div("Herpedvirus drug resistance genotyping webserver, part of the herpesdrg R package, allows researchers to investigate genetic variability and viral resistance in the context of current treatments. ", tags$br()),
                 p(""),
-                div("Below is the web tool for detecting resistance mutations in HCMV sequencing files. Check the help page for further details."),
+                div("Below is the web tool for detecting resistance mutations in heresvirus sequencing files. Check the help page for further details."),
                 h3("Upload a file to return resistance data"),
+                selectInput("virus", label = "Virus to compare against", choices = c("HCMV", "HSV1", "HSV2", "VZV", "HHV6b"),multiple = F),
                 fileInput("vcf.file", label = "Accepts VCF, Varscan-tab, Fasta formats",multiple = F, width = 400),
-                checkboxInput("vcf.anecdotal", label = "Include anecdotal data", value = F),
                 br(),
                 div(style="display:inline-block",uiOutput("vcf.o.res1")),
                 div(style="display:inline-block",uiOutput("vcf.o.all1")),
                 #div(style="display:inline-block",downloadButton("vcf.o.res", "download resistance data")),
                 #div(style="display:inline-block",downloadButton("vcf.o.all", "download all-mutants data")),
-                br(),br(),h4("Clinical Overview"),
+                br(),br(),h4("Clinical Overview"),br(),
                 DT::dataTableOutput("vcf.table_clin"),
-                br(),br(),h4("Comprehensive resistance  - Determined as in: https://academic.oup.com/jac/article/71/1/6/2363653"),
+                br(),br(),h4("Identified Resistant mutants"),br(),
                 tableOutput("vcf.table_res")
                 #plotOutput("vcf.plot.res")
 
@@ -39,10 +39,18 @@ shinyUI(
                 p(""),
                 br(),
                 strong("Graphics showing location of identified resistance mutations, in context to all database mutations"),
-                textOutput("vcf.title.UL30"),
-                plotOutput("vcf.plot.lollipop.UL34"),
-                textOutput("vcf.title.UL23"),
-                plotOutput("vcf.plot.lollipop.UL23")
+                plotOutput("vcf.plot.lollipop.UL23"),
+                plotOutput("vcf.plot.lollipop.UL27"),
+                plotOutput("vcf.plot.lollipop.UL30"),
+                plotOutput("vcf.plot.lollipop.UL51"),
+                plotOutput("vcf.plot.lollipop.UL54"),
+                plotOutput("vcf.plot.lollipop.UL56"),
+                plotOutput("vcf.plot.lollipop.UL89"),
+                plotOutput("vcf.plot.lollipop.UL97"),
+                plotOutput("vcf.plot.lollipop.ORF28"),
+                plotOutput("vcf.plot.lollipop.ORF36"),
+                plotOutput("vcf.plot.lollipop.U38"),
+                plotOutput("vcf.plot.lollipop.U69")
        ), #tabpanel
        
        
@@ -158,7 +166,7 @@ shinyUI(
                 br(),
                 
                 strong("Data"),
-                p("The database underpinning hsvdrg contains the link between gene, aachange & EC50 fold change to wild type virus developed by the Breuer lab at UCL & GOSH.
+                p("The database underpinning herpesdrg contains the link between gene, aachange & EC50 fold change to wild type virus developed by the Breuer lab at UCL & GOSH.
                 To capture new resistant mutations, articles in peer-reviewed journals are searched weekly using a PubMed search with key terms. 
                 Regular expressions narrow down the list to those including mutations. To minimise any subjectivity, where relevant we capture many data points per mutation which are included in reporting methods here.
                 If you spot mistakes or omissions in the database either contact oscar.charles.18@ucl.ac.uk or alter the github /inst/db files. "), 
@@ -172,7 +180,7 @@ shinyUI(
                 br(),
                 
                 strong("Open Source"),
-                p(HTML(paste0("The database, functions and application are available as an R package ",a("in Github here.", href ="https://github.com/ucl-pathgenomics/hsvdrg")))),
+                p(HTML(paste0("The database, functions and application are available as an R package ",a("in Github here.", href ="https://github.com/ucl-pathgenomics/herpesdrg")))),
                 br(),br(),
                 
                 strong("Ackowledgements"),

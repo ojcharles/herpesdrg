@@ -4,10 +4,10 @@
 #' 
 #' @export
 
-runShinyHSV = function() {
-  appDir <- system.file("shiny-app", package = "hsvdrg")
+ShinyHerpes = function() {
+  appDir <- system.file("shiny-app", package = "herpesdrg")
   if (appDir == "") {
-    stop("Could not find example directory. Try re-installing `hsvdrg`.", call. = FALSE)
+    stop("Could not find example directory. Try re-installing `herpesdrg`.", call. = FALSE)
   }
   shiny::runApp(appDir, display.mode = "normal")
 }

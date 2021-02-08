@@ -9,16 +9,24 @@
 
 
 shinyServer(function(input, output, session) {
-  global = list()
-  global$res_table = system.file("db", "hsvdrg-db.csv", package = "hsvdrg")
-  global$date <- format(Sys.time(), "%Y-%m-%d")
-  global$dir = ""
-  global$genome = genome="NC_001806.2"
-  global$path_gff3_file=system.file("ref", "NC_001806.2.gff3", package = "hsvdrg")
-  global$path_fasta_file=system.file("ref", "NC_001806.2.fasta", package = "hsvdrg")
-  global$path_txdb=system.file("ref", "NC_001806.2.sqlite", package = "hsvdrg")
   
+  global <- reactive({
+    
 
+    virus = input$virus
+    
+    global = list()
+    global$res_table = system.file("herpesdrg-db", "herpesdrg-db.tsv", package = "herpesdrg")
+    global$date <- format(Sys.time(), "%Y-%m-%d")
+    global$dir = ""
+    global$virus_genome = utils::read.csv(system.file("", "virus-genome.csv", package = "herpesdrg"),stringsAsFactors = F)
+    global$genome = global$virus_genome[global$virus_genome$virus == virus,2]
+    global$path_gff3_file=system.file("ref", paste0(global$genome,".gff3"), package = "herpesdrg")
+    global$path_fasta_file=system.file("ref", paste0(global$genome,".fasta"), package = "herpesdrg")
+    global$path_txdb=system.file("ref", paste0(global$genome,".sqlite"), package = "herpesdrg")
+  
+    return(global)
+  })
   
   
   
@@ -37,11 +45,11 @@ shinyServer(function(input, output, session) {
     
     # handle input .tab .vcf .fasta
     # returns minimum intermediate table
-    dat1 <- hsvdrg::read_input(inFile$datapath, global)
+    dat1 <- herpesdrg::read_input(inFile$datapath, global())
     
     ### annotate variants
     # used in optional processes, i.e. identifying syn / nonsynonymous mutations in resistance genes.
-    dat2 <- hsvdrg::annotate_variants(f.dat = dat1, global)
+    dat2 <- herpesdrg::annotate_variants(f.dat = dat1, global())
     
     
     return(dat2)
@@ -58,7 +66,7 @@ shinyServer(function(input, output, session) {
     dat2 = vcf.d.all()
 
     ### add res info
-    dat3 <- hsvdrg::add_resistance_info(f.dat = dat2, resistance_table=global$res_table, all_muts = F, anecdotal = input$vcf.anecdotal)
+    dat3 <- herpesdrg::add_resistance_info(f.dat = dat2, resistance_table=global()$res_table, all_muts = F, virus = input$virus)
     
     return(dat3)
   })
@@ -72,7 +80,7 @@ shinyServer(function(input, output, session) {
   output$vcf.table_clin <- DT::renderDataTable({
     if(is.null(vcf.d.res())){
       return(NULL)}
-    out = hsvdrg::make_clin_table(vcf.d.res())  
+    out = herpesdrg::make_clin_table(vcf.d.res())  
     return(out)
   })
   
@@ -107,11 +115,8 @@ shinyServer(function(input, output, session) {
   output$res.plot.dbheatmap <- renderPlot({
     # plots as a heatmap, the amount of dat we have per gene, per drug.
     # //todo - currently records the number of data points, could record mean value etc
-    resistance = utils::read.csv(global$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F)
-    if (input$vcf.anecdotal == F) {
-      resistance = resistance[resistance$tm_class == 'in vitro',]
-    }
-    resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:10]))
+    resistance = utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t")
+    resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:14]))
     resistance = resistance[resistance$value != "",]
     resistance = resistance[!is.na(resistance$value),]
     resistance$value = stringr::str_replace(resistance$value, ">", "")
@@ -133,61 +138,119 @@ shinyServer(function(input, output, session) {
     return(g)
   })
   
-
-  # output$vcf.plot.res <- renderPlot({
-  #   validate(
-  #    need(input$vcf.file != "", "Please load a file")
-  #   )
-  #   #if (is.null(input$vcf.file)){
-  #   #  return(NULL)}
-  #   if (nrow(vcf.d.res()) == 0){ # if no resistance data was identified
-  #     return(NULL)
-  #   }
-  #   # plot resistance muts
-  #   coding_df_res_resistance <- vcf.d.res()
-  #   
-  #   if(is.null(coding_df_res_resistance$time_point)){
-  #     g <- ggplot( coding_df_res_resistance ,aes(x = "mutations", y=freq,fill=factor(change)))
-  #   }else{
-  #     g <- ggplot( coding_df_res_resistance ,aes(x=time_point,y=freq,fill=factor(change)))
-  #   }
-  #   g <- g +
-  #     geom_bar(position="dodge",stat="identity") +
-  #     scale_fill_discrete(drop=FALSE) +
-  #     scale_x_discrete(drop=FALSE) +
-  #     theme_bw() +
-  #     labs(fill = "Resistance")
-  #   # ggsave(plot = g, filename = paste("session",global$date, session$token, "res_table.png", sep = "/"), device = "png")
-  #   return(g)
-  # })
-  
-  
   ### lollipops
   
-  # ## ul30 ##
-  output$vcf.title.UL30 <- renderText({
-    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
-    if(length(base::grep(unique(mut$Gene), pattern = "U30", session)) > 0){
-      paste("Resistance mutations in UL30 Gene")
-    }
-  })
-    output$vcf.plot.lollipop.UL30 <- renderPlot({
-    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
-    g <- hsvdrg::plot_lollipop(mut, f.gene = "UL30",global = global)
-    return(g)
-  })
   ## ul23 ##
-    output$vcf.title.UL23 <- renderText({
-      mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
-      if(length(base::grep(unique(mut$Gene), pattern = "UL23")) > 0){
-        paste("Resistance mutations in UL23 Gene")
-      }
-    })
   output$vcf.plot.lollipop.UL23 <- renderPlot({
     mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
-    g <- hsvdrg::plot_lollipop(mut, f.gene = "UL23",global = global)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL23")
     return(g)
   })
+  # ## ul27 ##
+output$vcf.plot.lollipop.UL27 <- renderPlot({
+  mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+  g <- herpesdrg::plot_lollipop(mut, f.gene = "UL27")
+  return(g)
+})
+  # ## ul30 ##
+    output$vcf.plot.lollipop.UL30 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL30")
+    return(g)
+  })
+    # ## ul51 ##
+    output$vcf.plot.lollipop.UL51 <- renderPlot({
+      mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+      g <- herpesdrg::plot_lollipop(mut, f.gene = "UL51")
+      return(g)
+    })
+  # ## ul54 ##
+  output$vcf.plot.lollipop.UL54 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL54")
+    return(g)
+  })
+  # ## ul56 ##
+  output$vcf.plot.lollipop.UL56 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL56")
+    return(g)
+  })
+  # ## ul89 ##
+  output$vcf.title.UL89 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "UL89", session)) > 0){
+      paste("Resistance mutations in UL89 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.UL89 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL89")
+    return(g)
+  })
+  # ## ul97 ##
+  output$vcf.title.UL97 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "UL97", session)) > 0){
+      paste("Resistance mutations in UL97 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.UL97 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "UL97")
+    return(g)
+  })
+  # ## ORF28 ##
+  output$vcf.title.ORF28 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "ORF28", session)) > 0){
+      paste("Resistance mutations in ORF28 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.ORF28 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "ORF28")
+    return(g)
+  })
+  # ## ORF36 ##
+  output$vcf.title.ORF36 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "ORF36", session)) > 0){
+      paste("Resistance mutations in ORF36 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.ORF36 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "ORF36")
+    return(g)
+  })
+  # ## U38 ##
+  output$vcf.title.U38 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "U38", session)) > 0){
+      paste("Resistance mutations in U38 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.U38 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "U38")
+    return(g)
+  })
+  # ## U69 ##
+  output$vcf.title.U69 <- renderText({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    if(length(base::grep(unique(mut$Gene), pattern = "U69", session)) > 0){
+      paste("Resistance mutations in U69 Gene")
+    }
+  })
+  output$vcf.plot.lollipop.U69 <- renderPlot({
+    mut <- data.frame(vcf.d.res(),stringsAsFactors = F)
+    g <- herpesdrg::plot_lollipop(mut, f.gene = "U69")
+    return(g)
+  })
+  
+
+
 
   
   
@@ -213,7 +276,7 @@ shinyServer(function(input, output, session) {
   
   # debug in brownser app mode
   output$vcf.o.res <- downloadHandler(
-    filename = function(){paste(global$date, "_resmuts.csv", sep="")},
+    filename = function(){paste(global()$date, "_resmuts.csv", sep="")},
     content = function(filename){
       dat <- vcf.d.res()
       utils::write.csv(x = dat, file = filename, row.names = F)
@@ -222,10 +285,10 @@ shinyServer(function(input, output, session) {
   
   # all mutations, synonymous and non synonymous
   output$vcf.o.all <- downloadHandler(
-    filename = function(){paste(global$date, "_allmuts.csv", sep="")},
+    filename = function(){paste(global()$date, "_allmuts.csv", sep="")},
     content = function(filename){
       dat <- vcf.d.all()
-      dat = hsvdrg::add_resistance_info(f.dat = dat, resistance_table=global$res_table, all_muts = T, anecdotal = input$vcf.anecdotal)
+      dat = herpesdrg::add_resistance_info(f.dat = dat, resistance_table=global()$res_table, all_muts = T, virus = input$virus)
       utils::write.csv(x = dat, file = filename, row.names = F)
     }
   )
