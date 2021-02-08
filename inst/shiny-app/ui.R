@@ -10,8 +10,7 @@ library(shiny)
 shinyUI(
   fluidPage(
     # Application title
-    titlePanel("Herpes Simplex Virus1 Drug Resistance Genotyping"),
-    
+    titlePanel("Herpesvirus Drug Resistance Genotyping - HSV1 HSV2 HCMV VZV and HHV6"),
     navlistPanel(widths = c(2,6),
        "Resistance Genotyping",
        tabPanel("Homepage",
@@ -143,8 +142,8 @@ shinyUI(
                 br(),
                 
                 strong("Privacy Policy"),
-                p("Every time you access the hosted 'Herpes Simplex Virus1 Drug Resistance Genotyping' hosted UCL web address  we reserve the right to register the following data for statistical and troubleshooting purposes."),
-                HTML("<ul><li>Date and time of access</li><li>IP address of request</li><li>Uploaded file metadata(size, file type). File contents are untouched.</li></ul>"),
+                p("Every time you access the hosted 'Herpesvirus Drug Resistance Genotyping' hosted UCL web address  we reserve the right to register the following data for statistical and troubleshooting purposes."),
+                HTML("<ul><li>Date and time of access</li><li>City of IP adress. File contents are untouched.</li></ul>"),
                 br(),
                 br(),
                 br(),
@@ -159,15 +158,15 @@ shinyUI(
                 p(""),
                 br(),
                 strong("Cytomegalovirus"),
-                p("The prevention and treatment of Herpes Simplex Virus1 (HCMV) is essential in management of solid organ transplant (SOT), hematopoietic stem cell transplant (HSCT) and other immunocompromised hosts.
-                HCMV is a herpes virus that infects ubiquitous (60-90%) of adults. Althought primary infections tend to be asymntomatic within healthy individuals, it is a major cause of morbidity and chronic ill-health to congenitally infected babies & those mentioned.
-                Although a handful of treatment options are available such as Ganciclovir, Cidofovir and Mirabavir, emergence of HCMV resistance is now found for all current drugs and pose a significant threat due to aggressive disease course and a 
+                p("The prevention and treatment of Herpesviruses is essential in management of solid organ transplant (SOT), hematopoietic stem cell transplant (HSCT) and other immunocompromised hosts.
+                Althought primary infections tend to be asymntomatic within healthy individuals, it is a major cause of morbidity and chronic ill-health to congenitally infected babies & those mentioned.
+                Although a handful of treatment options are available such as Ganciclovir, Aciclovir and Foscarnet, emergence of resistance is now found for all current drugs and pose a significant threat due to aggressive disease course and a 
                 greater mortality risk. Early detection of resistance is important to inform alternative treatments. "),
                 br(),
                 
                 strong("Data"),
                 p("The database underpinning herpesdrg contains the link between gene, aachange & EC50 fold change to wild type virus developed by the Breuer lab at UCL & GOSH.
-                To capture new resistant mutations, articles in peer-reviewed journals are searched weekly using a PubMed search with key terms. 
+                To capture new resistant mutations, articles in peer-reviewed journals are searched monthly using a PubMed search with key terms. 
                 Regular expressions narrow down the list to those including mutations. To minimise any subjectivity, where relevant we capture many data points per mutation which are included in reporting methods here.
                 If you spot mistakes or omissions in the database either contact oscar.charles.18@ucl.ac.uk or alter the github /inst/db files. "), 
                 br(),
