@@ -5,7 +5,7 @@
 #'
 #' @param f.dat resistance data frame from cmvdrg, where all_muts == F
 #' @param f.gene Which gene to plot
-#' @param global Package object for consistent runtime variables
+#' @param resistance_table location of the csv resistance database
 #' @return intermediate data.frame with genome level annotation
 #' 
 #' @importFrom magrittr "%>%"
@@ -14,31 +14,31 @@
 #' @export
 
 
-plot_lollipop <- function(f.dat, f.gene = "UL54", global){
+plot_lollipop <- function(f.dat, f.gene = "UL54", resistance_table = system.file("herpesdrg-db", "herpesdrg-db.tsv", package = "herpesdrg")){
   ## plot mutations in specific genes with resistance mutation.
   # this could be cleaned up a lot.
-  
+
   # load data
   mut <- f.dat
-
+  
   
   # if sample has any mutations in f.gene
   if(length(base::grep(unique(mut$GENE), pattern = f.gene)) > 0){
     
+    drugs = unlist(utils::read.csv(system.file("", "drugs.csv", package = "herpesdrg"),stringsAsFactors = F))
     #manually force value types, should be oneline or sorted in data
     mut$RefCount <- as.numeric(mut$RefCount)
     mut$VarCount <- as.numeric(mut$VarCount) 
     mut$PROTEINLOC <- as.numeric(mut$PROTEINLOC)
-
+    
     # call res mutations from mutations
     mut_res <- mut %>% dplyr::filter(.data$GENEID==f.gene & .data$CONSEQUENCE=="nonsynonymous")
     mut_res$depth <- mut_res$RefCount + mut_res$VarCount 
-    resistance_table=global$res_table
-    resistance <- utils::read.csv(resistance_table, header = TRUE,as.is = TRUE)
+    resistance <- utils::read.delim(resistance_table, header = TRUE,as.is = TRUE, sep = "\t")
     resistance$change <- paste(resistance$gene,resistance$aa_change,sep="_")
     resistance$aapos <- readr::parse_number(resistance$aa_change)
     resistance <- resistance %>% dplyr::filter(.data$gene== f.gene)
-    resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:14]))
+    resistance = reshape2::melt(resistance, measure.vars = drugs)
     resistance = resistance[resistance$value != "",]
     resistance = resistance[!is.na(resistance$value),]
     resistance = resistance %>% dplyr::group_by(.data$change) %>% dplyr::arrange(.data$value) %>% dplyr::top_n(1, .data$value) # reduces data to 1 row per mutation.
@@ -51,7 +51,7 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", global){
     d.resall$resistance = d.resall$value
     d.resall$resistance[d.resall$resistance > 2 & d.resall$resistance != "Resistant" & d.resall$resistance != "Polymorphism"] = "Resistant"
     d.resall$resistance[d.resall$resistance <= 2 & d.resall$resistance != "Resistant" & d.resall$resistance != "Polymorphism"] = "Polymorphism"
-
+    
     
     d.resmuts <- data.frame(x = mut_res$PROTEINLOC,
                             y = readr::parse_number(mut_res$freq),
@@ -66,11 +66,11 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", global){
       ggplot2::geom_hline(yintercept = 0) +
       #lollipop called res muts
       ggplot2::geom_segment( data = d.resmuts, ggplot2::aes(x = .data$x, xend = .data$x, y = 0, yend = .data$y, colour = .data$resistance)) +
-      ggplot2::geom_point(data = d.resmuts, ggplot2::aes(x = .data$x, y = .data$y, colour = "Sample Mutations" , size = 8), show.legend=FALSE) +
+      ggplot2::geom_point(data = d.resmuts, ggplot2::aes(x = .data$x, y = .data$y), show.legend=FALSE) +
       #ggplot2::geom_text(data = d.resmuts, ggplot2::aes(x = .data$x, y = .data$y, label = .data$label), angle = 0, nudge_y = 1)  + 
       ggplot2::scale_colour_manual(values = c("#00BA38", "#F8766D", "#619CFF"),
-                          labels = c("Polymorphism", "Resistant", "Sample Mutation"), 
-                          drop = FALSE) +
+                                   labels = c("Polymorphism", "Resistant", "Sample Mutation"), 
+                                   drop = FALSE) +
       ggrepel::geom_text_repel(data = d.resmuts, ggplot2::aes(x = .data$x, y = .data$y, label = .data$label),
                                point.padding = 0.2,
                                nudge_x = 0,
@@ -90,7 +90,7 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", global){
       ggplot2::xlab(paste(f.gene, "AA location")) +
       ggplot2::ylab("Mutation Frequency") +
       ggplot2::guides(colour = ggplot2::guide_legend(title="Mutation Association"))
-
+    
     
     
   }else{
@@ -100,23 +100,3 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", global){
   #references
   # https://bioconductor.org/packages/release/bioc/vignettes/trackViewer/inst/doc/trackViewer.html
 }
-
-
-
- #old method
-# # pass sample gene info with res
-# sample.gr <- GRanges("NC_006273.2", IRanges(mut_res$PROTEINLOC,width = 1, names = paste0(mut_res$aachange,sep=" N=",mut_res$depth))) 
-# sample.gr$score <- readr::parse_number(mut_res$freq)
-# 
-# # all resistance muts - to add to plot as smlal black lines
-# features_res <- GRanges("NC_006273.2", IRanges(resistance$aapos,width = 1))
-# 
-# # plot res gene lollipop
-# features_res$fill <- "orange"
-# sample.gr$color <- sample(c("orange"), length(mut_res$PROTEINLOC), replace=TRUE)
-# sample.gr$border <- sample(c("gray80"), length(mut_res$PROTEINLOC), replace=TRUE)  
-# 
-#
-#
-# this function takes 10 seconds!!!!!!!!!
-#g <- lolliplot(sample.gr, features_res,ylab="freq",xlab= paste(f.gene, "AA location"))

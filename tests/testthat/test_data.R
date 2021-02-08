@@ -8,16 +8,12 @@ test_that("variant files return resistance", {
   # read?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
                        all_mutations = TRUE, virus = "HCMV")
-  expect_equal(nrow(df), 2925)
-  
-  df = call_resistance(infile = system.file("testdata",  "snpsites.vcf", package = "cmvdrg"),
-                       all_mutations = TRUE, virus = "HCMV")
-  expect_equal(nrow(df), 1155)
+  expect_equal(nrow(df), 2926)
   
   # calls resistance?
-  df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
+  df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), "UL54_A692S")
+  expect_equal(unique(df$change), c("UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_T409M"))
   
   #----- HSV1
   # read?
@@ -50,6 +46,9 @@ test_that("variant files return resistance", {
   df = call_resistance(infile = system.file("testdata",  "VZV_K25R.vcf", package = "herpesdrg"), 
                        all_mutations = FALSE, virus = "VZV")
   expect_equal(unique(df$change), "ORF36_K25R")
+  
+  #----- HHV6b
+  # todo
 
 })
 

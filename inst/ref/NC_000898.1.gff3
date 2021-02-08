@@ -1,0 +1,305 @@
+##sequence-region NC_000898.1 1 162114
+##species https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=32604
+NC_000898.1	RefSeq	region	1	162114	.	+	.	ID=NC_000898.1:1..162114;Dbxref=taxon:32604;acronym=HHV-6B;country=Zaire;gbkey=Src;isolation-source=peripheral blood cells from an AIDS patient;mol_type=genomic DNA;nat-host=Homo sapiens;old-name=Human herpesvirus 6B;strain=Z29;type=B
+NC_000898.1	RefSeq	direct_repeat	1	8793	.	+	.	ID=id-NC_000898.1:1..8793;gbkey=repeat_region;rpt_type=direct
+NC_000898.1	RefSeq	tandem_repeat	59	353	.	+	.	ID=id-NC_000898.1:59..353;Note=heterogeneous telomeric unit;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=tarsyc
+NC_000898.1	RefSeq	gene	583	3988	.	+	.	ID=gene-HhV6Bgp001;Dbxref=GeneID:1497018;Name=DR1;description=US22 gene family;gbkey=Gene;gene=DR1;gene_biotype=protein_coding;locus_tag=HhV6Bgp001
+NC_000898.1	RefSeq	CDS	583	841	.	+	0	ID=cds-NP_050176.1;Parent=gene-HhV6Bgp001;Dbxref=Genbank:NP_050176.1,GeneID:1497018;Name=NP_050176.1;gbkey=CDS;gene=DR1;locus_tag=HhV6Bgp001;part=1;product=putative DNA-directed RNA polymerase II;protein_id=NP_050176.1
+NC_000898.1	RefSeq	CDS	955	2975	.	+	2	ID=cds-NP_050176.1;Parent=gene-HhV6Bgp001;Dbxref=Genbank:NP_050176.1,GeneID:1497018;Name=NP_050176.1;gbkey=CDS;gene=DR1;locus_tag=HhV6Bgp001;part=2;product=putative DNA-directed RNA polymerase II;protein_id=NP_050176.1
+NC_000898.1	RefSeq	gene	2723	3325	.	-	.	ID=gene-HhV6Bgp002;Dbxref=GeneID:1497002;Name=DR3;gbkey=Gene;gene=DR3;gene_biotype=protein_coding;locus_tag=HhV6Bgp002
+NC_000898.1	RefSeq	CDS	2723	3325	.	-	0	ID=cds-NP_050177.1;Parent=gene-HhV6Bgp002;Dbxref=Genbank:NP_050177.1,GeneID:1497002;Name=NP_050177.1;gbkey=CDS;gene=DR3;locus_tag=HhV6Bgp002;product=hypothetical protein;protein_id=NP_050177.1
+NC_000898.1	RefSeq	gene	3022	3988	.	+	.	ID=gene-HhV6Bgp003;Dbxref=GeneID:1497000;Name=B1;gbkey=Gene;gene=B1;gene_biotype=protein_coding;locus_tag=HhV6Bgp003
+NC_000898.1	RefSeq	CDS	3022	3501	.	+	0	ID=cds-NP_050178.1;Parent=gene-HhV6Bgp003;Dbxref=Genbank:NP_050178.1,GeneID:1497000;Name=NP_050178.1;gbkey=CDS;gene=B1;locus_tag=HhV6Bgp003;product=hypothetical protein;protein_id=NP_050178.1
+NC_000898.1	RefSeq	gene	3536	3988	.	+	.	ID=gene-HhV6Bgp004;Dbxref=GeneID:1497001;Name=B2;gbkey=Gene;gene=B2;gene_biotype=protein_coding;locus_tag=HhV6Bgp004
+NC_000898.1	RefSeq	CDS	3536	3775	.	+	0	ID=cds-NP_050179.1;Parent=gene-HhV6Bgp004;Dbxref=Genbank:NP_050179.1,GeneID:1497001;Name=NP_050179.1;gbkey=CDS;gene=B2;locus_tag=HhV6Bgp004;product=hypothetical protein;protein_id=NP_050179.1
+NC_000898.1	RefSeq	polyA_signal_sequence	3912	3917	.	+	.	ID=id-NC_000898.1:3912..3917;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	3938	3942	.	+	.	ID=id-NC_000898.1:3938..3942;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	3968	3974	.	+	.	ID=id-NC_000898.1:3968..3974;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	3983	3988	.	+	.	ID=id-NC_000898.1:3983..3988;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	5027	7435	.	+	.	ID=gene-HhV6Bgp005;Dbxref=GeneID:1497019;Name=DR6;description=US22 gene family%3B transactivator;gbkey=Gene;gene=DR6;gene_biotype=protein_coding;locus_tag=HhV6Bgp005
+NC_000898.1	RefSeq	CDS	5027	5330	.	+	0	ID=cds-NP_050180.1;Parent=gene-HhV6Bgp005;Dbxref=Genbank:NP_050180.1,GeneID:1497019;Name=NP_050180.1;gbkey=CDS;gene=DR6;locus_tag=HhV6Bgp005;part=1;product=transactivator;protein_id=NP_050180.1
+NC_000898.1	RefSeq	CDS	6329	7203	.	+	2	ID=cds-NP_050180.1;Parent=gene-HhV6Bgp005;Dbxref=Genbank:NP_050180.1,GeneID:1497019;Name=NP_050180.1;gbkey=CDS;gene=DR6;locus_tag=HhV6Bgp005;part=2;product=transactivator;protein_id=NP_050180.1
+NC_000898.1	RefSeq	polyA_signal_sequence	7430	7435	.	+	.	ID=id-HhV6Bgp005;Parent=gene-HhV6Bgp005;Dbxref=GeneID:1497019;gbkey=regulatory;gene=DR6;locus_tag=HhV6Bgp005;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	7349	7528	.	+	.	ID=gene-HhV6Bgp006;Dbxref=GeneID:1497003;Name=B3;gbkey=Gene;gene=B3;gene_biotype=protein_coding;locus_tag=HhV6Bgp006
+NC_000898.1	RefSeq	CDS	7349	7528	.	+	0	ID=cds-NP_050181.1;Parent=gene-HhV6Bgp006;Dbxref=Genbank:NP_050181.1,GeneID:1497003;Name=NP_050181.1;gbkey=CDS;gene=B3;locus_tag=HhV6Bgp006;product=hypothetical protein;protein_id=NP_050181.1
+NC_000898.1	RefSeq	tandem_repeat	8250	8711	.	+	.	ID=id-NC_000898.1:8250..8711;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=taaccc
+NC_000898.1	RefSeq	gene	8911	9492	.	-	.	ID=gene-HhV6Bgp007;Dbxref=GeneID:1497004;Name=B4;gbkey=Gene;gene=B4;gene_biotype=protein_coding;locus_tag=HhV6Bgp007
+NC_000898.1	RefSeq	CDS	8911	9492	.	-	0	ID=cds-NP_050182.1;Parent=gene-HhV6Bgp007;Dbxref=Genbank:NP_050182.1,GeneID:1497004;Name=NP_050182.1;gbkey=CDS;gene=B4;locus_tag=HhV6Bgp007;product=hypothetical protein;protein_id=NP_050182.1
+NC_000898.1	RefSeq	gene	9315	9761	.	+	.	ID=gene-HhV6Bgp008;Dbxref=GeneID:1497005;Name=B5;gbkey=Gene;gene=B5;gene_biotype=protein_coding;locus_tag=HhV6Bgp008
+NC_000898.1	RefSeq	CDS	9522	9761	.	+	0	ID=cds-NP_050183.1;Parent=gene-HhV6Bgp008;Dbxref=Genbank:NP_050183.1,GeneID:1497005;Name=NP_050183.1;gbkey=CDS;gene=B5;locus_tag=HhV6Bgp008;product=membrane protein;protein_id=NP_050183.1
+NC_000898.1	RefSeq	tandem_repeat	9315	9510	.	+	.	ID=id-NC_000898.1:9315..9510;Note=R0;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=yacacaaaaaaa
+NC_000898.1	RefSeq	gene	9515	14040	.	-	.	ID=gene-HhV6Bgp009;Dbxref=GeneID:1497007;Name=U4;gbkey=Gene;gene=U4;gene_biotype=protein_coding;locus_tag=HhV6Bgp009
+NC_000898.1	RefSeq	CDS	12433	14040	.	-	0	ID=cds-NP_050186.1;Parent=gene-HhV6Bgp009;Dbxref=Genbank:NP_050186.1,GeneID:1497007;Name=NP_050186.1;gbkey=CDS;gene=U4;locus_tag=HhV6Bgp009;product=hypothetical protein;protein_id=NP_050186.1
+NC_000898.1	RefSeq	gene	9515	12205	.	-	.	ID=gene-HhV6Bgp010;Dbxref=GeneID:1497006;Name=U3;description=US22 gene family%3B transactivator;gbkey=Gene;gene=U3;gene_biotype=protein_coding;locus_tag=HhV6Bgp010
+NC_000898.1	RefSeq	CDS	11045	12205	.	-	0	ID=cds-NP_050185.1;Parent=gene-HhV6Bgp010;Dbxref=Genbank:NP_050185.1,GeneID:1497006;Name=NP_050185.1;gbkey=CDS;gene=U3;locus_tag=HhV6Bgp010;product=transactivator;protein_id=NP_050185.1
+NC_000898.1	RefSeq	gene	9515	10715	.	-	.	ID=gene-HhV6Bgp011;Dbxref=GeneID:1497102;Name=U2;description=US22 gene family%3B transactivator;gbkey=Gene;gene=U2;gene_biotype=protein_coding;locus_tag=HhV6Bgp011
+NC_000898.1	RefSeq	CDS	9624	10715	.	-	0	ID=cds-NP_050184.1;Parent=gene-HhV6Bgp011;Dbxref=Genbank:NP_050184.1,GeneID:1497102;Name=NP_050184.1;gbkey=CDS;gene=U2;locus_tag=HhV6Bgp011;product=transactivator;protein_id=NP_050184.1
+NC_000898.1	RefSeq	polyA_signal_sequence	9515	9520	.	-	.	ID=id-NC_000898.1:9515..9520;Note=U2%3B U3%3B U4;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	14071	18198	.	-	.	ID=gene-HhV6Bgp012;Dbxref=GeneID:1497020;Name=U8;description=US22 gene family;gbkey=Gene;gene=U8;gene_biotype=protein_coding;locus_tag=HhV6Bgp012
+NC_000898.1	RefSeq	CDS	16963	18198	.	-	0	ID=cds-NP_050189.1;Parent=gene-HhV6Bgp012;Dbxref=Genbank:NP_050189.1,GeneID:1497020;Name=NP_050189.1;gbkey=CDS;gene=U8;locus_tag=HhV6Bgp012;product=hypothetical protein;protein_id=NP_050189.1
+NC_000898.1	RefSeq	gene	14071	16959	.	-	.	ID=gene-HhV6Bgp013;Dbxref=GeneID:1497021;Name=U7;description=US22 gene family;gbkey=Gene;gene=U7;gene_biotype=protein_coding;locus_tag=HhV6Bgp013
+NC_000898.1	RefSeq	CDS	15890	16959	.	-	0	ID=cds-NP_050187.1;Parent=gene-HhV6Bgp013;Dbxref=Genbank:NP_050187.1,GeneID:1497021;Name=NP_050187.1;gbkey=CDS;gene=U7;locus_tag=HhV6Bgp013;part=1;product=hypothetical protein;protein_id=NP_050187.1
+NC_000898.1	RefSeq	CDS	14159	15800	.	-	1	ID=cds-NP_050187.1;Parent=gene-HhV6Bgp013;Dbxref=Genbank:NP_050187.1,GeneID:1497021;Name=NP_050187.1;gbkey=CDS;gene=U7;locus_tag=HhV6Bgp013;part=2;product=hypothetical protein;protein_id=NP_050187.1
+NC_000898.1	RefSeq	polyA_signal_sequence	14071	14076	.	-	.	ID=id-NC_000898.1:14071..14076;Note=U7%3B U8;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	15603	15809	.	+	.	ID=gene-HhV6Bgp014;Dbxref=GeneID:1497008;Name=U6;gbkey=Gene;gene=U6;gene_biotype=protein_coding;locus_tag=HhV6Bgp014
+NC_000898.1	RefSeq	CDS	15603	15809	.	+	0	ID=cds-NP_050188.1;Parent=gene-HhV6Bgp014;Dbxref=Genbank:NP_050188.1,GeneID:1497008;Name=NP_050188.1;gbkey=CDS;gene=U6;locus_tag=HhV6Bgp014;product=hypothetical protein;protein_id=NP_050188.1
+NC_000898.1	RefSeq	gene	18151	18493	.	-	.	ID=gene-HhV6Bgp015;Dbxref=GeneID:1497009;Name=U9;gbkey=Gene;gene=U9;gene_biotype=protein_coding;locus_tag=HhV6Bgp015
+NC_000898.1	RefSeq	CDS	18179	18493	.	-	0	ID=cds-NP_050190.1;Parent=gene-HhV6Bgp015;Dbxref=Genbank:NP_050190.1,GeneID:1497009;Name=NP_050190.1;gbkey=CDS;gene=U9;locus_tag=HhV6Bgp015;product=hypothetical protein;protein_id=NP_050190.1
+NC_000898.1	RefSeq	polyA_signal_sequence	18151	18156	.	-	.	ID=id-NC_000898.1:18151..18156;Note=U9;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	18543	20054	.	+	.	ID=gene-HhV6Bgp016;Dbxref=GeneID:1497010;Name=U10;gbkey=Gene;gene=U10;gene_biotype=protein_coding;locus_tag=HhV6Bgp016
+NC_000898.1	RefSeq	CDS	18543	20054	.	+	0	ID=cds-NP_050191.1;Parent=gene-HhV6Bgp016;Dbxref=Genbank:NP_050191.1,GeneID:1497010;Name=NP_050191.1;gbkey=CDS;gene=U10;locus_tag=HhV6Bgp016;product=hypothetical protein;protein_id=NP_050191.1
+NC_000898.1	RefSeq	gene	19917	22534	.	-	.	ID=gene-HhV6Bgp017;Dbxref=GeneID:1497011;Name=U11;gbkey=Gene;gene=U11;gene_biotype=protein_coding;locus_tag=HhV6Bgp017
+NC_000898.1	RefSeq	CDS	19958	22534	.	-	0	ID=cds-NP_050192.1;Parent=gene-HhV6Bgp017;Dbxref=Genbank:NP_050192.1,GeneID:1497011;Name=NP_050192.1;gbkey=CDS;gene=U11;locus_tag=HhV6Bgp017;product=antigenic virion protein;protein_id=NP_050192.1
+NC_000898.1	RefSeq	polyA_signal_sequence	19917	19922	.	-	.	ID=id-HhV6Bgp017;Parent=gene-HhV6Bgp017;Dbxref=GeneID:1497011;Note=highest abundance transcript;gbkey=regulatory;gene=U11;locus_tag=HhV6Bgp017;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	20019	20024	.	-	.	ID=id-HhV6Bgp017-2;Parent=gene-HhV6Bgp017;Dbxref=GeneID:1497011;Note=less abundant transcript;gbkey=regulatory;gene=U11;locus_tag=HhV6Bgp017;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	22636	23796	.	+	.	ID=gene-HhV6Bgp018;Dbxref=GeneID:1497022;Name=U12;Note=truncated;gbkey=Gene;gene=U12;gene_biotype=protein_coding;locus_tag=HhV6Bgp018
+NC_000898.1	RefSeq	CDS	22636	22668	.	+	0	ID=cds-NP_050193.1;Parent=gene-HhV6Bgp018;Dbxref=Genbank:NP_050193.1,GeneID:1497022;Name=NP_050193.1;gbkey=CDS;gene=U12;locus_tag=HhV6Bgp018;part=1;product=G-protein coupled receptor;protein_id=NP_050193.1
+NC_000898.1	RefSeq	CDS	22746	23330	.	+	0	ID=cds-NP_050193.1;Parent=gene-HhV6Bgp018;Dbxref=Genbank:NP_050193.1,GeneID:1497022;Name=NP_050193.1;gbkey=CDS;gene=U12;locus_tag=HhV6Bgp018;part=2;product=G-protein coupled receptor;protein_id=NP_050193.1
+NC_000898.1	RefSeq	CDS	23343	23774	.	+	0	ID=cds-NP_597817.1;Parent=gene-HhV6Bgp018;Dbxref=Genbank:NP_597817.1,GeneID:1497022;Name=NP_597817.1;gbkey=CDS;gene=U12;locus_tag=HhV6Bgp018;product=G-protein coupled receptor fragment;protein_id=NP_597817.1
+NC_000898.1	RefSeq	polyA_signal_sequence	23791	23796	.	+	.	ID=id-HhV6Bgp018;Parent=gene-HhV6Bgp018;Dbxref=GeneID:1497022;gbkey=regulatory;gene=U12;locus_tag=HhV6Bgp018;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	23856	26173	.	+	.	ID=gene-HhV6Bgp019;Dbxref=GeneID:1497012;Name=U13;gbkey=Gene;gene=U13;gene_biotype=protein_coding;locus_tag=HhV6Bgp019
+NC_000898.1	RefSeq	CDS	23856	24179	.	+	0	ID=cds-NP_050194.1;Parent=gene-HhV6Bgp019;Dbxref=Genbank:NP_050194.1,GeneID:1497012;Name=NP_050194.1;gbkey=CDS;gene=U13;locus_tag=HhV6Bgp019;product=hypothetical protein;protein_id=NP_050194.1
+NC_000898.1	RefSeq	gene	24277	26173	.	+	.	ID=gene-HhV6Bgp020;Dbxref=GeneID:1497013;Name=U14;gbkey=Gene;gene=U14;gene_biotype=protein_coding;locus_tag=HhV6Bgp020
+NC_000898.1	RefSeq	CDS	24277	26109	.	+	0	ID=cds-NP_050195.1;Parent=gene-HhV6Bgp020;Dbxref=Genbank:NP_050195.1,GeneID:1497013;Name=NP_050195.1;gbkey=CDS;gene=U14;locus_tag=HhV6Bgp020;product=hypothetical protein;protein_id=NP_050195.1
+NC_000898.1	RefSeq	gene	26121	27048	.	-	.	ID=gene-HhV6Bgp021;Dbxref=GeneID:1497101;Name=U15;description=HCMV UL25/UL35 gene family;gbkey=Gene;gene=U15;gene_biotype=protein_coding;locus_tag=HhV6Bgp021
+NC_000898.1	RefSeq	CDS	26732	27048	.	-	0	ID=cds-NP_050196.1;Parent=gene-HhV6Bgp021;Dbxref=Genbank:NP_050196.1,GeneID:1497101;Name=NP_050196.1;gbkey=CDS;gene=U15;locus_tag=HhV6Bgp021;part=1;product=hypothetical protein;protein_id=NP_050196.1
+NC_000898.1	RefSeq	CDS	26500	26572	.	-	1	ID=cds-NP_050196.1;Parent=gene-HhV6Bgp021;Dbxref=Genbank:NP_050196.1,GeneID:1497101;Name=NP_050196.1;gbkey=CDS;gene=U15;locus_tag=HhV6Bgp021;part=2;product=hypothetical protein;protein_id=NP_050196.1
+NC_000898.1	RefSeq	CDS	26143	26328	.	-	0	ID=cds-NP_050196.1;Parent=gene-HhV6Bgp021;Dbxref=Genbank:NP_050196.1,GeneID:1497101;Name=NP_050196.1;gbkey=CDS;gene=U15;locus_tag=HhV6Bgp021;part=3;product=hypothetical protein;protein_id=NP_050196.1
+NC_000898.1	RefSeq	polyA_signal_sequence	26121	26126	.	-	.	ID=id-HhV6Bgp021;Parent=gene-HhV6Bgp021;Dbxref=GeneID:1497101;Note=U15;gbkey=regulatory;gene=U15;locus_tag=HhV6Bgp021;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	26168	26173	.	+	.	ID=id-NC_000898.1:26168..26173;Note=U13%3B U14;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	27258	28421	.	-	.	ID=gene-HhV6Bgp022;Dbxref=GeneID:1497023;Name=U17;description=US22 gene family%3B IE-B;gbkey=Gene;gene=U17;gene_biotype=protein_coding;locus_tag=HhV6Bgp022
+NC_000898.1	RefSeq	CDS	28193	28421	.	-	0	ID=cds-NP_050197.1;Parent=gene-HhV6Bgp022;Dbxref=Genbank:NP_050197.1,GeneID:1497023;Name=NP_050197.1;gbkey=CDS;gene=U17;locus_tag=HhV6Bgp022;part=1;product=transcription regulator;protein_id=NP_050197.1
+NC_000898.1	RefSeq	CDS	27330	28105	.	-	2	ID=cds-NP_050197.1;Parent=gene-HhV6Bgp022;Dbxref=Genbank:NP_050197.1,GeneID:1497023;Name=NP_050197.1;gbkey=CDS;gene=U17;locus_tag=HhV6Bgp022;part=2;product=transcription regulator;protein_id=NP_050197.1
+NC_000898.1	RefSeq	polyA_signal_sequence	27258	27263	.	-	.	ID=id-HhV6Bgp022;Parent=gene-HhV6Bgp022;Dbxref=GeneID:1497023;Note=U17;gbkey=regulatory;gene=U17;locus_tag=HhV6Bgp022;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	29440	31920	.	-	.	ID=gene-HhV6Bgp023;Dbxref=GeneID:1497015;Name=U19;description=IE-B;gbkey=Gene;gene=U19;gene_biotype=protein_coding;locus_tag=HhV6Bgp023
+NC_000898.1	RefSeq	CDS	30751	31920	.	-	0	ID=cds-NP_050199.1;Parent=gene-HhV6Bgp023;Dbxref=Genbank:NP_050199.1,GeneID:1497015;Name=NP_050199.1;gbkey=CDS;gene=U19;locus_tag=HhV6Bgp023;product=immediate-early protein 4;protein_id=NP_050199.1
+NC_000898.1	RefSeq	gene	29440	30485	.	-	.	ID=gene-HhV6Bgp024;Dbxref=GeneID:1497014;Name=U18;description=IE-B;gbkey=Gene;gene=U18;gene_biotype=protein_coding;locus_tag=HhV6Bgp024
+NC_000898.1	RefSeq	CDS	29601	30485	.	-	0	ID=cds-NP_050198.1;Parent=gene-HhV6Bgp024;Dbxref=Genbank:NP_050198.1,GeneID:1497014;Name=NP_050198.1;gbkey=CDS;gene=U18;locus_tag=HhV6Bgp024;product=immediate-early protein 6;protein_id=NP_050198.1
+NC_000898.1	RefSeq	polyA_signal_sequence	29440	29445	.	-	.	ID=id-NC_000898.1:29440..29445;Note=U18%3B U19;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	32096	37936	.	-	.	ID=gene-HhV6Bgp025;Dbxref=GeneID:1497027;Name=U25;description=US22 gene family;gbkey=Gene;gene=U25;gene_biotype=protein_coding;locus_tag=HhV6Bgp025
+NC_000898.1	RefSeq	CDS	36986	37936	.	-	0	ID=cds-NP_050206.1;Parent=gene-HhV6Bgp025;Dbxref=Genbank:NP_050206.1,GeneID:1497027;Name=NP_050206.1;gbkey=CDS;gene=U25;locus_tag=HhV6Bgp025;product=hypothetical protein;protein_id=NP_050206.1
+NC_000898.1	RefSeq	gene	32096	36969	.	-	.	ID=gene-HhV6Bgp026;Dbxref=GeneID:1497026;Name=U24A;gbkey=Gene;gene=U24A;gene_biotype=protein_coding;locus_tag=HhV6Bgp026
+NC_000898.1	RefSeq	CDS	36796	36969	.	-	0	ID=cds-NP_050205.1;Parent=gene-HhV6Bgp026;Dbxref=Genbank:NP_050205.1,GeneID:1497026;Name=NP_050205.1;gbkey=CDS;gene=U24A;locus_tag=HhV6Bgp026;product=hypothetical protein;protein_id=NP_050205.1
+NC_000898.1	RefSeq	gene	32096	36777	.	-	.	ID=gene-HhV6Bgp027;Dbxref=GeneID:1497025;Name=U24;gbkey=Gene;gene=U24;gene_biotype=protein_coding;locus_tag=HhV6Bgp027
+NC_000898.1	RefSeq	CDS	36511	36777	.	-	0	ID=cds-NP_050204.1;Parent=gene-HhV6Bgp027;Dbxref=Genbank:NP_050204.1,GeneID:1497025;Name=NP_050204.1;gbkey=CDS;gene=U24;locus_tag=HhV6Bgp027;product=hypothetical protein;protein_id=NP_050204.1
+NC_000898.1	RefSeq	gene	32096	36386	.	-	.	ID=gene-HhV6Bgp028;Dbxref=GeneID:1497100;Name=U23;gbkey=Gene;gene=U23;gene_biotype=protein_coding;locus_tag=HhV6Bgp028
+NC_000898.1	RefSeq	CDS	35487	36386	.	-	0	ID=cds-NP_050203.1;Parent=gene-HhV6Bgp028;Dbxref=Genbank:NP_050203.1,GeneID:1497100;Name=NP_050203.1;gbkey=CDS;gene=U23;locus_tag=HhV6Bgp028;product=glycoprotein;protein_id=NP_050203.1
+NC_000898.1	RefSeq	gene	32096	35459	.	-	.	ID=gene-HhV6Bgp029;Dbxref=GeneID:1497024;Name=U22;gbkey=Gene;gene=U22;gene_biotype=protein_coding;locus_tag=HhV6Bgp029
+NC_000898.1	RefSeq	CDS	34851	35459	.	-	0	ID=cds-NP_050202.1;Parent=gene-HhV6Bgp029;Dbxref=Genbank:NP_050202.1,GeneID:1497024;Name=NP_050202.1;gbkey=CDS;gene=U22;locus_tag=HhV6Bgp029;product=glycoprotein;protein_id=NP_050202.1
+NC_000898.1	RefSeq	gene	32096	34954	.	-	.	ID=gene-HhV6Bgp030;Dbxref=GeneID:1497017;Name=U21;gbkey=Gene;gene=U21;gene_biotype=protein_coding;locus_tag=HhV6Bgp030
+NC_000898.1	RefSeq	CDS	33452	34954	.	-	0	ID=cds-NP_050201.1;Parent=gene-HhV6Bgp030;Dbxref=Genbank:NP_050201.1,GeneID:1497017;Name=NP_050201.1;gbkey=CDS;gene=U21;locus_tag=HhV6Bgp030;product=putative membrane glycoprotein;protein_id=NP_050201.1
+NC_000898.1	RefSeq	gene	32096	33449	.	-	.	ID=gene-HhV6Bgp031;Dbxref=GeneID:1497016;Name=U20;gbkey=Gene;gene=U20;gene_biotype=protein_coding;locus_tag=HhV6Bgp031
+NC_000898.1	RefSeq	CDS	32145	33449	.	-	0	ID=cds-NP_050200.1;Parent=gene-HhV6Bgp031;Dbxref=Genbank:NP_050200.1,GeneID:1497016;Name=NP_050200.1;gbkey=CDS;gene=U20;locus_tag=HhV6Bgp031;product=glycoprotein;protein_id=NP_050200.1
+NC_000898.1	RefSeq	polyA_signal_sequence	32096	32101	.	-	.	ID=id-NC_000898.1:32096..32101;Note=U20%3B U21%3B U22%3B U23%3B U24%3B U24A%3B U25;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	38003	40019	.	-	.	ID=gene-HhV6Bgp032;Dbxref=GeneID:1497029;Name=U27;gbkey=Gene;gene=U27;gene_biotype=protein_coding;locus_tag=HhV6Bgp032
+NC_000898.1	RefSeq	CDS	38919	40019	.	-	0	ID=cds-NP_050208.1;Parent=gene-HhV6Bgp032;Dbxref=Genbank:NP_050208.1,GeneID:1497029;Name=NP_050208.1;Note=polymerase processivity factor;gbkey=CDS;gene=U27;locus_tag=HhV6Bgp032;product=Polymerase processivity factor;protein_id=NP_050208.1
+NC_000898.1	RefSeq	gene	38003	38931	.	-	.	ID=gene-HhV6Bgp033;Dbxref=GeneID:1497028;Name=U26;gbkey=Gene;gene=U26;gene_biotype=protein_coding;locus_tag=HhV6Bgp033
+NC_000898.1	RefSeq	CDS	38044	38931	.	-	0	ID=cds-NP_050207.1;Parent=gene-HhV6Bgp033;Dbxref=Genbank:NP_050207.1,GeneID:1497028;Name=NP_050207.1;gbkey=CDS;gene=U26;locus_tag=HhV6Bgp033;product=hypothetical protein;protein_id=NP_050207.1
+NC_000898.1	RefSeq	polyA_signal_sequence	38003	38008	.	-	.	ID=id-NC_000898.1:38003..38008;Note=U26%3B U27;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	40123	43471	.	-	.	ID=gene-HhV6Bgp034;Dbxref=GeneID:1497031;Name=U29;gbkey=Gene;gene=U29;gene_biotype=protein_coding;locus_tag=HhV6Bgp034
+NC_000898.1	RefSeq	CDS	42572	43471	.	-	0	ID=cds-NP_050210.1;Parent=gene-HhV6Bgp034;Dbxref=Genbank:NP_050210.1,GeneID:1497031;Name=NP_050210.1;gbkey=CDS;gene=U29;locus_tag=HhV6Bgp034;product=capsid assembly and DNA maturation;protein_id=NP_050210.1
+NC_000898.1	RefSeq	gene	40123	42549	.	-	.	ID=gene-HhV6Bgp035;Dbxref=GeneID:1497030;Name=U28;gbkey=Gene;gene=U28;gene_biotype=protein_coding;locus_tag=HhV6Bgp035
+NC_000898.1	RefSeq	CDS	40135	42549	.	-	0	ID=cds-NP_050209.1;Parent=gene-HhV6Bgp035;Dbxref=Genbank:NP_050209.1,GeneID:1497030;Name=NP_050209.1;gbkey=CDS;gene=U28;locus_tag=HhV6Bgp035;product=large ribonuclease reductase;protein_id=NP_050209.1
+NC_000898.1	RefSeq	polyA_signal_sequence	40123	40128	.	-	.	ID=id-NC_000898.1:40123..40128;Note=U28%3B U29;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	42999	52559	.	+	.	ID=gene-HhV6Bgp036;Dbxref=GeneID:1497032;Name=U30;gbkey=Gene;gene=U30;gene_biotype=protein_coding;locus_tag=HhV6Bgp036
+NC_000898.1	RefSeq	CDS	42999	46247	.	+	0	ID=cds-NP_050211.1;Parent=gene-HhV6Bgp036;Dbxref=Genbank:NP_050211.1,GeneID:1497032;Name=NP_050211.1;gbkey=CDS;gene=U30;locus_tag=HhV6Bgp036;product=capsid assembly protein;protein_id=NP_050211.1
+NC_000898.1	RefSeq	gene	46265	52560	.	+	.	ID=gene-HhV6Bgp037;Dbxref=GeneID:1497033;Name=U31;gbkey=Gene;gene=U31;gene_biotype=protein_coding;locus_tag=HhV6Bgp037
+NC_000898.1	RefSeq	CDS	46265	52498	.	+	0	ID=cds-NP_050212.1;Parent=gene-HhV6Bgp037;Dbxref=Genbank:NP_050212.1,GeneID:1497033;Name=NP_050212.1;gbkey=CDS;gene=U31;locus_tag=HhV6Bgp037;product=large tegument protein;protein_id=NP_050212.1
+NC_000898.1	RefSeq	gene	52535	55373	.	-	.	ID=gene-HhV6Bgp038;Dbxref=GeneID:1497037;Name=U35;gbkey=Gene;gene=U35;gene_biotype=protein_coding;locus_tag=HhV6Bgp038
+NC_000898.1	RefSeq	CDS	55053	55373	.	-	0	ID=cds-NP_050216.1;Parent=gene-HhV6Bgp038;Dbxref=Genbank:NP_050216.1,GeneID:1497037;Name=NP_050216.1;gbkey=CDS;gene=U35;locus_tag=HhV6Bgp038;product=hypothetical protein;protein_id=NP_050216.1
+NC_000898.1	RefSeq	gene	52535	55036	.	-	.	ID=gene-HhV6Bgp039;Dbxref=GeneID:1497036;Name=U34;gbkey=Gene;gene=U34;gene_biotype=protein_coding;locus_tag=HhV6Bgp039
+NC_000898.1	RefSeq	CDS	54206	55036	.	-	0	ID=cds-NP_050215.1;Parent=gene-HhV6Bgp039;Dbxref=Genbank:NP_050215.1,GeneID:1497036;Name=NP_050215.1;gbkey=CDS;gene=U34;locus_tag=HhV6Bgp039;product=putative virion protein;protein_id=NP_050215.1
+NC_000898.1	RefSeq	gene	52535	54255	.	-	.	ID=gene-HhV6Bgp040;Dbxref=GeneID:1497035;Name=U33;gbkey=Gene;gene=U33;gene_biotype=protein_coding;locus_tag=HhV6Bgp040
+NC_000898.1	RefSeq	CDS	52843	54255	.	-	0	ID=cds-NP_050214.1;Parent=gene-HhV6Bgp040;Dbxref=Genbank:NP_050214.1,GeneID:1497035;Name=NP_050214.1;gbkey=CDS;gene=U33;locus_tag=HhV6Bgp040;product=capsid protein;protein_id=NP_050214.1
+NC_000898.1	RefSeq	gene	52535	52841	.	-	.	ID=gene-HhV6Bgp041;Dbxref=GeneID:1497034;Name=U32;gbkey=Gene;gene=U32;gene_biotype=protein_coding;locus_tag=HhV6Bgp041
+NC_000898.1	RefSeq	CDS	52572	52841	.	-	0	ID=cds-NP_050213.1;Parent=gene-HhV6Bgp041;Dbxref=Genbank:NP_050213.1,GeneID:1497034;Name=NP_050213.1;gbkey=CDS;gene=U32;locus_tag=HhV6Bgp041;product=putative capsid protein;protein_id=NP_050213.1
+NC_000898.1	RefSeq	polyA_signal_sequence	52535	52540	.	-	.	ID=id-NC_000898.1:52535..52540;Note=U32%3B U33%3B U34%3B U35;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	52555	52560	.	+	.	ID=id-NC_000898.1:52555..52560;Note=U30%3B U31;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	55372	57625	.	+	.	ID=gene-HhV6Bgp042;Dbxref=GeneID:1497038;Name=U36;gbkey=Gene;gene=U36;gene_biotype=protein_coding;locus_tag=HhV6Bgp042
+NC_000898.1	RefSeq	CDS	55372	56826	.	+	0	ID=cds-NP_050217.1;Parent=gene-HhV6Bgp042;Dbxref=Genbank:NP_050217.1,GeneID:1497038;Name=NP_050217.1;gbkey=CDS;gene=U36;locus_tag=HhV6Bgp042;product=virion protein;protein_id=NP_050217.1
+NC_000898.1	RefSeq	gene	56830	57625	.	+	.	ID=gene-HhV6Bgp043;Dbxref=GeneID:1497039;Name=U37;gbkey=Gene;gene=U37;gene_biotype=protein_coding;locus_tag=HhV6Bgp043
+NC_000898.1	RefSeq	CDS	56830	57624	.	+	0	ID=cds-NP_050218.1;Parent=gene-HhV6Bgp043;Dbxref=Genbank:NP_050218.1,GeneID:1497039;Name=NP_050218.1;gbkey=CDS;gene=U37;locus_tag=HhV6Bgp043;product=hypothetical protein;protein_id=NP_050218.1
+NC_000898.1	RefSeq	polyA_signal_sequence	57620	57625	.	+	.	ID=id-NC_000898.1:57620..57625;Note=U36%3B U37;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	57630	68740	.	-	.	ID=gene-HhV6Bgp044;Dbxref=GeneID:1497043;Name=U41;gbkey=Gene;gene=U41;gene_biotype=protein_coding;locus_tag=HhV6Bgp044
+NC_000898.1	RefSeq	CDS	65342	68740	.	-	0	ID=cds-NP_050222.1;Parent=gene-HhV6Bgp044;Dbxref=Genbank:NP_050222.1,GeneID:1497043;Name=NP_050222.1;gbkey=CDS;gene=U41;locus_tag=HhV6Bgp044;product=major DNA binding protein;protein_id=NP_050222.1
+NC_000898.1	RefSeq	gene	57630	65334	.	-	.	ID=gene-HhV6Bgp045;Dbxref=GeneID:1497042;Name=U40;gbkey=Gene;gene=U40;gene_biotype=protein_coding;locus_tag=HhV6Bgp045
+NC_000898.1	RefSeq	CDS	63154	65334	.	-	0	ID=cds-NP_050221.1;Parent=gene-HhV6Bgp045;Dbxref=Genbank:NP_050221.1,GeneID:1497042;Name=NP_050221.1;gbkey=CDS;gene=U40;locus_tag=HhV6Bgp045;product=transport/capsid assembly;protein_id=NP_050221.1
+NC_000898.1	RefSeq	gene	57630	63200	.	-	.	ID=gene-HhV6Bgp046;Dbxref=GeneID:1497041;Name=U39;gbkey=Gene;gene=U39;gene_biotype=protein_coding;locus_tag=HhV6Bgp046
+NC_000898.1	RefSeq	CDS	60708	63200	.	-	0	ID=cds-NP_050220.1;Parent=gene-HhV6Bgp046;Dbxref=Genbank:NP_050220.1,GeneID:1497041;Name=NP_050220.1;gbkey=CDS;gene=U39;locus_tag=HhV6Bgp046;product=Glycoprotein B;protein_id=NP_050220.1
+NC_000898.1	RefSeq	gene	57630	60708	.	-	.	ID=gene-HhV6Bgp047;Dbxref=GeneID:1497040;Name=U38;gbkey=Gene;gene=U38;gene_biotype=protein_coding;locus_tag=HhV6Bgp047
+NC_000898.1	RefSeq	CDS	57670	60708	.	-	0	ID=cds-NP_050219.1;Parent=gene-HhV6Bgp047;Dbxref=Genbank:NP_050219.1,GeneID:1497040;Name=NP_050219.1;gbkey=CDS;gene=U38;locus_tag=HhV6Bgp047;product=DNA polymerase;protein_id=NP_050219.1
+NC_000898.1	RefSeq	polyA_signal_sequence	57630	57635	.	-	.	ID=id-NC_000898.1:57630..57635;Note=U38%3B U39%3B U40%3B U41;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	69965	74460	.	-	.	ID=gene-HhV6Bgp048;Dbxref=GeneID:1497045;Name=U43;gbkey=Gene;gene=U43;gene_biotype=protein_coding;locus_tag=HhV6Bgp048
+NC_000898.1	RefSeq	CDS	71878	74460	.	-	0	ID=cds-NP_050224.1;Parent=gene-HhV6Bgp048;Dbxref=Genbank:NP_050224.1,GeneID:1497045;Name=NP_050224.1;gbkey=CDS;gene=U43;locus_tag=HhV6Bgp048;product=helicase/primase complex;protein_id=NP_050224.1
+NC_000898.1	RefSeq	gene	69965	71653	.	-	.	ID=gene-HhV6Bgp049;Dbxref=GeneID:1497044;Name=U42;gbkey=Gene;gene=U42;gene_biotype=protein_coding;locus_tag=HhV6Bgp049
+NC_000898.1	RefSeq	CDS	70103	71653	.	-	0	ID=cds-NP_050223.1;Parent=gene-HhV6Bgp049;Dbxref=Genbank:NP_050223.1,GeneID:1497044;Name=NP_050223.1;gbkey=CDS;gene=U42;locus_tag=HhV6Bgp049;product=transactivator;protein_id=NP_050223.1
+NC_000898.1	RefSeq	polyA_signal_sequence	69965	69970	.	-	.	ID=id-NC_000898.1:69965..69970;Note=U42%3B U43;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	74501	76650	.	+	.	ID=gene-HhV6Bgp050;Dbxref=GeneID:1497046;Name=U44;gbkey=Gene;gene=U44;gene_biotype=protein_coding;locus_tag=HhV6Bgp050
+NC_000898.1	RefSeq	CDS	74501	75196	.	+	0	ID=cds-NP_050225.1;Parent=gene-HhV6Bgp050;Dbxref=Genbank:NP_050225.1,GeneID:1497046;Name=NP_050225.1;gbkey=CDS;gene=U44;locus_tag=HhV6Bgp050;product=hypothetical protein;protein_id=NP_050225.1
+NC_000898.1	RefSeq	gene	75143	76273	.	-	.	ID=gene-HhV6Bgp051;Dbxref=GeneID:1497047;Name=U45;gbkey=Gene;gene=U45;gene_biotype=protein_coding;locus_tag=HhV6Bgp051
+NC_000898.1	RefSeq	CDS	75143	76273	.	-	0	ID=cds-NP_050226.1;Parent=gene-HhV6Bgp051;Dbxref=Genbank:NP_050226.1,GeneID:1497047;Name=NP_050226.1;gbkey=CDS;gene=U45;locus_tag=HhV6Bgp051;product=putative dUTPase;protein_id=NP_050226.1
+NC_000898.1	RefSeq	polyA_signal_sequence	75210	75215	.	-	.	ID=id-NC_000898.1:75210..75215;Note=U45;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	76346	76650	.	+	.	ID=gene-HhV6Bgp052;Dbxref=GeneID:1497048;Name=U46;gbkey=Gene;gene=U46;gene_biotype=protein_coding;locus_tag=HhV6Bgp052
+NC_000898.1	RefSeq	CDS	76346	76600	.	+	0	ID=cds-NP_050227.1;Parent=gene-HhV6Bgp052;Dbxref=Genbank:NP_050227.1,GeneID:1497048;Name=NP_050227.1;gbkey=CDS;gene=U46;locus_tag=HhV6Bgp052;product=putative membrane /secreted protein;protein_id=NP_050227.1
+NC_000898.1	RefSeq	polyA_signal_sequence	76645	76650	.	+	.	ID=id-NC_000898.1:76645..76650;Note=U44%3B U46;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	76739	78999	.	-	.	ID=gene-HhV6Bgp053;Dbxref=GeneID:1497049;Name=U47;gbkey=Gene;gene=U47;gene_biotype=protein_coding;locus_tag=HhV6Bgp053
+NC_000898.1	RefSeq	CDS	76783	78999	.	-	0	ID=cds-NP_050228.1;Parent=gene-HhV6Bgp053;Dbxref=Genbank:NP_050228.1,GeneID:1497049;Name=NP_050228.1;gbkey=CDS;gene=U47;locus_tag=HhV6Bgp053;product=glycoprotein O;protein_id=NP_050228.1
+NC_000898.1	RefSeq	polyA_signal_sequence	76739	76744	.	-	.	ID=id-NC_000898.1:76739..76744;Note=U47;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	79260	81349	.	-	.	ID=gene-HhV6Bgp054;Dbxref=GeneID:1497050;Name=U48;gbkey=Gene;gene=U48;gene_biotype=protein_coding;locus_tag=HhV6Bgp054
+NC_000898.1	RefSeq	CDS	79265	81349	.	-	0	ID=cds-NP_050229.1;Parent=gene-HhV6Bgp054;Dbxref=Genbank:NP_050229.1,GeneID:1497050;Name=NP_050229.1;gbkey=CDS;gene=U48;locus_tag=HhV6Bgp054;product=glycoprotein H;protein_id=NP_050229.1
+NC_000898.1	RefSeq	polyA_signal_sequence	79260	79265	.	-	.	ID=id-NC_000898.1:79260..79265;Note=U48;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	81508	84700	.	+	.	ID=gene-HhV6Bgp055;Dbxref=GeneID:1497051;Name=U49;gbkey=Gene;gene=U49;gene_biotype=protein_coding;locus_tag=HhV6Bgp055
+NC_000898.1	RefSeq	CDS	81508	82266	.	+	0	ID=cds-NP_050230.1;Parent=gene-HhV6Bgp055;Dbxref=Genbank:NP_050230.1,GeneID:1497051;Name=NP_050230.1;gbkey=CDS;gene=U49;locus_tag=HhV6Bgp055;product=putative fusion protein;protein_id=NP_050230.1
+NC_000898.1	RefSeq	gene	82043	84700	.	+	.	ID=gene-HhV6Bgp056;Dbxref=GeneID:1497052;Name=U50;gbkey=Gene;gene=U50;gene_biotype=protein_coding;locus_tag=HhV6Bgp056
+NC_000898.1	RefSeq	CDS	82043	83710	.	+	0	ID=cds-NP_050231.1;Parent=gene-HhV6Bgp056;Dbxref=Genbank:NP_050231.1,GeneID:1497052;Name=NP_050231.1;gbkey=CDS;gene=U50;locus_tag=HhV6Bgp056;product=viron protein;protein_id=NP_050231.1
+NC_000898.1	RefSeq	gene	83808	84713	.	+	.	ID=gene-HhV6Bgp057;Dbxref=GeneID:1497053;Name=U51;gbkey=Gene;gene=U51;gene_biotype=protein_coding;locus_tag=HhV6Bgp057
+NC_000898.1	RefSeq	CDS	83808	84713	.	+	0	ID=cds-NP_050232.1;Parent=gene-HhV6Bgp057;Dbxref=Genbank:NP_050232.1,GeneID:1497053;Name=NP_050232.1;gbkey=CDS;gene=U51;locus_tag=HhV6Bgp057;product=G-protein coupled receptor;protein_id=NP_050232.1
+NC_000898.1	RefSeq	polyA_signal_sequence	84695	84700	.	+	.	ID=id-NC_000898.1:84695..84700;Note=U49%3B U50%3B U51;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	84731	85508	.	-	.	ID=gene-HhV6Bgp058;Dbxref=GeneID:1497054;Name=U52;gbkey=Gene;gene=U52;gene_biotype=protein_coding;locus_tag=HhV6Bgp058
+NC_000898.1	RefSeq	CDS	84732	85508	.	-	0	ID=cds-NP_050233.1;Parent=gene-HhV6Bgp058;Dbxref=Genbank:NP_050233.1,GeneID:1497054;Name=NP_050233.1;gbkey=CDS;gene=U52;locus_tag=HhV6Bgp058;product=hypothetical protein;protein_id=NP_050233.1
+NC_000898.1	RefSeq	polyA_signal_sequence	84731	84736	.	-	.	ID=id-HhV6Bgp058;Parent=gene-HhV6Bgp058;Dbxref=GeneID:1497054;Note=U52;gbkey=regulatory;gene=U52;locus_tag=HhV6Bgp058;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	85515	87101	.	+	.	ID=gene-HhV6Bgp059;Dbxref=GeneID:1497055;Name=U53;gbkey=Gene;gene=U53;gene_biotype=protein_coding;locus_tag=HhV6Bgp059
+NC_000898.1	RefSeq	CDS	85515	87101	.	+	0	ID=cds-NP_050234.1;Parent=gene-HhV6Bgp059;Dbxref=Genbank:NP_050234.1,GeneID:1497055;Name=NP_050234.1;gbkey=CDS;gene=U53;locus_tag=HhV6Bgp059;product=proteinase;protein_id=NP_050234.1
+NC_000898.1	RefSeq	polyA_signal_sequence	87084	87090	.	+	.	ID=id-HhV6Bgp059;Parent=gene-HhV6Bgp059;Dbxref=GeneID:1497055;Note=U53;gbkey=regulatory;gene=U53;locus_tag=HhV6Bgp059;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	87302	95201	.	-	.	ID=gene-HhV6Bgp060;Dbxref=GeneID:1497059;Name=U57;gbkey=Gene;gene=U57;gene_biotype=protein_coding;locus_tag=HhV6Bgp060
+NC_000898.1	RefSeq	CDS	91164	95201	.	-	0	ID=cds-NP_050238.1;Parent=gene-HhV6Bgp060;Dbxref=Genbank:NP_050238.1,GeneID:1497059;Name=NP_050238.1;gbkey=CDS;gene=U57;locus_tag=HhV6Bgp060;product=major capsid protein;protein_id=NP_050238.1
+NC_000898.1	RefSeq	gene	87302	91162	.	-	.	ID=gene-HhV6Bgp061;Dbxref=GeneID:1497058;Name=U56;gbkey=Gene;gene=U56;gene_biotype=protein_coding;locus_tag=HhV6Bgp061
+NC_000898.1	RefSeq	CDS	90272	91162	.	-	0	ID=cds-NP_050237.1;Parent=gene-HhV6Bgp061;Dbxref=Genbank:NP_050237.1,GeneID:1497058;Name=NP_050237.1;gbkey=CDS;gene=U56;locus_tag=HhV6Bgp061;product=capsid protein;protein_id=NP_050237.1
+NC_000898.1	RefSeq	gene	87302	90271	.	-	.	ID=gene-HhV6Bgp062;Dbxref=GeneID:1497057;Name=U55;gbkey=Gene;gene=U55;gene_biotype=protein_coding;locus_tag=HhV6Bgp062
+NC_000898.1	RefSeq	CDS	88793	90271	.	-	0	ID=cds-NP_050236.1;Parent=gene-HhV6Bgp062;Dbxref=Genbank:NP_050236.1,GeneID:1497057;Name=NP_050236.1;gbkey=CDS;gene=U55;locus_tag=HhV6Bgp062;product=hypothetical protein;protein_id=NP_050236.1
+NC_000898.1	RefSeq	gene	87302	88715	.	-	.	ID=gene-HhV6Bgp063;Dbxref=GeneID:1497056;Name=U54;gbkey=Gene;gene=U54;gene_biotype=protein_coding;locus_tag=HhV6Bgp063
+NC_000898.1	RefSeq	CDS	87336	88715	.	-	0	ID=cds-NP_050235.1;Parent=gene-HhV6Bgp063;Dbxref=Genbank:NP_050235.1,GeneID:1497056;Name=NP_050235.1;gbkey=CDS;gene=U54;locus_tag=HhV6Bgp063;product=virion transactivator;protein_id=NP_050235.1
+NC_000898.1	RefSeq	polyA_signal_sequence	87302	87307	.	-	.	ID=id-NC_000898.1:87302..87307;Note=U54%3B U55%3B U56%3B U57;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	95213	98813	.	+	.	ID=gene-HhV6Bgp064;Dbxref=GeneID:1497060;Name=U58;gbkey=Gene;gene=U58;gene_biotype=protein_coding;locus_tag=HhV6Bgp064
+NC_000898.1	RefSeq	CDS	95213	97531	.	+	0	ID=cds-NP_050239.1;Parent=gene-HhV6Bgp064;Dbxref=Genbank:NP_050239.1,GeneID:1497060;Name=NP_050239.1;gbkey=CDS;gene=U58;locus_tag=HhV6Bgp064;product=hypothetical protein;protein_id=NP_050239.1
+NC_000898.1	RefSeq	gene	97528	98813	.	+	.	ID=gene-HhV6Bgp065;Dbxref=GeneID:1497061;Name=U59;gbkey=Gene;gene=U59;gene_biotype=protein_coding;locus_tag=HhV6Bgp065
+NC_000898.1	RefSeq	CDS	97528	98580	.	+	0	ID=cds-NP_050240.1;Parent=gene-HhV6Bgp065;Dbxref=Genbank:NP_050240.1,GeneID:1497061;Name=NP_050240.1;gbkey=CDS;gene=U59;locus_tag=HhV6Bgp065;product=hypothetical protein;protein_id=NP_050240.1
+NC_000898.1	RefSeq	gene	97675	103784	.	-	.	ID=gene-HhV6Bgp066;Dbxref=GeneID:1497066;Name=U66;gbkey=Gene;gene=U66;gene_biotype=protein_coding;locus_tag=HhV6Bgp066
+NC_000898.1	RefSeq	CDS	102912	103784	.	-	0	ID=cds-NP_050241.1;Parent=gene-HhV6Bgp066;Dbxref=Genbank:NP_050241.1,GeneID:1497066;Name=NP_050241.1;gbkey=CDS;gene=U66;locus_tag=HhV6Bgp066;part=1;product=Putative terminase;protein_id=NP_050241.1
+NC_000898.1	RefSeq	CDS	98577	99704	.	-	0	ID=cds-NP_050241.1;Parent=gene-HhV6Bgp066;Dbxref=Genbank:NP_050241.1,GeneID:1497066;Name=NP_050241.1;gbkey=CDS;gene=U66;locus_tag=HhV6Bgp066;part=2;product=Putative terminase;protein_id=NP_050241.1
+NC_000898.1	RefSeq	polyA_signal_sequence	97675	97680	.	-	.	ID=id-HhV6Bgp066;Parent=gene-HhV6Bgp066;Dbxref=GeneID:1497066;Note=U66;gbkey=regulatory;gene=U66;locus_tag=HhV6Bgp066;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	98808	98813	.	+	.	ID=id-NC_000898.1:98808..98813;Note=U58%3B U59;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	99716	102891	.	+	.	ID=gene-HhV6Bgp067;Dbxref=GeneID:1497062;Name=U62;gbkey=Gene;gene=U62;gene_biotype=protein_coding;locus_tag=HhV6Bgp067
+NC_000898.1	RefSeq	CDS	99716	99979	.	+	0	ID=cds-NP_050242.1;Parent=gene-HhV6Bgp067;Dbxref=Genbank:NP_050242.1,GeneID:1497062;Name=NP_050242.1;gbkey=CDS;gene=U62;locus_tag=HhV6Bgp067;product=hypothetical protein;protein_id=NP_050242.1
+NC_000898.1	RefSeq	gene	99921	102891	.	+	.	ID=gene-HhV6Bgp068;Dbxref=GeneID:1497063;Name=U63;gbkey=Gene;gene=U63;gene_biotype=protein_coding;locus_tag=HhV6Bgp068
+NC_000898.1	RefSeq	CDS	99921	100577	.	+	0	ID=cds-NP_050243.1;Parent=gene-HhV6Bgp068;Dbxref=Genbank:NP_050243.1,GeneID:1497063;Name=NP_050243.1;gbkey=CDS;gene=U63;locus_tag=HhV6Bgp068;product=hypothetical protein;protein_id=NP_050243.1
+NC_000898.1	RefSeq	gene	100555	102891	.	+	.	ID=gene-HhV6Bgp069;Dbxref=GeneID:1497064;Name=U64;gbkey=Gene;gene=U64;gene_biotype=protein_coding;locus_tag=HhV6Bgp069
+NC_000898.1	RefSeq	CDS	100555	101883	.	+	0	ID=cds-NP_050244.1;Parent=gene-HhV6Bgp069;Dbxref=Genbank:NP_050244.1,GeneID:1497064;Name=NP_050244.1;gbkey=CDS;gene=U64;locus_tag=HhV6Bgp069;product=tegument protein;protein_id=NP_050244.1
+NC_000898.1	RefSeq	gene	101840	102891	.	+	.	ID=gene-HhV6Bgp070;Dbxref=GeneID:1497065;Name=U65;gbkey=Gene;gene=U65;gene_biotype=protein_coding;locus_tag=HhV6Bgp070
+NC_000898.1	RefSeq	CDS	101840	102847	.	+	0	ID=cds-NP_050245.1;Parent=gene-HhV6Bgp070;Dbxref=Genbank:NP_050245.1,GeneID:1497065;Name=NP_050245.1;gbkey=CDS;gene=U65;locus_tag=HhV6Bgp070;product=tegument protein;protein_id=NP_050245.1
+NC_000898.1	RefSeq	polyA_signal_sequence	102886	102891	.	+	.	ID=id-NC_000898.1:102886..102891;Note=U62%2C U63%3B U64%3B U65;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	103756	108584	.	+	.	ID=gene-HhV6Bgp071;Dbxref=GeneID:1497067;Name=U67;gbkey=Gene;gene=U67;gene_biotype=protein_coding;locus_tag=HhV6Bgp071
+NC_000898.1	RefSeq	CDS	103756	104817	.	+	0	ID=cds-NP_050246.1;Parent=gene-HhV6Bgp071;Dbxref=Genbank:NP_050246.1,GeneID:1497067;Name=NP_050246.1;gbkey=CDS;gene=U67;locus_tag=HhV6Bgp071;product=hypothetical protein;protein_id=NP_050246.1
+NC_000898.1	RefSeq	gene	104817	108584	.	+	.	ID=gene-HhV6Bgp072;Dbxref=GeneID:1497068;Name=U68;gbkey=Gene;gene=U68;gene_biotype=protein_coding;locus_tag=HhV6Bgp072
+NC_000898.1	RefSeq	CDS	104817	105161	.	+	0	ID=cds-NP_050247.1;Parent=gene-HhV6Bgp072;Dbxref=Genbank:NP_050247.1,GeneID:1497068;Name=NP_050247.1;gbkey=CDS;gene=U68;locus_tag=HhV6Bgp072;product=hypothetical protein;protein_id=NP_050247.1
+NC_000898.1	RefSeq	gene	105164	106855	.	+	.	ID=gene-HhV6Bgp073;Dbxref=GeneID:1497069;Name=U69;gbkey=Gene;gene=U69;gene_biotype=protein_coding;locus_tag=HhV6Bgp073
+NC_000898.1	RefSeq	CDS	105164	106855	.	+	0	ID=cds-NP_050248.1;Parent=gene-HhV6Bgp073;Dbxref=Genbank:NP_050248.1,GeneID:1497069;Name=NP_050248.1;Note=ganciclovir kinase;gbkey=CDS;gene=U69;locus_tag=HhV6Bgp073;product=Phosphotransferase;protein_id=NP_050248.1
+NC_000898.1	RefSeq	gene	106863	108584	.	+	.	ID=gene-HhV6Bgp074;Dbxref=GeneID:1497070;Name=U70;gbkey=Gene;gene=U70;gene_biotype=protein_coding;locus_tag=HhV6Bgp074
+NC_000898.1	RefSeq	CDS	106863	108329	.	+	0	ID=cds-NP_050249.1;Parent=gene-HhV6Bgp074;Dbxref=Genbank:NP_050249.1,GeneID:1497070;Name=NP_050249.1;gbkey=CDS;gene=U70;locus_tag=HhV6Bgp074;product=Alkaline exonuclease;protein_id=NP_050249.1
+NC_000898.1	RefSeq	gene	108266	108584	.	+	.	ID=gene-HhV6Bgp075;Dbxref=GeneID:1497071;Name=U71;gbkey=Gene;gene=U71;gene_biotype=protein_coding;locus_tag=HhV6Bgp075
+NC_000898.1	RefSeq	CDS	108266	108511	.	+	0	ID=cds-NP_050250.1;Parent=gene-HhV6Bgp075;Dbxref=Genbank:NP_050250.1,GeneID:1497071;Name=NP_050250.1;gbkey=CDS;gene=U71;locus_tag=HhV6Bgp075;product=Myristylated virion protein;protein_id=NP_050250.1
+NC_000898.1	RefSeq	gene	108543	109627	.	-	.	ID=gene-HhV6Bgp076;Dbxref=GeneID:1497072;Name=U72;gbkey=Gene;gene=U72;gene_biotype=protein_coding;locus_tag=HhV6Bgp076
+NC_000898.1	RefSeq	CDS	108593	109627	.	-	0	ID=cds-NP_050251.1;Parent=gene-HhV6Bgp076;Dbxref=Genbank:NP_050251.1,GeneID:1497072;Name=NP_050251.1;gbkey=CDS;gene=U72;locus_tag=HhV6Bgp076;product=glycoprotein M;protein_id=NP_050251.1
+NC_000898.1	RefSeq	polyA_signal_sequence	108543	108548	.	-	.	ID=id-HhV6Bgp076;Parent=gene-HhV6Bgp076;Dbxref=GeneID:1497072;Note=U72;gbkey=regulatory;gene=U72;locus_tag=HhV6Bgp076;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	108564	108569	.	+	.	ID=id-NC_000898.1:108564..108569;Note=U67%3B U68%3B U69%3B U70%3B U71;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	108579	108584	.	+	.	ID=id-NC_000898.1:108579..108584;Note=U67%3B U68%3B U69%3B U70%3B U71;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	109640	114005	.	+	.	ID=gene-HhV6Bgp077;Dbxref=GeneID:1497073;Name=U73;gbkey=Gene;gene=U73;gene_biotype=protein_coding;locus_tag=HhV6Bgp077
+NC_000898.1	RefSeq	CDS	109640	111982	.	+	0	ID=cds-NP_050252.1;Parent=gene-HhV6Bgp077;Dbxref=Genbank:NP_050252.1,GeneID:1497073;Name=NP_050252.1;gbkey=CDS;gene=U73;locus_tag=HhV6Bgp077;product=origin binding protein;protein_id=NP_050252.1
+NC_000898.1	RefSeq	gene	111951	114005	.	+	.	ID=gene-HhV6Bgp078;Dbxref=GeneID:1497074;Name=U74;gbkey=Gene;gene=U74;gene_biotype=protein_coding;locus_tag=HhV6Bgp078
+NC_000898.1	RefSeq	CDS	111951	113939	.	+	0	ID=cds-NP_050253.1;Parent=gene-HhV6Bgp078;Dbxref=Genbank:NP_050253.1,GeneID:1497074;Name=NP_050253.1;gbkey=CDS;gene=U74;locus_tag=HhV6Bgp078;product=helicase/primase complex;protein_id=NP_050253.1
+NC_000898.1	RefSeq	gene	113880	116620	.	-	.	ID=gene-HhV6Bgp079;Dbxref=GeneID:1497076;Name=U76;gbkey=Gene;gene=U76;gene_biotype=protein_coding;locus_tag=HhV6Bgp079
+NC_000898.1	RefSeq	CDS	114632	116620	.	-	0	ID=cds-NP_050255.1;Parent=gene-HhV6Bgp079;Dbxref=Genbank:NP_050255.1,GeneID:1497076;Name=NP_050255.1;gbkey=CDS;gene=U76;locus_tag=HhV6Bgp079;product=putative viron protein;protein_id=NP_050255.1
+NC_000898.1	RefSeq	gene	113880	114723	.	-	.	ID=gene-HhV6Bgp080;Dbxref=GeneID:1497075;Name=U75;gbkey=Gene;gene=U75;gene_biotype=protein_coding;locus_tag=HhV6Bgp080
+NC_000898.1	RefSeq	CDS	113974	114723	.	-	0	ID=cds-NP_050254.1;Parent=gene-HhV6Bgp080;Dbxref=Genbank:NP_050254.1,GeneID:1497075;Name=NP_050254.1;gbkey=CDS;gene=U75;locus_tag=HhV6Bgp080;product=hypothetical protein;protein_id=NP_050254.1
+NC_000898.1	RefSeq	polyA_signal_sequence	113880	113885	.	-	.	ID=id-NC_000898.1:113880..113885;Note=U75%3B U76;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	114000	114005	.	+	.	ID=id-NC_000898.1:114000..114005;Note=U73%3B U74;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	116415	121207	.	+	.	ID=gene-HhV6Bgp081;Dbxref=GeneID:1497077;Name=U77;gbkey=Gene;gene=U77;gene_biotype=protein_coding;locus_tag=HhV6Bgp081
+NC_000898.1	RefSeq	CDS	116415	118889	.	+	0	ID=cds-NP_050256.1;Parent=gene-HhV6Bgp081;Dbxref=Genbank:NP_050256.1,GeneID:1497077;Name=NP_050256.1;gbkey=CDS;gene=U77;locus_tag=HhV6Bgp081;product=Helicase/primase complex;protein_id=NP_050256.1
+NC_000898.1	RefSeq	gene	119139	121207	.	+	.	ID=gene-HhV6Bgp082;Dbxref=GeneID:1497078;Name=B6;gbkey=Gene;gene=B6;gene_biotype=protein_coding;locus_tag=HhV6Bgp082
+NC_000898.1	RefSeq	CDS	119139	119378	.	+	0	ID=cds-NP_050257.1;Parent=gene-HhV6Bgp082;Dbxref=Genbank:NP_050257.1,GeneID:1497078;Name=NP_050257.1;gbkey=CDS;gene=B6;locus_tag=HhV6Bgp082;product=hypothetical protein;protein_id=NP_050257.1
+NC_000898.1	RefSeq	gene	120836	121207	.	+	.	ID=gene-HhV6Bgp083;Dbxref=GeneID:1497079;Name=B7;gbkey=Gene;gene=B7;gene_biotype=protein_coding;locus_tag=HhV6Bgp083
+NC_000898.1	RefSeq	CDS	120836	121063	.	+	0	ID=cds-NP_050258.1;Parent=gene-HhV6Bgp083;Dbxref=Genbank:NP_050258.1,GeneID:1497079;Name=NP_050258.1;gbkey=CDS;gene=B7;locus_tag=HhV6Bgp083;product=hypothetical protein;protein_id=NP_050258.1
+NC_000898.1	RefSeq	polyA_signal_sequence	121202	121207	.	+	.	ID=id-NC_000898.1:121202..121207;Note=U77%3B B6%3B B7;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	121486	123207	.	+	.	ID=gene-HhV6Bgp084;Dbxref=GeneID:1497080;Name=U79;gbkey=Gene;gene=U79;gene_biotype=protein_coding;locus_tag=HhV6Bgp084
+NC_000898.1	RefSeq	CDS	121486	122116	.	+	0	ID=cds-NP_050259.1;Parent=gene-HhV6Bgp084;Dbxref=Genbank:NP_050259.1,GeneID:1497080;Name=NP_050259.1;gbkey=CDS;gene=U79;locus_tag=HhV6Bgp084;part=1;product=DNA replication;protein_id=NP_050259.1
+NC_000898.1	RefSeq	CDS	122213	122412	.	+	2	ID=cds-NP_050259.1;Parent=gene-HhV6Bgp084;Dbxref=Genbank:NP_050259.1,GeneID:1497080;Name=NP_050259.1;gbkey=CDS;gene=U79;locus_tag=HhV6Bgp084;part=2;product=DNA replication;protein_id=NP_050259.1
+NC_000898.1	RefSeq	CDS	122495	123106	.	+	0	ID=cds-NP_050259.1;Parent=gene-HhV6Bgp084;Dbxref=Genbank:NP_050259.1,GeneID:1497080;Name=NP_050259.1;gbkey=CDS;gene=U79;locus_tag=HhV6Bgp084;part=3;product=DNA replication;protein_id=NP_050259.1
+NC_000898.1	RefSeq	gene	123109	123917	.	-	.	ID=gene-HhV6Bgp085;Dbxref=GeneID:1497081;Name=U81;gbkey=Gene;gene=U81;gene_biotype=protein_coding;locus_tag=HhV6Bgp085
+NC_000898.1	RefSeq	CDS	123150	123917	.	-	0	ID=cds-NP_050260.1;Parent=gene-HhV6Bgp085;Dbxref=Genbank:NP_050260.1,GeneID:1497081;Name=NP_050260.1;gbkey=CDS;gene=U81;locus_tag=HhV6Bgp085;product=Uracyl-DNA glycosylase;protein_id=NP_050260.1
+NC_000898.1	RefSeq	polyA_signal_sequence	123109	123114	.	-	.	ID=id-NC_000898.1:123109..123114;Note=U81%3B U82;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	123202	123207	.	+	.	ID=id-NC_000898.1:123202..123207;Note=U79;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	123207	124745	.	-	.	ID=gene-HhV6Bgp086;Dbxref=GeneID:1497082;Name=U82;gbkey=Gene;gene=U82;gene_biotype=protein_coding;locus_tag=HhV6Bgp086
+NC_000898.1	RefSeq	CDS	123993	124745	.	-	0	ID=cds-NP_050261.1;Parent=gene-HhV6Bgp086;Dbxref=Genbank:NP_050261.1,GeneID:1497082;Name=NP_050261.1;gbkey=CDS;gene=U82;locus_tag=HhV6Bgp086;product=Glycoprotein L;protein_id=NP_050261.1
+NC_000898.1	RefSeq	gene	124821	125302	.	+	.	ID=gene-HhV6Bgp087;Dbxref=GeneID:1497083;Name=U83;gbkey=Gene;gene=U83;gene_biotype=protein_coding;locus_tag=HhV6Bgp087
+NC_000898.1	RefSeq	CDS	124821	125162	.	+	0	ID=cds-NP_050262.1;Parent=gene-HhV6Bgp087;Dbxref=Genbank:NP_050262.1,GeneID:1497083;Name=NP_050262.1;gbkey=CDS;gene=U83;locus_tag=HhV6Bgp087;product=Intercrine cytokine;protein_id=NP_050262.1
+NC_000898.1	RefSeq	gene	125259	127202	.	-	.	ID=gene-HhV6Bgp088;Dbxref=GeneID:1497085;Name=U85;gbkey=Gene;gene=U85;gene_biotype=protein_coding;locus_tag=HhV6Bgp088
+NC_000898.1	RefSeq	CDS	126324	127202	.	-	0	ID=cds-NP_050264.1;Parent=gene-HhV6Bgp088;Dbxref=Genbank:NP_050264.1,GeneID:1497085;Name=NP_050264.1;Note=OX-2 homolog;gbkey=CDS;gene=U85;locus_tag=HhV6Bgp088;product=glycoprotein;protein_id=NP_050264.1
+NC_000898.1	RefSeq	gene	125259	126296	.	-	.	ID=gene-HhV6Bgp089;Dbxref=GeneID:1497084;Name=U84;gbkey=Gene;gene=U84;gene_biotype=protein_coding;locus_tag=HhV6Bgp089
+NC_000898.1	RefSeq	CDS	125268	126296	.	-	0	ID=cds-NP_050263.1;Parent=gene-HhV6Bgp089;Dbxref=Genbank:NP_050263.1,GeneID:1497084;Name=NP_050263.1;gbkey=CDS;gene=U84;locus_tag=HhV6Bgp089;product=putative glycoprotein;protein_id=NP_050263.1
+NC_000898.1	RefSeq	polyA_signal_sequence	125259	125264	.	-	.	ID=id-NC_000898.1:125259..125264;Note=U84%3B U85;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	125297	125302	.	+	.	ID=id-NC_000898.1:125297..125302;Note=U83;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	127307	131901	.	-	.	ID=gene-HhV6Bgp090;Dbxref=GeneID:1497086;Name=U86;description=IE-A;gbkey=Gene;gene=U86;gene_biotype=protein_coding;locus_tag=HhV6Bgp090
+NC_000898.1	RefSeq	CDS	127339	131901	.	-	0	ID=cds-NP_050265.1;Parent=gene-HhV6Bgp090;Dbxref=Genbank:NP_050265.1,GeneID:1497086;Name=NP_050265.1;Note=IE-A;gbkey=CDS;gene=U86;locus_tag=HhV6Bgp090;product=major immediate-early protein;protein_id=NP_050265.1
+NC_000898.1	RefSeq	polyA_signal_sequence	127307	127312	.	-	.	ID=id-HhV6Bgp090;Parent=gene-HhV6Bgp090;Dbxref=GeneID:1497086;Note=U86;gbkey=regulatory;gene=U86;locus_tag=HhV6Bgp090;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	127315	127320	.	-	.	ID=id-HhV6Bgp090-2;Parent=gene-HhV6Bgp090;Dbxref=GeneID:1497086;Note=U86;gbkey=regulatory;gene=U86;locus_tag=HhV6Bgp090;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	tandem_repeat	129046	129681	.	+	.	ID=id-NC_000898.1:129046..129681;Note=R1;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=rgcyctgctgga
+NC_000898.1	RefSeq	tandem_repeat	133501	133863	.	+	.	ID=id-NC_000898.1:133501..133863;Note=R2A;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=attatatgata(n)6-7gttt(n)3gtagactagtt(n)3ttatgttt
+NC_000898.1	RefSeq	tandem_repeat	133982	134076	.	+	.	ID=id-NC_000898.1:133982..134076;Note=R2B;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=tttgtgtgtgtg
+NC_000898.1	RefSeq	gene	134769	138436	.	-	.	ID=gene-HhV6Bgp091;Dbxref=GeneID:1497087;Name=U90;description=IE-A transactivator;gbkey=Gene;gene=U90;gene_biotype=protein_coding;locus_tag=HhV6Bgp091
+NC_000898.1	RefSeq	CDS	138342	138436	.	-	0	ID=cds-NP_050266.1;Parent=gene-HhV6Bgp091;Dbxref=Genbank:NP_050266.1,GeneID:1497087;Name=NP_050266.1;Note=IE-A%2C transactivator;gbkey=CDS;gene=U90;locus_tag=HhV6Bgp091;part=1;product=IE-A transactivator;protein_id=NP_050266.1
+NC_000898.1	RefSeq	CDS	138043	138254	.	-	1	ID=cds-NP_050266.1;Parent=gene-HhV6Bgp091;Dbxref=Genbank:NP_050266.1,GeneID:1497087;Name=NP_050266.1;Note=IE-A%2C transactivator;gbkey=CDS;gene=U90;locus_tag=HhV6Bgp091;part=2;product=IE-A transactivator;protein_id=NP_050266.1
+NC_000898.1	RefSeq	CDS	135003	137932	.	-	2	ID=cds-NP_050266.1;Parent=gene-HhV6Bgp091;Dbxref=Genbank:NP_050266.1,GeneID:1497087;Name=NP_050266.1;Note=IE-A%2C transactivator;gbkey=CDS;gene=U90;locus_tag=HhV6Bgp091;part=3;product=IE-A transactivator;protein_id=NP_050266.1
+NC_000898.1	RefSeq	polyA_signal_sequence	134769	134774	.	-	.	ID=id-HhV6Bgp091;Parent=gene-HhV6Bgp091;Dbxref=GeneID:1497087;Note=U90;gbkey=regulatory;gene=U90;locus_tag=HhV6Bgp091;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	138591	140054	.	+	.	ID=gene-HhV6Bgp092;Dbxref=GeneID:1497088;Name=U91;gbkey=Gene;gene=U91;gene_biotype=protein_coding;locus_tag=HhV6Bgp092
+NC_000898.1	RefSeq	CDS	138591	138816	.	+	0	ID=cds-NP_050267.1;Parent=gene-HhV6Bgp092;Dbxref=Genbank:NP_050267.1,GeneID:1497088;Name=NP_050267.1;Note=IE-A;gbkey=CDS;gene=U91;locus_tag=HhV6Bgp092;part=1;product=probable membrane glycoprotein;protein_id=NP_050267.1
+NC_000898.1	RefSeq	CDS	138926	139170	.	+	2	ID=cds-NP_050267.1;Parent=gene-HhV6Bgp092;Dbxref=Genbank:NP_050267.1,GeneID:1497088;Name=NP_050267.1;Note=IE-A;gbkey=CDS;gene=U91;locus_tag=HhV6Bgp092;part=2;product=probable membrane glycoprotein;protein_id=NP_050267.1
+NC_000898.1	RefSeq	polyA_signal_sequence	139943	139948	.	+	.	ID=id-HhV6Bgp092;Parent=gene-HhV6Bgp092;Dbxref=GeneID:1497088;Note=U91;gbkey=regulatory;gene=U91;locus_tag=HhV6Bgp092;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	140049	140054	.	+	.	ID=id-HhV6Bgp092-2;Parent=gene-HhV6Bgp092;Dbxref=GeneID:1497088;Note=U91;gbkey=regulatory;gene=U91;locus_tag=HhV6Bgp092;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	tandem_repeat	140082	142691	.	+	.	ID=id-NC_000898.1:140082..142691;Note=R3;gbkey=repeat_region;rpt_type=tandem
+NC_000898.1	RefSeq	gene	141969	142766	.	-	.	ID=gene-HhV6Bgp093;Dbxref=GeneID:1497089;Name=B8;gbkey=Gene;gene=B8;gene_biotype=protein_coding;locus_tag=HhV6Bgp093
+NC_000898.1	RefSeq	CDS	141969	142766	.	-	0	ID=cds-NP_050268.1;Parent=gene-HhV6Bgp093;Dbxref=Genbank:NP_050268.1,GeneID:1497089;Name=NP_050268.1;gbkey=CDS;gene=B8;locus_tag=HhV6Bgp093;product=hypothetical protein;protein_id=NP_050268.1
+NC_000898.1	RefSeq	gene	142886	144565	.	-	.	ID=gene-HhV6Bgp094;Dbxref=GeneID:1497090;Name=U94;gbkey=Gene;gene=U94;gene_biotype=protein_coding;locus_tag=HhV6Bgp094
+NC_000898.1	RefSeq	CDS	143093	144565	.	-	0	ID=cds-NP_050269.1;Parent=gene-HhV6Bgp094;Dbxref=Genbank:NP_050269.1,GeneID:1497090;Name=NP_050269.1;gbkey=CDS;gene=U94;locus_tag=HhV6Bgp094;product=Parvovirus rep homolog;protein_id=NP_050269.1
+NC_000898.1	RefSeq	polyA_signal_sequence	142886	142891	.	-	.	ID=id-HhV6Bgp094;Parent=gene-HhV6Bgp094;Dbxref=GeneID:1497090;Note=does not follow consensus;gbkey=regulatory;gene=U94;locus_tag=HhV6Bgp094;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	143036	143041	.	-	.	ID=id-HhV6Bgp094-2;Parent=gene-HhV6Bgp094;Dbxref=GeneID:1497090;Note=U94;gbkey=regulatory;gene=U94;locus_tag=HhV6Bgp094;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	144640	148617	.	+	.	ID=gene-HhV6Bgp095;Dbxref=GeneID:1497091;Name=U95;description=US22 gene family;gbkey=Gene;gene=U95;gene_biotype=protein_coding;locus_tag=HhV6Bgp095
+NC_000898.1	RefSeq	CDS	144640	148278	.	+	0	ID=cds-NP_050270.1;Parent=gene-HhV6Bgp095;Dbxref=Genbank:NP_050270.1,GeneID:1497091;Name=NP_050270.1;gbkey=CDS;gene=U95;locus_tag=HhV6Bgp095;product=immediate-early protein IE2;protein_id=NP_050270.1
+NC_000898.1	RefSeq	polyA_signal_sequence	148612	148617	.	+	.	ID=id-HhV6Bgp095;Parent=gene-HhV6Bgp095;Dbxref=GeneID:1497091;Note=U95;gbkey=regulatory;gene=U95;locus_tag=HhV6Bgp095;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	148659	152325	.	-	.	ID=gene-HhV6Bgp096;Dbxref=GeneID:1497092;Name=U100;gbkey=Gene;gene=U100;gene_biotype=protein_coding;locus_tag=HhV6Bgp096
+NC_000898.1	RefSeq	CDS	151940	152325	.	-	0	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=1;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	151526	151807	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=2;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	150786	151121	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=3;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	150587	150664	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=4;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	150369	150476	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=5;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	150159	150272	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=6;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	149848	150008	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=7;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	149332	149341	.	-	2	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=8;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	149041	149169	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=9;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	CDS	148665	148911	.	-	1	ID=cds-NP_050271.1;Parent=gene-HhV6Bgp096;Dbxref=Genbank:NP_050271.1,GeneID:1497092;Name=NP_050271.1;gbkey=CDS;gene=U100;locus_tag=HhV6Bgp096;part=10;product=spliced envelope glycoprotein;protein_id=NP_050271.1
+NC_000898.1	RefSeq	polyA_signal_sequence	148659	148664	.	-	.	ID=id-HhV6Bgp096;Parent=gene-HhV6Bgp096;Dbxref=GeneID:1497092;Note=U100;gbkey=regulatory;gene=U100;locus_tag=HhV6Bgp096;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	152925	153252	.	-	.	ID=gene-HhV6Bgp097;Dbxref=GeneID:1497093;Name=B9;gbkey=Gene;gene=B9;gene_biotype=protein_coding;locus_tag=HhV6Bgp097
+NC_000898.1	RefSeq	CDS	152932	153252	.	-	0	ID=cds-NP_050272.1;Parent=gene-HhV6Bgp097;Dbxref=Genbank:NP_050272.1,GeneID:1497093;Name=NP_050272.1;gbkey=CDS;gene=B9;locus_tag=HhV6Bgp097;product=hypothetical protein;protein_id=NP_050272.1
+NC_000898.1	RefSeq	polyA_signal_sequence	152925	152930	.	-	.	ID=id-HhV6Bgp097;Parent=gene-HhV6Bgp097;Dbxref=GeneID:1497093;Note=B9;gbkey=regulatory;gene=B9;locus_tag=HhV6Bgp097;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	direct_repeat	153322	162114	.	+	.	ID=id-NC_000898.1:153322..162114;gbkey=repeat_region;rpt_type=direct
+NC_000898.1	RefSeq	tandem_repeat	153380	153674	.	+	.	ID=id-NC_000898.1:153380..153674;Note=heterogeneous telomeric unit;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=tarsyc
+NC_000898.1	RefSeq	gene	153904	157309	.	+	.	ID=gene-HhV6Bgp098;Dbxref=GeneID:1497094;Name=DR1;description=US22 gene family;gbkey=Gene;gene=DR1;gene_biotype=protein_coding;locus_tag=HhV6Bgp098
+NC_000898.1	RefSeq	CDS	153904	154162	.	+	0	ID=cds-NP_050273.1;Parent=gene-HhV6Bgp098;Dbxref=Genbank:NP_050273.1,GeneID:1497094;Name=NP_050273.1;gbkey=CDS;gene=DR1;locus_tag=HhV6Bgp098;part=1;product=putative DNA-directed RNA polymerase;protein_id=NP_050273.1
+NC_000898.1	RefSeq	CDS	154276	156296	.	+	2	ID=cds-NP_050273.1;Parent=gene-HhV6Bgp098;Dbxref=Genbank:NP_050273.1,GeneID:1497094;Name=NP_050273.1;gbkey=CDS;gene=DR1;locus_tag=HhV6Bgp098;part=2;product=putative DNA-directed RNA polymerase;protein_id=NP_050273.1
+NC_000898.1	RefSeq	gene	156044	156646	.	-	.	ID=gene-HhV6Bgp099;Dbxref=GeneID:1497095;Name=DR3;gbkey=Gene;gene=DR3;gene_biotype=protein_coding;locus_tag=HhV6Bgp099
+NC_000898.1	RefSeq	CDS	156044	156646	.	-	0	ID=cds-NP_050274.1;Parent=gene-HhV6Bgp099;Dbxref=Genbank:NP_050274.1,GeneID:1497095;Name=NP_050274.1;gbkey=CDS;gene=DR3;locus_tag=HhV6Bgp099;product=hypothetical protein;protein_id=NP_050274.1
+NC_000898.1	RefSeq	gene	156343	157309	.	+	.	ID=gene-HhV6Bgp100;Dbxref=GeneID:1497096;Name=B1;gbkey=Gene;gene=B1;gene_biotype=protein_coding;locus_tag=HhV6Bgp100
+NC_000898.1	RefSeq	CDS	156343	156822	.	+	0	ID=cds-NP_050275.1;Parent=gene-HhV6Bgp100;Dbxref=Genbank:NP_050275.1,GeneID:1497096;Name=NP_050275.1;gbkey=CDS;gene=B1;locus_tag=HhV6Bgp100;product=hypothetical protein;protein_id=NP_050275.1
+NC_000898.1	RefSeq	gene	156857	157309	.	+	.	ID=gene-HhV6Bgp101;Dbxref=GeneID:1497097;Name=B2;gbkey=Gene;gene=B2;gene_biotype=protein_coding;locus_tag=HhV6Bgp101
+NC_000898.1	RefSeq	CDS	156857	157096	.	+	0	ID=cds-NP_050276.1;Parent=gene-HhV6Bgp101;Dbxref=Genbank:NP_050276.1,GeneID:1497097;Name=NP_050276.1;gbkey=CDS;gene=B2;locus_tag=HhV6Bgp101;product=hypothetical protein;protein_id=NP_050276.1
+NC_000898.1	RefSeq	polyA_signal_sequence	157233	157238	.	+	.	ID=id-NC_000898.1:157233..157238;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	157259	157264	.	+	.	ID=id-NC_000898.1:157259..157264;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	157289	157294	.	+	.	ID=id-NC_000898.1:157289..157294;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	polyA_signal_sequence	157304	157309	.	+	.	ID=id-NC_000898.1:157304..157309;Note=DR1%3B B1%3B B2;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	gene	158348	160756	.	+	.	ID=gene-HhV6Bgp102;Dbxref=GeneID:1497098;Name=DR6;description=US22 gene family;gbkey=Gene;gene=DR6;gene_biotype=protein_coding;locus_tag=HhV6Bgp102
+NC_000898.1	RefSeq	CDS	158348	158651	.	+	0	ID=cds-NP_050277.1;Parent=gene-HhV6Bgp102;Dbxref=Genbank:NP_050277.1,GeneID:1497098;Name=NP_050277.1;gbkey=CDS;gene=DR6;locus_tag=HhV6Bgp102;part=1;product=transactivator;protein_id=NP_050277.1
+NC_000898.1	RefSeq	CDS	159650	160524	.	+	2	ID=cds-NP_050277.1;Parent=gene-HhV6Bgp102;Dbxref=Genbank:NP_050277.1,GeneID:1497098;Name=NP_050277.1;gbkey=CDS;gene=DR6;locus_tag=HhV6Bgp102;part=2;product=transactivator;protein_id=NP_050277.1
+NC_000898.1	RefSeq	gene	160670	160849	.	+	.	ID=gene-HhV6Bgp103;Dbxref=GeneID:1497099;Name=B3;gbkey=Gene;gene=B3;gene_biotype=protein_coding;locus_tag=HhV6Bgp103
+NC_000898.1	RefSeq	CDS	160670	160849	.	+	0	ID=cds-NP_050278.1;Parent=gene-HhV6Bgp103;Dbxref=Genbank:NP_050278.1,GeneID:1497099;Name=NP_050278.1;gbkey=CDS;gene=B3;locus_tag=HhV6Bgp103;product=hypothetical protein;protein_id=NP_050278.1
+NC_000898.1	RefSeq	polyA_signal_sequence	160751	160756	.	+	.	ID=id-NC_000898.1:160751..160756;Note=DR6;gbkey=regulatory;regulatory_class=polyA_signal_sequence
+NC_000898.1	RefSeq	tandem_repeat	161571	162032	.	+	.	ID=id-NC_000898.1:161571..162032;gbkey=repeat_region;rpt_type=tandem;rpt_unit_seq=taaccc
+

@@ -14,7 +14,7 @@ call_resistance(
 \arguments{
 \item{infile}{the input fasta, vcf or varscan.tab file}
 
-\item{virus}{HCMV HSV1 HSV2 VZV}
+\item{virus}{HCMV HSV1 HSV2 VZV HHV6b}
 
 \item{all_mutations}{when FALSE only recognised resistant variants present are returned.}
 

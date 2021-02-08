@@ -8,7 +8,7 @@
 #' In this case the output files are returned to your working directory.
 #'
 #' @param infile the input fasta, vcf or varscan.tab file
-#' @param virus HCMV HSV1 HSV2 VZV
+#' @param virus HCMV HSV1 HSV2 VZV HHV6b
 #' @param all_mutations when FALSE only recognised resistant variants present are returned.
 #' @param outdir for fasta input files intermediate alignment fasta & vcf files are generated, this defines the directory they are saved to. "out.fasta" "out.vcf"
 #' @return A data.frame containing resistance information for variants identified
@@ -18,11 +18,11 @@ call_resistance = function(infile = system.file("testdata",  "HSV1_F716L.vcf", p
   
   #package variables
   global = list()
-  global$res_table = system.file("herpesdrg-db", "herpesdrg-db.csv", package = "herpesdrg")
+  global$res_table = system.file("herpesdrg-db", "herpesdrg-db.tsv", package = "herpesdrg")
   global$date <- format(Sys.time(), "%Y-%m-%d")
   global$dir = outdir
   global$virus_genome = utils::read.csv(system.file("", "virus-genome.csv", package = "herpesdrg"),stringsAsFactors = F)
-  global$genome = genome=global$virus_genome[global$virus_genome$virus == virus,2]
+  global$genome = global$virus_genome[global$virus_genome$virus == virus,2]
   global$path_gff3_file=system.file("ref", paste0(global$genome,".gff3"), package = "herpesdrg")
   global$path_fasta_file=system.file("ref", paste0(global$genome,".fasta"), package = "herpesdrg")
   global$path_txdb=system.file("ref", paste0(global$genome,".sqlite"), package = "herpesdrg")

@@ -15,7 +15,7 @@ add_resistance_info <-
            all_muts = FALSE,
            virus) {
     coding_df <- f.dat
-    resistance = utils::read.csv(resistance_table, header = TRUE)
+    resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")
     
     # filter status - records on-revision may be below the data quality we expect, and are flagged.
     resistance = resistance[resistance$status == "A", ]

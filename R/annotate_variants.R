@@ -16,7 +16,7 @@ annotate_variants <- function(f.dat,global){
   S4Vectors::values(gr) <- S4Vectors::DataFrame(id = toannotate$Sample, freq = toannotate$VarFreq, RefCount= toannotate$Ref.count, VarCount= toannotate$Var.count, VarAllele=toannotate$Var)
   varallele <- Biostrings::DNAStringSet(toannotate$Var)
   #txdb <- makeTxDbFromGFF(file=global$path_gff3_file, format="gff3") # takes 1 sec, save and load.
-  #saveDb(txdb, file="inst/ref/NC_001348.2.sqlite")
+  #saveDb(txdb, file="inst/ref/NC_006273.2.sqlite")
   txdb <- AnnotationDbi::loadDb(global$path_txdb)
   gn <- GenomicFeatures::genes(txdb)
   ##variant data
@@ -37,3 +37,5 @@ annotate_variants <- function(f.dat,global){
   coding_df$change <- paste(coding_df$GENEID,coding_df$aachange,sep="_")
   return(coding_df)
 }
+
+
