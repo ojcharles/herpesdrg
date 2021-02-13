@@ -25,7 +25,7 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", resistance_table = system.file
   # if sample has any mutations in f.gene
   if(length(base::grep(unique(mut$GENE), pattern = f.gene)) > 0){
     
-    drugs = unlist(utils::read.csv(system.file("", "drugs.csv", package = "herpesdrg"),stringsAsFactors = F))
+    drugs = unlist(utils::read.csv(system.file("", "drugs.csv", package = "herpesdrg"),stringsAsFactors = F, header = F))
     #manually force value types, should be oneline or sorted in data
     mut$RefCount <- as.numeric(mut$RefCount)
     mut$VarCount <- as.numeric(mut$VarCount) 
@@ -43,8 +43,6 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", resistance_table = system.file
     resistance = resistance[!is.na(resistance$value),]
     resistance = resistance %>% dplyr::group_by(.data$change) %>% dplyr::arrange(.data$value) %>% dplyr::top_n(1, .data$value) # reduces data to 1 row per mutation.
     
-    #f.gene_colour = "Ganciclovir"
-    #d.resall <- resistance[resistance$variable == f.gene_colour,]
     d.resall = resistance
     #d.resall$resistance <-as.character(cut(as.numeric(d.resall$value), c(0,1,1.5,99999999), right=FALSE, labels=c("none", "low", "high")))
     # no need to alter "sus.." or "res.."

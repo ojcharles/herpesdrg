@@ -13,7 +13,7 @@ test_that("variant files return resistance", {
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_T409M"))
+  expect_equal(unique(df$change), c("UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M"))
   
   #----- HSV1
   # read?

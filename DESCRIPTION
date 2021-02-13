@@ -36,7 +36,8 @@ Imports:
     S4Vectors,
     utils,
     rlang,
-    magrittr
+    magrittr,
+    ape
 Suggests: 
     knitr,
     rmarkdown,
