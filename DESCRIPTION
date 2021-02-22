@@ -11,7 +11,7 @@ Description: Resistance Genotyping tool for HCMV HSV1 HSV2 VZV sequencing data, 
     Shiny app: An intuitive way for scientists to call resitance on their data. Includes a clinical overview of the resistance phenotype, as well as some plots that may be of interest.
     Functions: Users happy running R code or using the terminal, can ofcourse interact with the packages functionality. This will return the resistance dataframes without any of the plotting or overviews. It's the same back end as the shiny app.
     Cite: Please cite us in your work, if you used this tool or database.
-License: GPL-3 + file LICENSE
+License: MIT + file LICENSE
 Encoding: UTF-8
 biocViews:
 Depends:
