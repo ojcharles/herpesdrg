@@ -80,6 +80,8 @@ shinyServer(function(input, output, session) {
   output$vcf.table_clin <- DT::renderDataTable({
     if(is.null(vcf.d.res())){
       return(NULL)}
+    if(nrow(vcf.d.res()) == 0){
+      return(NULL)}
     out = herpesdrg::make_clin_table(vcf.d.res())  
     return(out)
   })
