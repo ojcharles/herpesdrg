@@ -36,50 +36,76 @@ handle_fasta = function(fasta_in, fasta_out, fasta_ref){
   
   
   
-  if(fa.genome_len == 152222){#if is whole genome, aligned to merlin
-    print("fasta whole genome")
-    # cat fasta together
-    fa.fileConn<-file(fasta_out)
-    writeLines(c(ref.text, fa.text), fa.fileConn)
-    close(fa.fileConn)
-    
-    
-    #todo do i need add and addfragment? just try the
-  }else{
-    
-    ### mafft notes
-    ## fragment add, i.e. for a gene fasta
-    #   % mafft --addfragments fragments --reorder --6merpair --thread -1 existing_alignment > output
-    ## full length alignment
-    # mafft --thread 8 --reorder --keeplength --mapout --ep 0.0 --add new_sequences input > output
-    
-    # tested and --add works just fine for the use case, no need for fragment add.
-    
-    ### test for binary dependency
-    test.software <- Sys.which("mafft")
-    if(test.software == ""){
-      stop("mafft is either not installed or not added to PATH. Required for alignments to reference genome.")
-    }
-    ###
-    
-      command = paste("mafft --keeplength --mapout --ep 0.0 --add",
-                      fasta_in,
-                      fasta_ref,
-                      ">", fasta_out)
-      
-      
-      system(command)
-      
-      
-      # }else{
-      #   command = paste("mafft --addfragments",
-      #                   fasta_in,
-      #                   "--6merpair",
-      #                   fasta_ref,
-      #                   ">", fasta_out)
-      # }
-      # source(command)
+  ### mafft notes
+  ## fragment add, i.e. for a gene fasta
+  #   % mafft --addfragments fragments --reorder --6merpair --thread -1 existing_alignment > output
+  ## full length alignment
+  # mafft --thread 8 --reorder --keeplength --mapout --ep 0.0 --add new_sequences input > output
+  
+  # tested and --add works just fine for the use case, no need for fragment add.
+  
+  ### test for binary dependency
+  test.software <- Sys.which("mafft")
+  if(test.software == ""){
+    stop("mafft is either not installed or not added to PATH. Required for alignments to reference genome.")
   }
+  ###
+  
+  # if is fairly long i.e. not a pcr product
+  if(fa.genome_len > 10000){
+    command = paste("mafft --keeplength --mapout  --add  ",
+                    fasta_in,
+                    fasta_ref,
+                    ">", fasta_out)
+    
+    
+    system(command)
+    
+  }else{
+    # we need to do the forward and reverse alignment, then decide which is best without any prior info
+    rc.fa = ape::read.dna(fasta_in,format = "fasta")
+    rc.fa = ape::complement(rc.fa) # reverse complement
+    rc.fa = ape::as.alignment(rc.fa)$seq
+    
+    # append this reverse complement sequence to the original input sequence
+    fa.text[3] = ">RC"
+    fa.text[4] = rc.fa
+    writeLines(fa.text , fasta_in)
+    
+    # now run mafft add for both
+    command = paste("mafft --keeplength --mapout  --thread 4 --add  ",
+                    fasta_in,
+                    fasta_ref,
+                    ">", fasta_out)
+    system(command)
+    
+    # decide whether the original or RC is the better match
+    t.fa = ape::read.dna(fasta_out, "fasta",as.matrix = T,as.character = T)
+    
+    # which alignment has fewer gap regions? - lower is better
+    score_original = stringr::str_count(paste0(t.fa[2,],collapse = ""),
+                       "[acgt]{1,1000}")
+    score_rc = stringr::str_count(paste0(t.fa[3,],collapse = ""),
+                                        "[acgt]{1,1000}")
+    
+    # update fasta_out, to either be ref+ provided seq, or ref + revcomp seq
+    if(score_original <= score_rc){
+      writeLines(c(paste0(">",names(t.fa[1,1])),
+                   paste0(t.fa[1,], collapse = ""),
+                   paste0(">",names(t.fa[2,1])),
+                   paste0(t.fa[2,], collapse = "")), fasta_out)
+    }else{
+      writeLines(c(paste0(">",names(t.fa[1,1])),
+                   paste0(t.fa[1,], collapse = ""),
+                   paste0(">",names(t.fa[3,1])),
+                   paste0(t.fa[3,], collapse = "")), fasta_out)
+    }
+    
+    
+  }
+
+
+  
   
   ## now we have a fasta file called out.fasta in the session directory
   
