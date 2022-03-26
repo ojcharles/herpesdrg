@@ -104,11 +104,7 @@ read_input <- function(infile, global){
     # in each case output is a vcf file, which then gets processed as above into the out data structure.
     
     #writes vcf to a known location accessible by global$dir variable. if webserver, if not returns to working dir
-    if(global$dir == ""){
-      fasta_out = "out.fasta"
-    } else {
-      fasta_out = file.path(global$dir, "out.fasta")
-    }
+    fasta_out = file.path(global$dir, "out.fasta")
     vcf_file = handle_fasta(fasta_in = infile, fasta_out, fasta_ref = global$path_fasta_file) 
     text <- readLines(vcf_file)
     start <- base::grep('chrom',ignore.case = T, text)

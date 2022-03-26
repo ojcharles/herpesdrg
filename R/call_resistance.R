@@ -14,19 +14,18 @@
 #' @return A data.frame containing resistance information for variants identified
 #' @export
 
-call_resistance = function(infile = system.file("testdata",  "HSV1_F716L.vcf", package = "herpesdrg"), virus = "HSV1", all_mutations = TRUE, outdir = ""){
+call_resistance = function(infile = system.file("testdata",  "HSV1_F716L.vcf", package = "herpesdrg"), virus = "HSV1", all_mutations = TRUE){
   
   #package variables
   global = list()
   global$res_table = system.file("herpesdrg-db", "herpesdrg-db.tsv", package = "herpesdrg")
   global$date <- format(Sys.time(), "%Y-%m-%d")
-  global$dir = outdir
+  global$dir = tempdir()
   global$virus_genome = utils::read.csv(system.file("", "virus-genome.csv", package = "herpesdrg"),stringsAsFactors = F)
   global$genome = global$virus_genome[global$virus_genome$virus == virus,2]
   global$path_gff3_file=system.file("ref", paste0(global$genome,".gff3"), package = "herpesdrg")
   global$path_fasta_file=system.file("ref", paste0(global$genome,".fasta"), package = "herpesdrg")
   global$path_txdb=system.file("ref", paste0(global$genome,".sqlite"), package = "herpesdrg")
-  
   
   dat1 = read_input(infile, global = global)
   
