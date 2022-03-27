@@ -28,7 +28,7 @@ call_resistance = function(infile = system.file("testdata",  "HSV1_F716L.vcf", p
   
   dat1 = read_input(infile, global = global)
   
-  dat2 = annotate_variants(f.dat = dat1, global = global)
+  dat2 = annotate_variants(toannotate = dat1, global = global)
   
   dat3 = add_resistance_info(f.dat = dat2, resistance_table=global$res_table, all_muts = all_mutations, virus = virus)
   
