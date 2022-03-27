@@ -18,7 +18,7 @@ annotate_variants <- function(f.dat,global){
   #txdb <- makeTxDbFromGFF(file=global$path_gff3_file, format="gff3") # takes 1 sec, save and load.
   #saveDb(txdb, file="inst/ref/NC_006273.2.sqlite")
   txdb <- AnnotationDbi::loadDb(global$path_txdb)
-  gn <- GenomicFeatures::genes(txdb)
+  suppressMessages(gn <- GenomicFeatures::genes(txdb))
   ##variant data
   vcf <- gr
   #seqlevels need to match with txdb

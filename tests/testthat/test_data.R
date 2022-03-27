@@ -59,15 +59,20 @@ test_that("fasta PCR products reverse complement and identify stop codons", {
   # mafft should align it both verbatim and as a RC, identify which is the optimal alignment -> return the optimal alignments data
   # if we have not implemented RC then this will provide essentially random mutations in random genes scattered across the genome
   infile = system.file("testdata",  "HSV2_tk_RC.fasta", package = "herpesdrg")
-  df = call_resistance(infile,
-                       all_mutations = TRUE, virus = "HSV2")
+  virus = "HSV2"
+  all_mutations = TRUE
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 3)
   expect_equal(unique(df$gene), "UL23")
+  expect_equal(unique(df$change), "UL23_G39E") # there is only a single nt change
+  
   
   # this is an identical sequence to above, but contains a stop codon also
   # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
   infile = system.file("testdata",  "HSV2_tk_RC_stop_codon.fasta", package = "herpesdrg")
-  df = call_resistance(infile,
-                       all_mutations = TRUE, virus = "HSV2")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 4)
+  
 })
 
 
