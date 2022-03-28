@@ -80,20 +80,21 @@ handle_fasta = function(dir){
 
     
     # now run mafft add for both
+    print("mafft alignment started")
     command = paste("mafft --keeplength --mapout --add  ",
                     in_fasta,
-                    ref_fasta,
-                    ">", in_msa_fasta)
-    system(command)
+                    ref_fasta)
+    t = system(command, intern = T,ignore.stderr = T) # by internalising, we remove the many mafft messages
+    writeLines(t,in_msa_fasta)
     
     command = paste("mafft --keeplength --mapout --add  ",
                     in_rc_fasta,
-                    ref_fasta,
-                    ">", in_rc_msa_fasta)
-    system(command)
+                    ref_fasta)
+    t = system(command, intern = T, ignore.stderr = T)
+    writeLines(t,in_rc_msa_fasta)
+    print("mafft alignment finished")
 
     # decide whether the original or RC is the better match
-    
     
     # which alignment has fewer gap regions? - lower is better
     t.fa = ape::read.dna(in_msa_fasta, "fasta",as.matrix = T,as.character = T)
