@@ -2,19 +2,19 @@
 % Please edit documentation in R/annotate_variants.R
 \name{annotate_variants}
 \alias{annotate_variants}
-\title{Annotates variants}
+\title{Annotates variant table}
 \usage{
-annotate_variants(f.dat, global)
+annotate_variants(toannotate, global)
 }
 \arguments{
-\item{f.dat}{intermediate data.frame}
+\item{toannotate}{an intermediate reduced vcf style dataframe}
 
-\item{global}{package object for consistent runtime variables}
+\item{global}{internal list with runtime vars}
 }
 \value{
 intermediate data.frame with genome level annotation
 }
 \description{
-Adds genome annotation to the intermediate resistance data.frame. Codon AA change and whether synonymous or non synonymous resultants from variant for example.
+Annotates variant table
 }
 \keyword{internal}

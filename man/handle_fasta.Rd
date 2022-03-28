@@ -4,14 +4,10 @@
 \alias{handle_fasta}
 \title{Handles fasta files}
 \usage{
-handle_fasta(fasta_in, fasta_out, fasta_ref)
+handle_fasta(dir)
 }
 \arguments{
-\item{fasta_in}{Path to the input file}
-
-\item{fasta_out}{filename of fasta alignment produced}
-
-\item{fasta_ref}{the Merlin reference fasta file}
+\item{dir}{the directory containing}
 }
 \value{
 vcf file and fasta alignment
