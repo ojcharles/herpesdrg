@@ -104,8 +104,8 @@ read_input <- function(infile, global){
     # in each case output is a vcf file, which then gets processed as above into the out data structure.
     query_file_loc = file.path(global$dir, "in_query.fasta")
     ref_file_loc = file.path(global$dir, "in_ref.fasta")
-    file.copy(infile, query_file_loc)
-    file.copy(global$path_fasta_file, ref_file_loc)
+    file.copy(infile, query_file_loc,overwrite = T)
+    file.copy(global$path_fasta_file, ref_file_loc,overwrite = T)
     fasta_out = file.path(global$dir, "out_msa.fasta")
     vcf_file = handle_fasta(dir =  global$dir) 
     text <- readLines(vcf_file)
@@ -144,6 +144,8 @@ read_input <- function(infile, global){
                         Sample = "single run",
                         stringsAsFactors = F)
     out <- t.vcf
+    
+    # remove all temprary files
     
     
 

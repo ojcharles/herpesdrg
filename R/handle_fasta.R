@@ -102,17 +102,16 @@ handle_fasta = function(dir){
     t.fa = ape::read.dna(in_rc_msa_fasta, "fasta",as.matrix = T,as.character = T)
     score_rc = stringr::str_count(paste0(t.fa[2,],collapse = ""),
                                         "[acgt]{1,1000}")
-    optimal_msa = ifelse(score_original <= score_rc, 1,2)
-    
+
     # identify which msa is best, and save this as out.fa. things point to this now
     if(score_original <= score_rc){
-      file.copy(in_msa_fasta , out_msa)
+      file.copy(in_msa_fasta , out_msa, overwrite = T)
       file.copy(stringr::str_replace(in_fasta,pattern = ".fasta", replacement = ".fasta.map") ,
-                stringr::str_replace(out_msa,pattern = ".fasta", replacement = ".fasta.map"))
+                stringr::str_replace(out_msa,pattern = ".fasta", replacement = ".fasta.map"), overwrite = T)
     }else{
-      file.copy(in_rc_msa_fasta , out_msa)
+      file.copy(in_rc_msa_fasta , out_msa, overwrite = T)
       file.copy(stringr::str_replace(in_rc_fasta,pattern = ".fasta", replacement = ".fasta.map") ,
-                stringr::str_replace(out_msa,pattern = ".fasta", replacement = ".fasta.map"))
+                stringr::str_replace(out_msa,pattern = ".fasta", replacement = ".fasta.map"), overwrite = T)
     }
     
     
@@ -123,28 +122,91 @@ handle_fasta = function(dir){
     system(command)
     
     
-    # the mafft .map file tells us which pos has any indels.
+    # the mafft .map file tells us which pos have indels
     t = readLines(paste0(out_msa, ".map"))
     t = t[3 : length(t)]
     t2 = read.table(text = t, sep = ",")
     names(t2) = c("nt", "query_pos", "ref_pos")
     # now if this is a good assembly then ambiguous positions will be "n", and handled with the variant caller
-    # here we simply want to find deletions, within the sequences segment
-    deletions_relative_to_reference =  setdiff((min(t2$ref_pos):max(t2$ref_pos)),
-            t2$ref_pos)
     
-    # now append this to the vcf file
     text = readLines(out_vcf)
     last_vcf_entry = read.table(text = text[length(text)], sep = "\t",colClasses = c("V4" = "character", "V5" = "character"))
-    for(del in 1:length(deletions_relative_to_reference)){
+    
+    # insertions
+    insertions_relative_to_reference =  grep("-", t2$ref_pos)
+    # now append this to the vcf file
+    num_insertions = length(insertions_relative_to_reference)
+    if(num_insertions > 0){
+      ins = 1
+      while(ins <= num_insertions){
+        iter = 1
+        ins_query_pos = t2$query_pos[insertions_relative_to_reference]
+        ins_ref_pos = as.numeric(t2$ref_pos[insertions_relative_to_reference - 1])
+        ins_ref_nt = ref.text[ins_ref_pos]
+        # concatenate contiguous insertions
+        if(ins+2 <= num_insertions){
+          if(insertions_relative_to_reference[ins+2] == ins_query_pos + 2){
+            inss = ins:(ins+2)
+          }
+        }else if(ins+1 <= num_insertions){
+          if(insertions_relative_to_reference[ins+1] == ins_query_pos + 1){
+            insss = ins:(ins+1)
+          }
+        }else{inss = ins}
+        
+        text = c(text,
+                 paste(last_vcf_entry$V1 + iter,
+                       ins_ref_pos,
+                       last_vcf_entry[,3],
+                       toupper(ins_ref_nt),
+                       toupper(paste0(ins_ref_nt,
+                                      t2$nt[insertions_relative_to_reference[inss]])), # reference base concat with insertion char
+                       last_vcf_entry[,6],
+                       last_vcf_entry[,7],
+                       last_vcf_entry[,8],
+                       last_vcf_entry[,9],
+                       last_vcf_entry[,10],
+                       last_vcf_entry[,11], sep = "\t")
+        )
+        ins = max(inss)+1 # ignore rest of contiguous block
+        iter = iter + 1
+      }
+      # deletion
+      # remove insertions
+      last_vcf_entry = read.table(text = text[length(text)], sep = "\t",colClasses = c("V4" = "character", "V5" = "character"))
+      t2 = t2[t2$query_pos !=insertions_relative_to_reference,]
+      t2$ref_pos = as.numeric(t2$ref_pos)
+    }
+    
+
+    
+    
+    deletions_relative_to_reference =  setdiff((min(t2$ref_pos):max(t2$ref_pos)),
+            t2$ref_pos)
+    # now append this to the vcf file
+    num_deletions = length(deletions_relative_to_reference)
+    del = 1
+    while(del <= num_deletions){
+      iter = 1
+      del_ref_pos = deletions_relative_to_reference[del]
+      del_ref_prior_pos = del_ref_pos - 1
+      del_ref_prior_nt = ref.text[del_ref_prior_pos]
+
       # what is the reference base at this position?
       "1\t47924\t.\tC\tT\t.\t.\t.\tGT\t0\t1"
+      # are there contiguous deletion?
+      if(deletions_relative_to_reference[del+2] == del_ref_pos + 2){
+        dels = del:(del+2)
+      }else if(deletions_relative_to_reference[del+1] == del_ref_pos + 1){
+        dels = del:(del+1)
+      }else{dels = del}
+      
       text = c(text,
                paste(last_vcf_entry$V1 + del,
-                     deletions_relative_to_reference[del],
+                     del_ref_prior_pos, # we care about the nt before deletion to anchor
                      last_vcf_entry[,3],
-                     toupper(ref.text[deletions_relative_to_reference[del]]), # reference base
-                     "-", # deletion
+                     paste(toupper(ref.text[c(del_ref_prior_pos,deletions_relative_to_reference[dels])]),collapse = ""), # reference base
+                     toupper(del_ref_prior_nt), # deletion
                      last_vcf_entry[,6],
                      last_vcf_entry[,7],
                      last_vcf_entry[,8],
@@ -152,7 +214,10 @@ handle_fasta = function(dir){
                      last_vcf_entry[,10],
                      last_vcf_entry[,11], sep = "\t")
       )
+      del = max(dels)+1
     }
+    
+
     # write the new vcf
     writeLines(text, out_vcf_deletions)
     

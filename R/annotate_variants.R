@@ -29,16 +29,22 @@ annotate_variants = function(toannotate,global){
   coding_df$aachange = paste(coding_df$REFAA,coding_df$PROTEINLOC,coding_df$VARAA,sep="")
   
   # frameshifts need to be labelled - expecting these for stop codons
-  which_changes_frameshift = grep("^[0-9]",coding_df$aachange)
-  coding_df$aachange[which_changes_frameshift] = paste0(coding_df$REFAA[which_changes_frameshift],
-         coding_df$aachange[which_changes_frameshift],
+  good = grep("^[A-Z]{1}$",coding_df$VarAllele)
+  which.drop.gain.aa = grep("[-+][A-Z]{3}",coding_df$VarAllele)
+  good = c(good,which.drop.gain.aa)
+  # anything else is a frameshift
+  which.fs = setdiff(1:nrow(coding_df), good)
+  coding_df$aachange[which.fs] = paste0(coding_df$REFAA[which.fs],
+         coding_df$aachange[which.fs],
          "frameshift")
   coding_df$change = paste(coding_df$GENEID,coding_df$aachange,sep="_")
+  coding_df$CONSEQUENCE = as.character(coding_df$CONSEQUENCE)
+  coding_df$CONSEQUENCE[which.fs] = "frameshift"
+  coding_df$CONSEQUENCE[which.drop.gain.aa] = "residue_loss_gain"
   
   # reduce fluff data
-  a = coding_df[,c("start", "GENEID", "strand", "REFCODON", "VARCODON", "RefCount", "VarCount", "change", "freq")]
-  names(a) = c("genome_pos", "gene", "strand", "ref_codon", "var_codon", "ref_count", "var_count", "aa_change", "freq")
-  a
+  coding_df = coding_df[,c("change", "freq","start", "strand", "REFCODON", "VARCODON", "RefCount", "VarCount", "CONSEQUENCE")]
+  names(coding_df) = c("change", "freq","genome_pos", "strand", "ref_codon", "var_codon", "ref_count", "var_count", "consequence")
   
   return(coding_df)
 }

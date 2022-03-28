@@ -37,6 +37,10 @@ add_resistance_info <-
     }
     
     
+    # annotate any frameshift mutations
+    which.fs = grep("frameshift", coding_df_res$change)
+    coding_df_res[which.fs,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Pencyclovir")] = "Resistant"
+    coding_df_res[which.fs,"note"] = "Frameshifts often result in premature stop codons, which heavily reduce antiviral efficacy"
     #coding_df_res <- cbind(resistance_site,coding_df)
     return(coding_df_res)
     
