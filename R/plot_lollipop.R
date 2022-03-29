@@ -23,16 +23,17 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", resistance_table = system.file
   
   
   # if sample has any mutations in f.gene
-  if(length(base::grep(unique(mut$GENE), pattern = f.gene)) > 0){
+  if(length(base::grep(unique(mut$gene), pattern = f.gene)) > 0){
     
     drugs = unlist(utils::read.csv(system.file("", "drugs.csv", package = "herpesdrg"),stringsAsFactors = F, header = F))
-    #manually force value types, should be oneline or sorted in data
-    mut$RefCount <- as.numeric(mut$RefCount)
-    mut$VarCount <- as.numeric(mut$VarCount) 
-    mut$PROTEINLOC <- as.numeric(mut$PROTEINLOC)
+    
+    mut$RefCount <- as.numeric(mut$ref_count)
+    mut$VarCount <- as.numeric(mut$var_count)
+    mut$PROTEINLOC <- as.numeric(stringr::str_extract(stringr::str_extract( f.dat$change,"[0-9]{1,4}[A-Z]{1}$"), "[0-9]{1,4}"))
+    mut$GENEID = stringr::str_extract( f.dat$change,"^[A-Z]{1,4}[0-9]{1,4}")
     
     # call res mutations from mutations
-    mut_res <- mut %>% dplyr::filter(.data$GENEID==f.gene & .data$CONSEQUENCE=="nonsynonymous")
+    mut_res <- mut %>% dplyr::filter(.data$GENEID==f.gene & .data$consequence=="nonsynonymous")
     mut_res$depth <- mut_res$RefCount + mut_res$VarCount 
     resistance <- utils::read.delim(resistance_table, header = TRUE,as.is = TRUE, sep = "\t")
     resistance$change <- paste(resistance$gene,resistance$aa_change,sep="_")
@@ -53,9 +54,9 @@ plot_lollipop <- function(f.dat, f.gene = "UL54", resistance_table = system.file
     
     d.resmuts <- data.frame(x = mut_res$PROTEINLOC,
                             y = readr::parse_number(mut_res$freq),
-                            label = mut_res$aachange)
+                            label = mut_res$change)
     d.resmuts = d.resmuts[!duplicated(d.resmuts),]
-    d.resmuts$resistance = d.resall$resistance[d.resall$aa_change %in% d.resmuts$label]
+    d.resmuts$resistance = d.resall$resistance[d.resall$change %in% d.resmuts$label]
     t.y <- 1 # updated to hard as now fixed y axis
     g <- ggplot2::ggplot() +
       #must add resistance mut along bottom colour by fold change etc?

@@ -14,6 +14,7 @@ add_resistance_info <-
            resistance_table,
            all_muts = FALSE,
            virus) {
+    
     coding_df <- f.dat
     resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")
     
@@ -24,20 +25,40 @@ add_resistance_info <-
     
     
     # merge resistance & mutation data
-    if (all_muts == F) {
-      coding_df_res <- base::merge(x = coding_df, y = resistance,
-                                   by = "change")
-    } else{
-      coding_df_res <- base::merge(
-        x = coding_df,
-        y = resistance,
-        by = "change",
-        all.x = T
-      )
+    coding_df_res <- base::merge(
+      x = coding_df,
+      y = resistance,
+      by = "change",
+      all.x = T
+    )
+    
+    
+    # annotate any frameshift mutations in resgenes
+    if(length(grep("frameshift", coding_df_res$change)) > 0){
+      is.fs = grepl("frameshift", coding_df_res$change)
+      t.genes = stringr::str_split(coding_df_res$change, "_",simplify = T)[,1]
+      is.in_resgenes = (t.genes %in% unique(resistance$gene))
+      is.fs_and_resgene = is.fs & is.in_resgenes
+      
+      
+
+      
+      
+      coding_df_res[is.fs_and_resgene,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Pencyclovir")] = "Resistant"
+      coding_df_res[is.fs_and_resgene,"note"] = "Frameshifts often result in premature stop codons, which heavily reduce antiviral efficacy"
+      coding_df_res[is.fs_and_resgene,"mutation_id"] = 0
+      
+      #coding_df_res <- cbind(resistance_site,coding_df)
     }
     
     
-    #coding_df_res <- cbind(resistance_site,coding_df)
+
+    if (all_muts == F) {
+      coding_df_res  = coding_df_res[grepl("[0-9]",coding_df_res$mutation_id),]
+    }
+    
+    
+
     return(coding_df_res)
     
   }

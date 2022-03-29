@@ -1,11 +1,11 @@
 Package: herpesdrg
 Type: Package
-Title: HerpesviridaeDrug Resistance Genotyping
-Version: 0.1
+Title: human Herpesviridae Drug Resistance Genotyping
+Version: 0.2
 Authors@R: c(
     person("OJ", "Charles", email = "oscar.charles.18@ucl.ac.uk", role = c("aut", "cre")))
 Maintainer: Charles OJ <oscar.charles.18@ucl.ac.uk>
-Description: Resistance Genotyping tool for HCMV HSV1 HSV2 VZV sequencing data, a command line, website and database.
+Description: Resistance Genotyping tool for HCMV HSV1 HSV2 VZV HHV6b sequencing data, a command line, website and database.
     The package includes
     Database: Simple Resistance or Polymorphism against a gene, mutation & drug.
     Shiny app: An intuitive way for scientists to call resitance on their data. Includes a clinical overview of the resistance phenotype, as well as some plots that may be of interest.
@@ -43,6 +43,6 @@ Suggests:
     rmarkdown,
     testthat
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 URL: https://github.com/ojcharles/herpesdg
 BugReports: https://github.com/ojcharles/herpesdrg/issues

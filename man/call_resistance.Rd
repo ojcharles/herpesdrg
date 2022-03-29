@@ -7,18 +7,15 @@
 call_resistance(
   infile = system.file("testdata", "HSV1_F716L.vcf", package = "herpesdrg"),
   virus = "HSV1",
-  all_mutations = TRUE,
-  outdir = ""
+  all_mutations = TRUE
 )
 }
 \arguments{
-\item{infile}{the input fasta, vcf or varscan.tab file}
+\item{infile}{the input fasta, vcf or varscan tab file}
 
-\item{virus}{HCMV HSV1 HSV2 VZV HHV6b}
+\item{virus}{HCMV HSV1 HSV2 VZV HHV6b Adeno}
 
 \item{all_mutations}{when FALSE only recognised resistant variants present are returned.}
-
-\item{outdir}{for fasta input files intermediate alignment fasta & vcf files are generated, this defines the directory they are saved to. "out.fasta" "out.vcf"}
 }
 \value{
 A data.frame containing resistance information for variants identified

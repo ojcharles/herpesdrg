@@ -13,7 +13,7 @@ test_that("variant files return resistance", {
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M"))
+  expect_equal(unique(df$change), c("UL54_709frameshift", "UL54_883frameshift", "UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
   
   #----- HSV1
   # read?
@@ -52,8 +52,91 @@ test_that("variant files return resistance", {
 
 })
 
-# travis seems a real faff to get working for snp-sites 2.3 as it's r builds are xenial not bionic ubuntu. so ignoring fasta tests for now.
-# tested regularly locally. mafft and snp-sites don't need to be tested alone.
+
+test_that("fasta PCR products that need to be reverse complented are", {
+  
+  # this input DNA sequence is the wrong orientation
+  # mafft should align it both verbatim and as a RC, identify which is the optimal alignment -> return the optimal alignments data
+  # if we have not implemented RC then this will provide essentially random mutations in random genes scattered across the genome
+  infile = system.file("testdata",  "HSV2_tk_RC.fasta", package = "herpesdrg")
+  virus = "HSV2"
+  all_mutations = TRUE
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 3)
+  expect_equal(unique(df$gene), "UL23")
+  expect_equal(unique(df$change), "UL23_G39E") # there is only a single nt change
+  
+})
+
+
+# test_that("insertions are handled", {
+#   
+#   # RC and insertion and deletion
+#   # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
+#   virus = "HSV2"
+#   all_mutations = TRUE
+#   infile = system.file("testdata",  "HSV2_tk_RC_frameshift_insertion.fasta", package = "herpesdrg")
+#   df = call_resistance(infile, virus, all_mutations)
+#   expect_equal(nrow(df), 4)
+#   expect_equal(grep("frameshift", df$change), 1)
+#   expect_equal(grep("frameshift", df$consequence), 1)
+# })
+
+test_that("insertions and deletions are handled with fasta", {
+  
+  # RC and insertion and deletion
+  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
+  virus = "HSV2"
+  all_mutations = T
+  infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 5)
+  expect_equal(grep("frameshift", df$consequence), 1)
+  expect_equal(grep("residue_loss_gain", df$consequence), 2)
+  
+  
+  all_mutations = F
+  infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 4)
+  expect_equal(grep("frameshift", df$consequence), 1)
+  expect_equal(length(grep("residue_loss_gain", df$consequence)), 0)
+  
+})
+
+
+test_that("insertions and deletions are handled with vcf", {
+  
+  # RC and insertion and deletion
+  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_frameshift_residueloss.vcf", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 2)
+  expect_equal(grep("frameshift", df$consequence), 2)
+  expect_equal(grep("residue_loss_gain", df$consequence), 1)
+  
+  
+
+})
+
+
+test_that("insertions and deletions are handled with varscan tab", {
+  
+  # RC and insertion and deletion
+  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_frameshift_residueloss.vcf", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 2)
+  expect_equal(grep("frameshift", df$consequence), 2)
+  expect_equal(grep("residue_loss_gain", df$consequence), 1)
+  
+  
+  
+})
 
 
 
