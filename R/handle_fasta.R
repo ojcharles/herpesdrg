@@ -45,7 +45,7 @@ handle_fasta = function(dir) {
       "snp-sites is either not installed or not added to PATH. Required for generating VCF from alignments."
     )
   }
-
+  
   
   
   ### mafft notes
@@ -245,13 +245,16 @@ handle_fasta = function(dir) {
     # what is the reference base at this position?
     "1\t47924\t.\tC\tT\t.\t.\t.\tGT\t0\t1"
     # are there contiguous deletion?
-    if (deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
-      dels = del:(del + 2)
-    } else if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
-      dels = del:(del + 1)
-    } else{
-      dels = del
-    }
+    if( del+2 <= num_deletions |  del+1 <= num_deletions ){
+      if (deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
+        dels = del:(del + 2)
+      } else if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
+        dels = del:(del + 1)
+      } else{
+        dels = del
+      }
+    }else{dels = del}
+    
     
     text = c(
       text,
