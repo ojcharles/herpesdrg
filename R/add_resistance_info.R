@@ -24,24 +24,28 @@ add_resistance_info <-
     
     
     # merge resistance & mutation data
+    coding_df_res <- base::merge(
+      x = coding_df,
+      y = resistance,
+      by = "change",
+      all.x = T
+    )
+    
     if (all_muts == F) {
-      coding_df_res <- base::merge(x = coding_df, y = resistance,
-                                   by = "change")
-    } else{
-      coding_df_res <- base::merge(
-        x = coding_df,
-        y = resistance,
-        by = "change",
-        all.x = T
-      )
+      coding_df_res2  = coding_df_res[grepl("[0-9]",coding_df_res$mutation_id),]
+      coding_df_res2 = rbind(coding_df_res2,
+                            coding_df_res[grepl("frameshift",coding_df_res$change),])
+      coding_df_res = coding_df_res2
     }
     
     
     # annotate any frameshift mutations
-    which.fs = grep("frameshift", coding_df_res$change)
-    coding_df_res[which.fs,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Pencyclovir")] = "Resistant"
-    coding_df_res[which.fs,"note"] = "Frameshifts often result in premature stop codons, which heavily reduce antiviral efficacy"
-    #coding_df_res <- cbind(resistance_site,coding_df)
+    if(length(grep("frameshift", coding_df_res$change)) > 0){
+      which.fs = grep("frameshift", coding_df_res$change)
+      coding_df_res[which.fs,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Pencyclovir")] = "Resistant"
+      coding_df_res[which.fs,"note"] = "Frameshifts often result in premature stop codons, which heavily reduce antiviral efficacy"
+      #coding_df_res <- cbind(resistance_site,coding_df)
+    }
     return(coding_df_res)
     
   }

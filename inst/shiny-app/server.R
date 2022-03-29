@@ -18,7 +18,7 @@ shinyServer(function(input, output, session) {
     global = list()
     global$res_table = system.file("herpesdrg-db", "herpesdrg-db.tsv", package = "herpesdrg")
     global$date <- format(Sys.time(), "%Y-%m-%d")
-    global$dir = ""
+    global$dir = tempdir()
     global$virus_genome = utils::read.csv(system.file("", "virus-genome.csv", package = "herpesdrg"),stringsAsFactors = F)
     global$genome = global$virus_genome[global$virus_genome$virus == virus,2]
     global$path_gff3_file=system.file("ref", paste0(global$genome,".gff3"), package = "herpesdrg")
@@ -49,7 +49,7 @@ shinyServer(function(input, output, session) {
     
     ### annotate variants
     # used in optional processes, i.e. identifying syn / nonsynonymous mutations in resistance genes.
-    dat2 <- herpesdrg::annotate_variants(f.dat = dat1, global())
+    dat2 <- herpesdrg::annotate_variants(dat1, global())
     
     
     return(dat2)
@@ -276,7 +276,7 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
   
   
   
-  # debug in brownser app mode
+  # debug in browser app mode
   output$vcf.o.res <- downloadHandler(
     filename = function(){paste(global()$date, "_resmuts.csv", sep="")},
     content = function(filename){

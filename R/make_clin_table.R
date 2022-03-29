@@ -30,7 +30,9 @@ make_clin_table = function(f.dat){
   dat = data.frame(matrix(nrow = 2, ncol = ncol(dat_drug)))
   colnames(dat) = colnames(dat_drug)
   rownames(dat) = c("Resistance Phenotype", "Evidence Strength")
-  dat_drug = f.dat[,c(keep, which(names(f.dat)=="tm_class"))]
+  dat_drug = f.dat[,c(keep, which(names(f.dat) =="tm_class"))]
+  
+  is.frameshift = length(grep("frameshift", f.dat$change)) > 0
   
   # write the table
   # for each drug, see if there are numbers (fold changes are best quality, then in vitro res/sus then anything else)
@@ -40,6 +42,17 @@ make_clin_table = function(f.dat){
     res.ev = "No Evidence"
     col.name = colnames(dat[col])
     t.dat = dat_drug[,c(col, ncol(dat_drug))]
+    
+    if(col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir") & is.frameshift){
+      res.pheno = "High level"
+      res.ev = "Good, frameshifts routinely arrest tk acivity"
+      #write Resistance Phenotype
+      dat[1,col] = res.pheno
+      # Write Evidence Strength
+      dat[2,col] = res.ev
+      next
+      
+    }
     
     # fix any reference data points where there is a numeric range of fold change ratio values. take lowest value - again arbitration
     if(length(t.dat[base::grepl(pattern = "-",x = t.dat[,1]),1]) > 0){
@@ -97,7 +110,7 @@ make_clin_table = function(f.dat){
   
   #js <- "(/High/).test(value) ? 'red' : (/Low/).test(value) ? 'yellow' : (/Susc/).test(value) ? 'green' : ''"
   #js <- "(/High/).test(value) ? '#ff6f69' : (/Moderate/).test(value) ? '#ff6f69' : (/Low/).test(value) ? '#ffcc5c' : (/Susc/).test(value) ? '#96ceb4' : (/vitro/).test(value) ? '#96ceb4' : (/anecdotal/).test(value) ? '#ffcc5c' :''"
-  js <- "(/High/).test(value) ? '#C34318' : (/Moderate/).test(value) ? '#F68C1B' : (/Low/).test(value) ? '#FFC605' : (/No Resistance/).test(value) ? '#759F2F' : (/vitro/).test(value) ? '#759F2F' : (/anecdotal/).test(value) ? '#F68C1B' :''"
+  js <- "(/arrest/).test(value) ? '#759F2F' : (/High/).test(value) ? '#C34318' : (/Moderate/).test(value) ? '#F68C1B' : (/Low/).test(value) ? '#FFC605' : (/No Resistance/).test(value) ? '#759F2F' : (/vitro/).test(value) ? '#759F2F' : (/anecdotal/).test(value) ? '#F68C1B' :''"
   
   
   out = DT::datatable(dat, options = list(dom = 't')) %>% 
