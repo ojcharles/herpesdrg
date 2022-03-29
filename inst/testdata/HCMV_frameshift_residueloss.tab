@@ -1,0 +1,3 @@
+Chrom	Position	Ref	Var	Cons:Cov:Reads1:Reads2:Freq:P-value	StrandFilter:R1+:R1-:R2+:R2-:pval	SamplesRef	SamplesHet	SamplesHom	SamplesNC	Cons:Cov:Reads1:Reads2:Freq:P-value
+NC_006273.2	79269	G	+TGC	+TGC/+TGC:861:74:791:91.02%:0E0	Pass:38:36:592:199:1E0	0	0	1	0	+TGC/+TGC:861:74:791:91.02%:0E0
+NC_006273.2	79276	T	+G	*/+G:50:40:11:21.15%:2.6733E-4	Pass:38:2:6:5:1E0	0	1	0	0	*/+G:50:40:11:21.15%:2.6733E-4
