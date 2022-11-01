@@ -16,10 +16,7 @@ read_input <- function(infile, global){
   infile <- as.character(infile)
   ### tab ###
   if(tools::file_ext(infile) == "tab"){
-    #if file appears as a varscan tab file
-    # delimit
-    tab.dat <- utils::read.table(file = infile, header = T, as.is = T, sep = "\t")
-    out <- read_varscan_data(tab.dat)
+    out = read_varscan_data(infile)
   }
   ### vcf ###
   else if(tools::file_ext(infile) == "vcf"){
@@ -117,44 +114,54 @@ read_input <- function(infile, global){
 
 
 parse_vcf_4_1 = function(infile){
-  # read vcf
-  r = VariantAnnotation::readVcf(infile)
-  t = data.frame(r@assays@data@listData)
+  text <- readLines(infile)
+  start <- base::grep('chrom',ignore.case = T, text)
+  vcf = utils::read.delim(infile, sep = "\t", as.is = T, skip = start - 1)
   
-  # positions
-  pos_s = r@rowRanges@ranges@start
-  
-  # adjust ref alt so it matches varscan tab formatting
-  ref = as.character(r@fixed$REF)
-  var = as.character(as.data.frame(r@fixed$ALT)$value)
-  for( i in 1:length(ref) ){#clean up vcf indel format to be as in varscan tab
-    r = ref[i]
-    v = var[i]
-    if(nchar(r) > 1){#if deletion
-      out.ref = v
-      out.var = r
-      base::substr(out.var, 1, 1) <- "-"
-      ref[i] = out.ref
-      var[i] = out.var
+  if(stringr::str_count(string = vcf[1,9], pattern = ":") > 0){ # if has a format column & genotype column, split to extract ref.count, var.count per position
+    vcf.num_format = as.numeric(length(unlist(strsplit(vcf[1,9], split=":"))))
+    t.1 <- as.data.frame(matrix(unlist(strsplit(vcf[,10], split=":")), ncol=vcf.num_format, byrow="T"), stringsAsFactors=F)
+    colnames(t.1) <- unlist(strsplit(vcf[1,9], split=":"))
+    
+    out = data.frame(Position = vcf$POS,
+                        Ref = vcf$REF,
+                        Var = vcf$ALT,
+                        Ref.count = as.numeric(t.1$RD),
+                        Var.count = as.numeric(t.1$AD),
+                        VarFreq = t.1$FREQ,
+                        Sample = "single run",
+                        stringsAsFactors = F)
+  }else{
+    # deal with as the snp-sites output
+    # if has a format column & genotype column, split to extract ref.count, var.count per position
+    for(i in 1:nrow(vcf)){#clean up vcf indel format to be as in varscan tab
+      ref = vcf$REF[i]
+      var = vcf$ALT[i]
+      if(nchar(ref) > 1){#if deletion
+        out.ref = var
+        out.var = ref
+        base::substr(out.var, 1, 1) <- "-"
+        vcf$REF[i] = out.ref
+        vcf$ALT[i] = out.var
+      }
+      if(nchar(var) > 1){#if insertion
+        out.ref = ref
+        out.var = var
+        base::substr(out.var, 1, 1) <- "+"
+        vcf$REF[i] = out.ref
+        vcf$ALT[i] = out.var
+      }
     }
-    if(nchar(v) > 1){#if insertion
-      out.ref = r
-      out.var = v
-      base::substr(out.var, 1, 1) <- "+"
-      ref[i] = out.ref
-      var[i] = out.var
-    }
+    
+    out = data.frame(Position = vcf$POS,
+                        Ref = vcf$REF,
+                        Var = vcf$ALT,
+                        Ref.count = as.numeric(vcf[,10]),
+                        Var.count = as.numeric(vcf[,11]),
+                        VarFreq = "100%",
+                        Sample = "single run",
+                        stringsAsFactors = F)
   }
-  
-  # format for internal handling
-  out = data.frame(Position = pos_s,
-                   Ref = ref,
-                   Var = var,
-                   Ref.count = t$RD, #diff from vcf proc
-                   Var.count = t$AD, # diff from vcf proc
-                   VarFreq = t$FREQ,
-                   Sample = "single run",
-                   stringsAsFactors = F)
   return(out)
 }
 
@@ -179,7 +186,7 @@ parse_vcf_4_2 = function(infile){
   na = nrow(a)
   for(i in 1:na){
     index = a$rownum[i]
-    a[i,4] = pos_s[index]
+    a[i,4] = as.integer(pos_s[index])
     a[i,5] = refs[index]
     a[i,6] = ref_counts[index]
     
@@ -188,40 +195,18 @@ parse_vcf_4_2 = function(infile){
     t1 = sum(t1 == index,na.rm = T)
     a[i,7] = var_counts[t1,index]
   }
+  a = a[,c(4,5,3,6,7)]
+  a2 = a
   
   
-  
-  # adjust ref alt so it matches varscan tab formatting
-  ref = a$ref
-  var = a$var
-  for( i in 1:length(ref) ){#clean up vcf indel format to be as in varscan tab
-    r = ref[i]
-    v = var[i]
-    if(nchar(r) > 1){#if deletion
-      out.ref = v
-      out.var = r
-      base::substr(out.var, 1, 1) <- "-"
-      ref[i] = out.ref
-      var[i] = out.var
-    }
-    if(nchar(v) > 1){#if insertion
-      out.ref = r
-      out.var = v
-      base::substr(out.var, 1, 1) <- "+"
-      ref[i] = out.ref
-      var[i] = out.var
-    }
-  }
-  
-  paste0( round( 100 * a$var_counts / (a$var_counts + a$ref_count), 2) , "%" )
   
   # format for internal handling
   out = data.frame(Position = a$pos,
-                   Ref = ref,
-                   Var = var,
+                   Ref = a$ref,
+                   Var = a$var,
                    Ref.count = a$ref_count, #diff from vcf proc
                    Var.count = a$var_counts, # diff from vcf proc
-                   VarFreq = paste0( round( a$var_counts / (a$var_counts + a$ref_count) , 2) , "%" ),
+                   VarFreq = paste0( round( 100 * a$var_counts / (a$var_counts + a$ref_count), 2) , "%" ),
                    Sample = "single run",
                    stringsAsFactors = F)
   return(out)

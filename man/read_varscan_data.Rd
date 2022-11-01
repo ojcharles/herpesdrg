@@ -4,7 +4,7 @@
 \alias{read_varscan_data}
 \title{Handles varscan data}
 \usage{
-read_varscan_data(f.df)
+read_varscan_data(infile)
 }
 \arguments{
 \item{f.df}{data.frame of read varscan file}
