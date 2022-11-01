@@ -57,25 +57,25 @@ read_input <- function(infile, global){
     vcf[,10] = as.numeric(vcf[,10])
     vcf[,11] = as.numeric(vcf[,11])
     
-    # if has a format column & genotype column, split to extract ref.count, var.count per position
-    for(i in 1:nrow(vcf)){#clean up vcf indel format to be as in varscan tab
-      ref = vcf$REF[i]
-      var = vcf$ALT[i]
-      if(nchar(ref) > 1){#if deletion
-        out.ref = var
-        out.var = ref
-        base::substr(out.var, 1, 1) <- "-"
-        vcf$REF[i] = out.ref
-        vcf$ALT[i] = out.var
-      }
-      if(nchar(var) > 1){#if insertion
-        out.ref = ref
-        out.var = var
-        base::substr(out.var, 1, 1) <- "+"
-        vcf$REF[i] = out.ref
-        vcf$ALT[i] = out.var
-      }
-    }
+    # # if has a format column & genotype column, split to extract ref.count, var.count per position
+    # for(i in 1:nrow(vcf)){#clean up vcf indel format to be as in varscan tab
+    #   ref = vcf$REF[i]
+    #   var = vcf$ALT[i]
+    #   if(nchar(ref) > 1){#if deletion
+    #     out.ref = var
+    #     out.var = ref
+    #     base::substr(out.var, 1, 1) <- "-"
+    #     vcf$REF[i] = out.ref
+    #     vcf$ALT[i] = out.var
+    #   }
+    #   if(nchar(var) > 1){#if insertion
+    #     out.ref = ref
+    #     out.var = var
+    #     base::substr(out.var, 1, 1) <- "+"
+    #     vcf$REF[i] = out.ref
+    #     vcf$ALT[i] = out.var
+    #   }
+    # }
     
     t.vcf <- data.frame(Position = vcf$POS,
                         Ref = vcf$REF,

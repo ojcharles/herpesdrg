@@ -14,7 +14,7 @@ test_that("variant files return resistance", {
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_708_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
+  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
   
   #----- HSV1
   # read?
@@ -114,17 +114,8 @@ test_that("insertions and deletions are handled with fasta", {
   all_mutations = T
   infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
   df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 5)
-  expect_equal(grep("frameshift", df$consequence), 1)
-  expect_equal(grep("residue_loss_gain", df$consequence), 2)
-  
-  
-  all_mutations = F
-  infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
-  df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 4)
-  expect_equal(grep("frameshift", df$consequence), 1)
-  expect_equal(length(grep("residue_loss_gain", df$consequence)), 0)
+  expect_equal(length(grep("frameshift", df$consequence)), 1)
+  expect_equal(length(grep("_residue_loss", df$change)), 1)
   
 })
 
