@@ -16,7 +16,7 @@ add_resistance_info <-
            virus) {
     
     coding_df <- f.dat
-    resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")
+    resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")[,1:29]
     
     # filter status - records on-revision may be below the data quality we expect, and are flagged.
     resistance = resistance[resistance$status == "A", ]

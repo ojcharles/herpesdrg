@@ -25,7 +25,7 @@ shinyUI(
                 div(style="display:inline-block",uiOutput("vcf.o.all1")),
                 #div(style="display:inline-block",downloadButton("vcf.o.res", "download resistance data")),
                 #div(style="display:inline-block",downloadButton("vcf.o.all", "download all-mutants data")),
-                br(),br(),h4("Clinical Overview"),br(),
+                br(),br(),h4("Clinical Overview - mutations > 10% frequency"),br(),
                 DT::dataTableOutput("vcf.table_clin"),
                 br(),br(),h4("Identified Resistant mutants"),br(),
                 tableOutput("vcf.table_res")

@@ -8,12 +8,13 @@ test_that("variant files return resistance", {
   # read?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
                        all_mutations = TRUE, virus = "HCMV")
-  expect_equal(nrow(df), 2926)
+  expect_equal(nrow(df), 2993)
+  expect_equal(nrow(df[! is.na(df$mutation_id),]) , 6)
   
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_709frameshift", "UL54_883frameshift", "UL54_D588N", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
+  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
   
   #----- HSV1
   # read?
@@ -53,6 +54,25 @@ test_that("variant files return resistance", {
 })
 
 
+
+test_that("insertions and deletions are handled with vcf", {
+  
+  # RC and insertion and deletion
+  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_frameshift_residueloss_gain.vcf", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 6)
+  expect_equal( sum(grepl("frameshift", df$consequence)), 1)
+  expect_equal(sum(grepl("residue", df$change)), 2)
+  
+  
+  
+})
+
+
+
 test_that("fasta PCR products that need to be reverse complented are", {
   
   # this input DNA sequence is the wrong orientation
@@ -67,6 +87,10 @@ test_that("fasta PCR products that need to be reverse complented are", {
   expect_equal(unique(df$change), "UL23_G39E") # there is only a single nt change
   
 })
+
+
+
+
 
 
 # test_that("insertions are handled", {
@@ -90,53 +114,13 @@ test_that("insertions and deletions are handled with fasta", {
   all_mutations = T
   infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
   df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 5)
-  expect_equal(grep("frameshift", df$consequence), 1)
-  expect_equal(grep("residue_loss_gain", df$consequence), 2)
-  
-  
-  all_mutations = F
-  infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
-  df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 4)
-  expect_equal(grep("frameshift", df$consequence), 1)
-  expect_equal(length(grep("residue_loss_gain", df$consequence)), 0)
+  expect_equal(length(grep("frameshift", df$consequence)), 1)
+  expect_equal(length(grep("_residue_loss", df$change)), 1)
   
 })
 
 
-test_that("insertions and deletions are handled with vcf", {
-  
-  # RC and insertion and deletion
-  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
-  virus = "HCMV"
-  all_mutations = T
-  infile = system.file("testdata",  "HCMV_frameshift_residueloss.vcf", package = "herpesdrg")
-  df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 2)
-  expect_equal(grep("frameshift", df$consequence), 2)
-  expect_equal(grep("residue_loss_gain", df$consequence), 1)
-  
-  
 
-})
-
-
-test_that("insertions and deletions are handled with varscan tab", {
-  
-  # RC and insertion and deletion
-  # the current method provides an alignment, which is great. But we want to identify stop codons also and return them
-  virus = "HCMV"
-  all_mutations = T
-  infile = system.file("testdata",  "HCMV_frameshift_residueloss.vcf", package = "herpesdrg")
-  df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 2)
-  expect_equal(grep("frameshift", df$consequence), 2)
-  expect_equal(grep("residue_loss_gain", df$consequence), 1)
-  
-  
-  
-})
 
 
 

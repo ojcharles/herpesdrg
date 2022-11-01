@@ -12,6 +12,12 @@ make_clin_table = function(f.dat){
   # as a result there are a few decisions to be made here, where the code acts as an arbitrator (not good)
   # this is overcome, by also providing all the raw data in another output.
   
+  # filter to show only mutations above 10%
+  f.dat$freq = stringr::str_extract(f.dat$freq, "[0-9]{1,3}.[0-9]{0,3}")
+  f.dat$freq = as.numeric(gsub("%", "",f.dat$freq))
+  f.dat = f.dat[f.dat$freq > 10.00,]
+  
+  
   #force factors to character
   i <- sapply(f.dat, is.factor)
   f.dat[i] <- lapply(f.dat[i], as.character)
@@ -22,6 +28,7 @@ make_clin_table = function(f.dat){
   
   # for future methods we may have modelled phenotype, for now just set all to in vitro
   f.dat$tm_class = "in_vitro"
+  f.dat[f.dat$consequence == "frameshift",]$tm_class = "expected_frameshift"
   
   # end manually set
   
@@ -31,21 +38,26 @@ make_clin_table = function(f.dat){
   colnames(dat) = colnames(dat_drug)
   rownames(dat) = c("Resistance Phenotype", "Evidence Strength")
   dat_drug = f.dat[,c(keep, which(names(f.dat) =="tm_class"))]
+
   
-  is.frameshift = length(grep("frameshift", f.dat$change)) > 0
   
   # write the table
   # for each drug, see if there are numbers (fold changes are best quality, then in vitro res/sus then anything else)
   for(col in 1:ncol(dat)){
   #for(col in 1:1){ 
-    res.pheno = "NA"
-    res.ev = "No Evidence"
+    res.pheno = "No evidence"
+    res.ev = "No evidence"
     col.name = colnames(dat[col])
     t.dat = dat_drug[,c(col, ncol(dat_drug))]
     
-    if(col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir") & is.frameshift){
+    
+    fs_genes = stringr::str_split(f.dat$change, "_",simplify = T)[,1]
+    
+    # if frameshift in TK genes then impacts certain drugs
+    if( col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir","Cyclopropavir") &
+       sum(c("UL97", "UL23") %in% fs_genes) > 0 ){
       res.pheno = "High level"
-      res.ev = "Good, frameshifts routinely arrest tk acivity"
+      res.ev = "Frameshifts arrest drug activity"
       #write Resistance Phenotype
       dat[1,col] = res.pheno
       # Write Evidence Strength
@@ -74,7 +86,7 @@ make_clin_table = function(f.dat){
       }else if(res.pheno < 2){
         res.pheno = "No Resistance"
       }
-    res.ev = "good, in vitro"
+    res.ev = res.ev = "In vitro"
     #else if there are only anecdotal data
     }else if(length(base::grepl(pattern = "[a-z]", t.dat[,1])[base::grepl(pattern = "[a-z]", t.dat[,1])==TRUE]) > 0){
       res.pheno = t.dat[base::grepl(pattern = "[a-z]", t.dat[,1]),]
@@ -92,7 +104,7 @@ make_clin_table = function(f.dat){
       }
       
       #res.ev = "weaker, anecdotal"
-      res.ev = "good, in vitro"
+      res.ev = "in vitro"
       
     }else{
       #default is NA so do nothing
@@ -108,24 +120,13 @@ make_clin_table = function(f.dat){
   
   # now make output
   
-  #js <- "(/High/).test(value) ? 'red' : (/Low/).test(value) ? 'yellow' : (/Susc/).test(value) ? 'green' : ''"
-  #js <- "(/High/).test(value) ? '#ff6f69' : (/Moderate/).test(value) ? '#ff6f69' : (/Low/).test(value) ? '#ffcc5c' : (/Susc/).test(value) ? '#96ceb4' : (/vitro/).test(value) ? '#96ceb4' : (/anecdotal/).test(value) ? '#ffcc5c' :''"
   js <- "(/arrest/).test(value) ? '#759F2F' : (/High/).test(value) ? '#C34318' : (/Moderate/).test(value) ? '#F68C1B' : (/Low/).test(value) ? '#FFC605' : (/No Resistance/).test(value) ? '#759F2F' : (/vitro/).test(value) ? '#759F2F' : (/anecdotal/).test(value) ? '#F68C1B' :''"
   
   
   out = DT::datatable(dat, options = list(dom = 't')) %>% 
     DT::formatStyle(names(dat),
                 1:ncol(dat), backgroundColor = DT::JS(js))
-  
-  
 
-  
-  
-  # out <- datatable(dat, options = list(dom = 't')) %>%
-  #   formatStyle(
-  #     names(dat),
-  #     backgroundColor = styleInterval(c(1, 2), c('white', 'blue', 'red')),
-  #     fontWeight = 'bold')
 
   
   return(out)

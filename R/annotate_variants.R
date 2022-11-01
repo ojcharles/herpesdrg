@@ -8,7 +8,8 @@
 #' 
 
 annotate_variants = function(toannotate,global){
-  check = IRanges::IRanges(start=toannotate$Position, end=toannotate$Position, width=1)
+  width = nchar(toannotate$Ref) - 1
+  check = IRanges::IRanges(start=toannotate$Position, end=toannotate$Position+width)
   gr = GenomicRanges::GRanges(seqnames = global$genome ,ranges=check)
   S4Vectors::values(gr) = S4Vectors::DataFrame(id = toannotate$Sample, freq = toannotate$VarFreq, RefCount= toannotate$Ref.count, VarCount= toannotate$Var.count, VarAllele=toannotate$Var)
   varallele = Biostrings::DNAStringSet(toannotate$Var)
@@ -26,25 +27,140 @@ annotate_variants = function(toannotate,global){
   txids = S4Vectors::values(GenomicFeatures::transcripts(txdb))$tx_name
   names(txids) = S4Vectors::values(GenomicFeatures::transcripts(txdb))$tx_id
   coding_df = as.data.frame(coding)
-  coding_df$aachange = paste(coding_df$REFAA,coding_df$PROTEINLOC,coding_df$VARAA,sep="")
   
-  # frameshifts need to be labelled - expecting these for stop codons
-  good = grep("^[A-Z]{1}$",coding_df$VarAllele)
-  which.drop.gain.aa = grep("[-+][A-Z]{3}",coding_df$VarAllele)
-  good = c(good,which.drop.gain.aa)
-  # anything else is a frameshift
-  which.fs = setdiff(1:nrow(coding_df), good)
-  coding_df$aachange[which.fs] = paste0(coding_df$REFAA[which.fs],
-         coding_df$aachange[which.fs],
-         "frameshift")
-  coding_df$change = paste(coding_df$GENEID,coding_df$aachange,sep="_")
-  coding_df$CONSEQUENCE = as.character(coding_df$CONSEQUENCE)
-  coding_df$CONSEQUENCE[which.fs] = "frameshift"
-  coding_df$CONSEQUENCE[which.drop.gain.aa] = "residue_loss_gain"
+
   
+  coding_df$change = ""
+  
+  
+  
+  #### initial cleaning
+  # handle subenes, take first CDSID
+  which_2_cdsid = which(lengths(coding_df$CDSID) >1 )
+  if( length(which_2_cdsid) > 0 ){ for(i in which_2_cdsid){ coding_df$CDSID[i] = unlist(coding_df$CDSID[i])[1] } }
+  
+  
+  ### handle frameshifts
+
+  which_frameshift = which(coding_df$CONSEQUENCE == "frameshift")
+  if( length(which_frameshift) > 0 ){
+    
+    # many pos -> last pos
+    for(i in which_frameshift ){
+      if( length( unlist(coding_df$PROTEINLOC[i]) ) > 1 ) {
+        pos_s = length(unlist(coding_df$PROTEINLOC[i]))
+        coding_df$PROTEINLOC[i] = as.integer(unlist(coding_df$PROTEINLOC[i])[pos_s])
+      }else{
+        coding_df$PROTEINLOC[i] = as.integer(unlist(coding_df$PROTEINLOC[i])[1])
+      }
+    }
+    
+    #now generate change string
+    coding_df$change[which_frameshift] = paste0(coding_df$GENEID[which_frameshift], "_",
+                                                coding_df$REFAA[which_frameshift],
+                                                coding_df$PROTEINLOC[which_frameshift],
+                                                "_frameshift"
+                                                )
+  }
+  
+
+  
+  
+  
+  # handle multi-residue and deletions
+  which_many_changes = which(nchar(coding_df$REFAA) > 1 & coding_df$change == "")   # will remove these rows at end
+  if( length(which_many_changes) > 0 ){
+    for( i in which_many_changes){
+      refs = unlist(strsplit(as.character(coding$REFAA[i]),""))
+      vars = unlist(strsplit(as.character(coding$VARAA[i]),""))
+      refcodons = sapply(seq(from=1, to=nchar(coding_df$REFCODON[i]), by=3), function(x) substr(coding_df$REFCODON[i], x, x+2))
+      varcodons = sapply(seq(from=1, to=nchar(coding_df$VARCODON[i]), by=3), function(x) substr(coding_df$VARCODON[i], x, x+2))
+      pos_s = as.integer(unlist(coding_df$PROTEINLOC[i])) ; pos_s = pos_s[1] : pos_s[length(pos_s)]
+      
+      # create templat row on current mixed SAV data, and input updates per SAV and rbind
+      t =  coding_df[i,]
+      for( new_entry in 1:length(refs) ){
+        t1 = t
+        
+        new_pos = pos_s[new_entry]
+        new_refcodon = refcodons[new_entry]
+        new_varcodon = varcodons[new_entry]
+        new_refAA = refs[new_entry]
+        new_varAA = vars[new_entry]
+        
+        # only certain columns need updating
+        t1$PROTEINLOC = as.integer(new_pos)
+        t1$REFCODON = new_refcodon
+        t1$VARCODON = new_varcodon
+        t1$REFAA = new_refAA
+        t1$VARAA = new_varAA
+        
+        if(!is.na(t1$VARAA)){
+          # SAV
+          t1$change = paste0(t1$GENEID, "_", t1$REFAA, t1$PROTEINLOC, t1$VARAA)
+        }else{
+          # deletion
+          t1$VARAA = ""
+          t1$VARCODON = ""
+          t1$change = paste0(t1$GENEID, "_", t1$REFAA, t1$PROTEINLOC, "_residue_loss")
+        }
+        
+        coding_df = rbind(coding_df , t1)
+        
+      }
+    }
+    # now we have appended the well formatted SAV rows, we remove the multipleSAV rows
+    coding_df = coding_df[-which_many_changes,]
+    
+  }
+  
+  
+  
+  # handle residue insertions
+  which_aa_gain = which(nchar(coding_df$REFAA) !=  nchar(coding_df$VARAA) & coding_df$change == "")
+  if( length(which_aa_gain) > 0){
+    g = coding_df$GENEID[which_aa_gain]
+    r = coding_df$REFAA[which_aa_gain]
+    v = coding_df$VARAA[which_aa_gain]
+    pos_s = c()
+    for(i in which_aa_gain){ pos_s = c(pos_s, unlist(coding_df$PROTEINLOC[i])[1] ) }
+    coding_df$change[which_aa_gain] = paste0(g, "_",r, pos_s, v, "_residue_gain")
+  }
+  
+
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+  
+  # clean
+  coding_df$PROTEINLOC = as.integer(unlist(coding_df$PROTEINLOC))
+  coding_df$CDSID = as.integer(unlist(coding_df$CDSID))
+  coding_df = coding_df[order(coding_df$start),]
+  which_SAV = which(coding_df$change == "")
+  if( length(which_SAV) > 0 ){
+    coding_df$change[which_SAV] = paste(coding_df$GENEID[which_SAV],
+                                        "_", 
+                                        coding_df$REFAA[which_SAV],
+                                        coding_df$PROTEINLOC[which_SAV],
+                                        coding_df$VARAA[which_SAV],sep="")
+    
+  }
+  
+  
+  
+
   # reduce fluff data
   coding_df = coding_df[,c("change", "freq","start", "strand", "REFCODON", "VARCODON", "RefCount", "VarCount", "CONSEQUENCE")]
   names(coding_df) = c("change", "freq","genome_pos", "strand", "ref_codon", "var_codon", "ref_count", "var_count", "consequence")
+  
+  rownames(coding_df) = NULL
   
   return(coding_df)
 }
