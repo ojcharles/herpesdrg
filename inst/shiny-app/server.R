@@ -82,6 +82,12 @@ shinyServer(function(input, output, session) {
       return(NULL)}
     if(nrow(vcf.d.res()) == 0){
       return(NULL)}
+    # does data contain mutations with > 10% freq?
+    freqs = stringr::str_extract(vcf.d.res()$freq, "[0-9]{1,3}.[0-9]{0,3}")
+    freqs = as.numeric(gsub("%", "",freqs))
+    if ( length( freqs[freqs > 10.00]) == 0 ){
+      return(NULL)
+    }
     out = herpesdrg::make_clin_table(vcf.d.res())  
     return(out)
   })
