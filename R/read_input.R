@@ -173,15 +173,31 @@ parse_vcf_4_2 = function(infile){
   t = data.frame(r@assays@data@listData)
   
   # positions
-  pos_s = r@rowRanges@ranges@start #
+  pos_s = r@rowRanges@ranges@start
   refs = as.character(r@fixed$REF)
   alts = r@fixed$ALT
-  var_counts = data.frame(t$AO)
-  ref_counts = t$RO
+  
+  # ref/varcounts
+  if( is.null(t$AO) ){ dp4_true = T }else{ dp4_true = F }
+  if( ! dp4_true ){
+    # ref / var count method 1
+    var_counts = data.frame(t$AO)
+    ref_counts = t$RO
+  }else{
+    # ref/varcounts 2
+    # ref and alt counts can be specified as above, but there is also an alternative
+    # ID=DP4 is number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases
+    DP4 = matrix(unlist(as.list(r@info@listData$DP4)), ncol = 4,byrow = T)
+    var_counts = DP4[,3] + DP4[,4]
+    ref_counts = DP4[,1] + DP4[,2]
+  }
+
+  
+  
+  
   
   a = data.frame(alts)
   colnames(a) = c("rownum", "NA", "var")
-  
   a$pos = 0 ; a$ref = "" ;a$ref_count = 0; a$var_counts = 0
   na = nrow(a)
   for(i in 1:na){
@@ -190,10 +206,19 @@ parse_vcf_4_2 = function(infile){
     a[i,5] = refs[index]
     a[i,6] = ref_counts[index]
     
-    # which genotype index am i at this position?
-    t1 = a[1:i,1]
-    t1 = sum(t1 == index,na.rm = T)
-    a[i,7] = var_counts[t1,index]
+    if (dp4_true){
+      # assume only 1 var per postion, means simply return index of var count vector
+      a[i,7] = var_counts[index]
+      
+    }else{
+      # there's a potential that a position has data for more than 1 variant.
+      # which genotype index am i at this position?
+      t1 = a[1:i,1]
+      t1 = sum(t1 == index,na.rm = T)
+      a[i,7] = var_counts[t1,index]
+    }
+    
+
   }
   a = a[,c(4,5,3,6,7)]
   a2 = a

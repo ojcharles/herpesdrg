@@ -26,9 +26,9 @@ make_clin_table = function(f.dat){
   keep = which(names(f.dat) %in% unlist(drugs))
   dat_drug = f.dat[,keep]
   
-  # for future methods we may have modelled phenotype, for now just set all to in vitro
+  # for future methods we may have modeled phenotype, for now just set all to in vitro
   f.dat$tm_class = "in_vitro"
-  f.dat[f.dat$consequence == "frameshift",]$tm_class = "expected_frameshift"
+  if(nrow(f.dat[f.dat$consequence == "frameshift",]) > 0 ){  f.dat[f.dat$consequence == "frameshift",]$tm_class = "expected_frameshift" }
   
   # end manually set
   
