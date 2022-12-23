@@ -8,7 +8,7 @@ test_that("variant files return resistance", {
   # read?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
                        all_mutations = TRUE, virus = "HCMV")
-  expect_equal(nrow(df), 2993)
+  expect_equal(nrow(df), 2981)
   expect_equal(nrow(df[! is.na(df$mutation_id),]) , 6)
   
   # calls resistance?
@@ -63,7 +63,7 @@ test_that("insertions and deletions are handled with vcf", {
   all_mutations = T
   infile = system.file("testdata",  "HCMV_frameshift_residueloss_gain.vcf", package = "herpesdrg")
   df = call_resistance(infile, virus, all_mutations)
-  expect_equal(nrow(df), 6)
+  expect_equal(nrow(df), 5)
   expect_equal( sum(grepl("frameshift", df$consequence)), 1)
   expect_equal(sum(grepl("residue", df$change)), 2)
   

@@ -28,6 +28,10 @@ handle_fasta = function(dir) {
   fa.text <- readLines(in_fasta)
   fa.header = fa.text[1]
   fa.body <- fa.text[2:length(fa.text)]
+  # replace N, n , - with nothing in query fasta
+  #fa.body = gsub("n|N|-", "", fa.body)
+  #writeLines(c(fa.header, fa.body), in_fasta)
+  # continue
   fa.genome_len = as.numeric(sum(nchar(fa.body)))
   ref.text = ape::read.dna(
     ref_fasta,
@@ -171,39 +175,54 @@ handle_fasta = function(dir) {
     colClasses = c("V4" = "character", "V5" = "character")
   )
   
+  
+  ############ now we need to append to the vcf entry, indels, in the format we get from an actual vcf
+  
   # insertions
-  insertions_relative_to_reference =  grep("-", t2$ref_pos)
-  # now append this to the vcf file
-  num_insertions = length(insertions_relative_to_reference)
+  mafft_map_index_insertion =  grep("-", t2$ref_pos)
+  mafft_map_insertion_query_pos = t2$query_pos[mafft_map_index_insertion]
+  mafft_map_insertion_ref_pos = t2$ref_pos[mafft_map_index_insertion - 1]
+  mafft_map_num_insertions = length(mafft_map_index_insertion)
+  num_insertions = length(mafft_map_index_insertion)
+  
   if (num_insertions > 0) {
-    ins = 1
-    while (ins <= num_insertions) {
-      iter = 1
-      ins_query_pos = t2$query_pos[insertions_relative_to_reference]
-      ins_ref_pos = as.numeric(t2$ref_pos[insertions_relative_to_reference - 1])
-      ins_ref_nt = ref.text[ins_ref_pos]
-      # concatenate contiguous insertions
-      if (ins + 2 <= num_insertions) {
-        if (insertions_relative_to_reference[ins + 2] == ins_query_pos + 2) {
-          inss = ins:(ins + 2)
-        }
-      } else if (ins + 1 <= num_insertions) {
-        if (insertions_relative_to_reference[ins + 1] == ins_query_pos + 1) {
-          inss = ins:(ins + 1)
-        }
-      } else{
-        inss = ins
+    # identity the ref position the insertion occurs at
+    rp_num = 1
+    for(rp in 1:length(mafft_map_insertion_ref_pos)){
+      # first entry should always be numeric
+      if( grepl("[0-9]",mafft_map_insertion_ref_pos[rp]) ){
+        rp_num = mafft_map_insertion_ref_pos[rp]
+      }else{
+        # this entry is a "-" character, and should be set at the left most numeric value we have
+        mafft_map_insertion_ref_pos[rp] = rp_num
       }
+    }
+    mafft_map_insertion_ref_pos = as.numeric(mafft_map_insertion_ref_pos)
+  }
+  
+  
+  # now per insertion location, add a vcf line entry
+  if (num_insertions > 0) {
+    
+    for(i_site in unique(mafft_map_insertion_ref_pos)){
+      
+      # which var pos map to this ref site?
+      i_site_varposs = which(mafft_map_insertion_ref_pos == i_site)
+      # which positions in t2 are this?
+      i_site_varposs_index = mafft_map_index_insertion[i_site_varposs]
+      # what is the ref nt?
+      i_ref_nt = t2$nt[i_site_varposs_index[1] - 1]
+      #what are the nt's inserted?'
+      i_var_nts = paste0(i_ref_nt , paste0(t2$nt[i_site_varposs_index],collapse = "") )
       
       text = c(
         text,
         paste(
-          last_vcf_entry$V1 + iter,
-          ins_ref_pos,
+          last_vcf_entry$V1, # + iter,
+          i_site,
           last_vcf_entry[, 3],
-          toupper(ins_ref_nt),
-          toupper(paste0(ins_ref_nt,
-                         t2$nt[insertions_relative_to_reference[inss]])),
+          toupper(i_ref_nt),
+          toupper(i_var_nts),
           # reference base concat with insertion char
           last_vcf_entry[, 6],
           last_vcf_entry[, 7],
@@ -214,20 +233,17 @@ handle_fasta = function(dir) {
           sep = "\t"
         )
       )
-      ins = max(inss) + 1 # ignore rest of contiguous block
-      iter = iter + 1
     }
-    # deletion
-    # remove insertions
-    last_vcf_entry = read.table(
-      text = text[length(text)],
-      sep = "\t",
-      colClasses = c("V4" = "character", "V5" = "character")
-    )
-    t2 = t2[t2$query_pos != insertions_relative_to_reference, ]
-    t2$ref_pos = as.numeric(t2$ref_pos)
   }
   
+  # remove insertions
+  last_vcf_entry = read.table(
+    text = text[length(text)],
+    sep = "\t",
+    colClasses = c("V4" = "character", "V5" = "character")
+  )
+  t2 = t2[- mafft_map_index_insertion, ]
+  t2$ref_pos = as.numeric(t2$ref_pos)
   
   
   
