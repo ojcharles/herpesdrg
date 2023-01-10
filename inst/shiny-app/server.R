@@ -2,6 +2,8 @@
 # # #debug
 # inFile = list()
 # inFile$datapath =  system.file("testdata", "A10.vcf", package = "cmvdrg")
+# input = list()
+# input$virus = "HCMV"
 # f.infile = as.character(inFile$datapath)
 # session = list()
 # session$token = "test"
@@ -79,16 +81,16 @@ shinyServer(function(input, output, session) {
   ########################################### Outputs#######################################  
   output$vcf.table_clin <- DT::renderDataTable({
     if(is.null(vcf.d.res())){
-      return(NULL)}
+      return( NULL )}
     if(nrow(vcf.d.res()) == 0){
-      return(NULL)}
+      return( data.frame(msg = "no resistance data observed") )}
     # does data contain mutations with > 10% freq?
     freqs = stringr::str_extract(vcf.d.res()$freq, "[0-9]{1,3}.[0-9]{0,3}")
     freqs = as.numeric(gsub("%", "",freqs))
     if ( length( freqs[freqs > 10.00]) == 0 ){
-      return(NULL)
+      return( data.frame(msg = "no resistance data above 10% frequency observed") )
     }
-    out = herpesdrg::make_clin_table(vcf.d.res())  
+    out = herpesdrg::make_clin_table(vcf.d.res())
     return(out)
   })
   

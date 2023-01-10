@@ -52,20 +52,26 @@ make_clin_table = function(f.dat){
     
     
     # list of genes where frameshifts are observed
-    fs_genes = stringr::str_split(f.dat[f.dat$tm_class == "expected_frameshift",]$change, "_",simplify = T)[,1]
-    
-    # if frameshift in TK genes then impacts certain drugs
-    if( col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir","Cyclopropavir") &
-       sum(c("UL97", "UL23") %in% fs_genes) > 0 ){
-      res.pheno = "High level"
-      res.ev = "Frameshifts arrest drug activity"
-      #write Resistance Phenotype
-      dat[1,col] = res.pheno
-      # Write Evidence Strength
-      dat[2,col] = res.ev
-      next
+    if( sum(f.dat$tm_class == "expected_frameshift") > 0){
+      # frameshifts are present
       
+      fs_genes = stringr::str_split(f.dat[f.dat$tm_class == "expected_frameshift",]$change, "_",simplify = T)[,1]
+      
+      # if frameshift in TK genes then impacts certain drugs
+      if( col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir","Cyclopropavir") &
+          sum(c("UL97", "UL23") %in% fs_genes) > 0 ){
+        res.pheno = "High level"
+        res.ev = "Frameshifts arrest drug activity"
+        #write Resistance Phenotype
+        dat[1,col] = res.pheno
+        # Write Evidence Strength
+        dat[2,col] = res.ev
+        next
+      }
+      
+    }else{# do nothing
     }
+    
     
     # fix any reference data points where there is a numeric range of fold change ratio values. take lowest value - again arbitration
     if(length(t.dat[base::grepl(pattern = "-",x = t.dat[,1]),1]) > 0){
