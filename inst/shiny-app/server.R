@@ -126,7 +126,7 @@ shinyServer(function(input, output, session) {
     # plots as a heatmap, the amount of dat we have per gene, per drug.
     # //todo - currently records the number of data points, could record mean value etc
     resistance = utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t")
-    resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:14]))
+    resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:17]))
     resistance = resistance[resistance$value != "",]
     resistance = resistance[!is.na(resistance$value),]
     resistance$value = stringr::str_replace(resistance$value, ">", "")
