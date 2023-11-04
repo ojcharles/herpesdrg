@@ -14,7 +14,7 @@ shinyUI(
     navlistPanel(widths = c(2,6),
        "Resistance Genotyping",
        tabPanel("Homepage",
-                div("Herpedvirus drug resistance genotyping webserver, part of the herpesdrg R package, allows researchers to investigate genetic variability and viral resistance in the context of current treatments. ", tags$br()),
+                div("Herpesvirus drug resistance genotyping (HerpesDRG) webserver, allows researchers to investigate genetic variability and viral resistance in the context of current treatments. ", tags$br()),
                 p(""),
                 div("Below is the web tool for detecting resistance mutations in heresvirus sequencing files. Check the help page for further details."),
                 h3("Upload a file to return resistance data"),
@@ -157,47 +157,59 @@ shinyUI(
        tabPanel("About",
                 p(""),
                 br(),
-                strong("Cytomegalovirus"),
-                p("The prevention and treatment of Herpesviruses is essential in management of solid organ transplant (SOT), hematopoietic stem cell transplant (HSCT) and other immunocompromised hosts.
-                Althought primary infections tend to be asymntomatic within healthy individuals, it is a major cause of morbidity and chronic ill-health to congenitally infected babies & those mentioned.
-                Although a handful of treatment options are available such as Ganciclovir, Aciclovir and Foscarnet, emergence of resistance is now found for all current drugs and pose a significant threat due to aggressive disease course and a 
-                greater mortality risk. Early detection of resistance is important to inform alternative treatments. "),
+                p("
+                The effective use of antivirals is crucial to the management of herpesvirus infections in immuno-compromised hosts.
+                
+                Genotypic resistance testing is a widely adopted part of this strategy as resistance has been identified for all licensed drugs.
+                
+                HerpesDRG is the first open knowledgebase linking all published herpes mutations to their in-vitro impact on antiviral sensitivity.
+                  
+                This webserver is a simple tool to enable resistance genotyping from common virus sequence data."),
                 br(),
                 
-                strong("Data"),
-                p("The database underpinning herpesdrg contains the link between gene, aachange & EC50 fold change to wild type virus developed by the Breuer lab at UCL & GOSH.
-                To capture new resistant mutations, articles in peer-reviewed journals are searched monthly using a PubMed search with key terms. 
-                Regular expressions narrow down the list to those including mutations. To minimise any subjectivity, where relevant we capture many data points per mutation which are included in reporting methods here.
-                If you spot mistakes or omissions in the database either contact oscar.charles.18@ucl.ac.uk or alter the github /inst/db files. "), 
+                strong("Database"),
+                p(
+                  "The tabular database has been manually curated by reading published literature and extracting key information.",
+                  
+                  "Each entry is a mutation containing the link between virus, gene, AAchange & EC50 fold change relative to a control.
+                
+                The data comes from both marker transfer in-vitro experiments and characterised clinical isolates.
+                
+                We update the database manually circa every quarter with new data."), 
                 br(),
                 
                 strong("Method:"),
-                div("Results generated are relative to the well characterised reference strain Merlin.
-                When loading a fasta file, 'MAFFT --add --keeplength'  is used to create an alignment to this reference. Therefore, whole genome sequences as well as fasta files containing genetic fragments are accepted..
-                Alignments are converted to VCF format using snp-sites.",
-                "Custom R functions then call resistance from the database."),
+                div("Reports are presented relative to the viral reference NCBI strain.
+                
+                If providiing a VCF, ensure the data are mapped to the correct reference strain, these are also defined in ./inst/ref.  
+                
+                If providing a fasta file, 'MAFFT --add --keeplength' aligns and data to the reference, therefore whole genome or genetic fragments (i.e. polymerase only) are equally accepted."),
                 br(),
                 
                 strong("Open Source"),
-                p(HTML(paste0("The database, functions and application are available as an R package ",a("in Github here.", href ="https://github.com/ucl-pathgenomics/herpesdrg")))),
+                p(
+                  "Anyone is welcome to propose changes to the knowledgebase or R package. 
+                
+                i.e. If you spot mistakes or omissions in the  either contact oscar.charles.18@ucl.ac.uk or make a pull request."
+                ),
+                
+                p(HTML(paste0("Link to the ",a("herpesdrg-db github reposisitory", href = "https://github.com/ojcharles/herpesdrg-db")))) ,
+                
+                p(HTML(paste0("Link to the ",a("herpesdrg R package github repository", href ="https://github.com/ucl-pathgenomics/herpesdrg")))),
                 br(),br(),
                 
+                
+                strong("Contact & Referencing"),
+                p("The main developer is Oscar Charles who can be contacted at this", HTML(paste0(a("Email.  ", href = "mailto:ocar.charles.18@ucl.ac.uk"))),
+                  "To reference HerpeDRG please cite ", a("this article.", href = "https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2")), 
+                
                 strong("Ackowledgements"),
-                p(HTML(paste0("We would like to thank the MRC and Wellcome Trust as sponsors of the Breuer lab, for enabling this work.\n
-                  The Breuer Lab work in close co-operation with the ",a(href = 'https://www.ucl.ac.uk/infection-immunity/pathogen-genomics-unit', 'Pathogen Genomics Unit'), " "))),
+                p("We would like to thank the MRC and Wellcome Trust as sponsors of this work."),
                 fluidRow( 
-                  column(3, img(width = "90%", src = "ucl.png")),
-                  column(3, img(width = "90%", src = "mrc.png")),
-                  column(3, img(width = "90%", src = "wt.jpg")),
-                  column(3, img(width = "90%", src = "923-pgu-logo.jpg"))
+                  column(4, img(width = "90%", src = "ucl.png")),
+                  column(4, img(width = "90%", src = "mrc.png")),
+                  column(4, img(width = "90%", src = "wt.jpg")),
                 )
-                # forced, not nice
-                # fluidRow( 
-                #   column(4, img(height = 100, width = 300, src = "ucl.png")),
-                #   column(4, img(height = 100, width = 100, src = "wt.jpg")),
-                #   column(4, img(height = 100, width = 150, src = "923-pgu-logo.jpg"))
-                # )
-                #https://www.ucl.ac.uk/infection-immunity/pathogen-genomics-unit   add somehting to do with this
                 
        ) #tabpanel
     ) #navlistpanel
