@@ -131,13 +131,23 @@ shinyServer(function(input, output, session) {
     resistance = resistance[!is.na(resistance$value),]
     resistance$value = stringr::str_replace(resistance$value, ">", "")
     resistance$value = stringr::str_replace(resistance$value, ",.{1,5}", "")
-    resistance = resistance[resistance$value > 1,]
+    #resistance = resistance[resistance$value > 1,]
     
-    resistance = reshape2::dcast(resistance, gene ~ variable,fun.aggregate = length)
-    resistance = reshape2::melt(resistance, id.vars = "gene")
-    resistance$Number_of_entries= resistance$value
-    resistance$Drug = resistance$variable
-    g = ggplot2::ggplot(data = resistance) +
+    #input$dbmetric_virus = c("HCMV", "HSV1")
+    #input$dbmetric_drug = c("Aciclovir", "letermovir")
+    resistance_filt_dbmetric = resistance[resistance$virus %in% input$dbmetric_virus,]
+    
+    # collapse by gene, removes concept of virus.
+    resistance_filt_dbmetric = reshape2::dcast(resistance_filt_dbmetric, gene ~ variable,fun.aggregate = length)
+    resistance_filt_dbmetric = reshape2::melt(resistance_filt_dbmetric, id.vars = "gene")
+    resistance_filt_dbmetric$Number_of_entries= resistance_filt_dbmetric$value
+    resistance_filt_dbmetric$Drug = resistance_filt_dbmetric$variable
+    
+    resistance_filt_dbmetric = resistance_filt_dbmetric[resistance_filt_dbmetric$Drug %in% input$dbmetric_drug,]
+    resistance_filt_dbmetric = resistance_filt_dbmetric[resistance_filt_dbmetric$Number_of_entries != 0,]
+    
+    {
+     g = ggplot2::ggplot(data = resistance_filt_dbmetric) +
       ggplot2::geom_tile(ggplot2::aes(x = .data$Drug, y = .data$gene, fill = .data$Number_of_entries)) +
       ggplot2::theme_classic() +
       ggplot2::scale_fill_gradient(low="white", high="red") +
@@ -145,6 +155,7 @@ shinyServer(function(input, output, session) {
       ggplot2::xlab("Drug") +
       ggplot2::ylab("Gene") +
       ggplot2::guides(fill = ggplot2::guide_legend(title="Number of entries"))
+    }
     return(g)
   })
   
