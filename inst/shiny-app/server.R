@@ -31,6 +31,9 @@ shinyServer(function(input, output, session) {
   })
   
   
+  const_restable = reactive({ utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t") })
+  
+  
   
   ###************  processes  ****************###  
   
@@ -125,26 +128,38 @@ shinyServer(function(input, output, session) {
   output$res.plot.dbheatmap <- renderPlot({
     # plots as a heatmap, the amount of dat we have per gene, per drug.
     # //todo - currently records the number of data points, could record mean value etc
-    resistance = utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t")
+    resistance = const_restable()
     resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:17]))
     resistance = resistance[resistance$value != "",]
     resistance = resistance[!is.na(resistance$value),]
     resistance$value = stringr::str_replace(resistance$value, ">", "")
     resistance$value = stringr::str_replace(resistance$value, ",.{1,5}", "")
-    resistance = resistance[resistance$value > 1,]
+    #resistance = resistance[resistance$value > 1,]
     
-    resistance = reshape2::dcast(resistance, gene ~ variable,fun.aggregate = length)
-    resistance = reshape2::melt(resistance, id.vars = "gene")
-    resistance$Number_of_entries= resistance$value
-    resistance$Drug = resistance$variable
-    g = ggplot2::ggplot(data = resistance) +
+    #input$dbmetric_virus = c("HCMV", "HSV1")
+    #input$dbmetric_drug = c("Aciclovir", "letermovir")
+    resistance_filt_dbmetric = resistance[resistance$virus %in% input$dbmetric_virus,]
+    
+    # collapse by gene, removes concept of virus.
+    resistance_filt_dbmetric = reshape2::dcast(resistance_filt_dbmetric, gene ~ variable,fun.aggregate = length)
+    resistance_filt_dbmetric = reshape2::melt(resistance_filt_dbmetric, id.vars = "gene")
+    resistance_filt_dbmetric$Number_of_entries= resistance_filt_dbmetric$value
+    resistance_filt_dbmetric$Drug = resistance_filt_dbmetric$variable
+    
+    resistance_filt_dbmetric = resistance_filt_dbmetric[resistance_filt_dbmetric$Drug %in% input$dbmetric_drug,]
+    resistance_filt_dbmetric = resistance_filt_dbmetric[resistance_filt_dbmetric$Number_of_entries != 0,]
+    
+    {
+     g = ggplot2::ggplot(data = resistance_filt_dbmetric) +
       ggplot2::geom_tile(ggplot2::aes(x = .data$Drug, y = .data$gene, fill = .data$Number_of_entries)) +
       ggplot2::theme_classic() +
-      ggplot2::scale_fill_gradient(low="white", high="red") +
+      ggplot2::scale_fill_viridis_c() +
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,vjust = 0.5)) +
       ggplot2::xlab("Drug") +
       ggplot2::ylab("Gene") +
-      ggplot2::guides(fill = ggplot2::guide_legend(title="Number of entries"))
+      ggplot2::geom_label(ggplot2::aes(x = .data$Drug, y = .data$gene, label = .data$Number_of_entries))
+      #ggplot2::guides(fill = ggplot2::guide_legend(title="Number of entries"))
+    }
     return(g)
   })
   
@@ -266,12 +281,28 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
   
   
   
-  ###************  Outputs  ****************###  
+  ##### misc small outputs & downloads 
   output$vcf.ip <- renderText({
     print(session$request$REMOTE_ADDR)
   })
   
-  # downlaod buttons
+  # about db metric
+  output$about_db_total = renderText({
+    paste0("Total number of entries is ", as.character(nrow(const_restable())))
+  })
+  
+  output$about_db_unique = renderText({
+    uniques = unique( paste0(const_restable()$virus, const_restable()$gene, const_restable()$aa_change) )
+    paste0("Number of unique mutations is ", as.character(length(uniques)))
+  })
+  
+  output$about_db_most_recent = renderText({
+    dates = as.Date(const_restable()$created_date, format = "%d/%m/%Y")
+    most_recent_entry = max(dates)
+    paste0("Most recent entry was created ", as.character(most_recent_entry))
+  })
+  
+  # download buttons
   output$vcf.o.res1 <- renderUI({
     req(vcf.d.res())
     downloadButton("vcf.o.res", "download resistance data")
