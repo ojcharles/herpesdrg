@@ -31,6 +31,9 @@ shinyServer(function(input, output, session) {
   })
   
   
+  const_restable = reactive({ utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t") })
+  
+  
   
   ###************  processes  ****************###  
   
@@ -125,7 +128,7 @@ shinyServer(function(input, output, session) {
   output$res.plot.dbheatmap <- renderPlot({
     # plots as a heatmap, the amount of dat we have per gene, per drug.
     # //todo - currently records the number of data points, could record mean value etc
-    resistance = utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t")
+    resistance = const_restable()
     resistance = reshape2::melt(resistance, measure.vars = colnames(resistance[,6:17]))
     resistance = resistance[resistance$value != "",]
     resistance = resistance[!is.na(resistance$value),]
@@ -278,12 +281,28 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
   
   
   
-  ###************  Outputs  ****************###  
+  ##### misc small outputs & downloads 
   output$vcf.ip <- renderText({
     print(session$request$REMOTE_ADDR)
   })
   
-  # downlaod buttons
+  # about db metric
+  output$about_db_total = renderText({
+    paste0("Total number of entries is ", as.character(nrow(const_restable())))
+  })
+  
+  output$about_db_unique = renderText({
+    uniques = unique( paste0(const_restable()$virus, const_restable()$gene, const_restable()$aa_change) )
+    paste0("Number of unique mutations is ", as.character(length(uniques)))
+  })
+  
+  output$about_db_most_recent = renderText({
+    dates = as.Date(const_restable()$created_date, format = "%d/%m/%Y")
+    most_recent_entry = max(dates)
+    paste0("Most recent entry was created ", as.character(most_recent_entry))
+  })
+  
+  # download buttons
   output$vcf.o.res1 <- renderUI({
     req(vcf.d.res())
     downloadButton("vcf.o.res", "download resistance data")

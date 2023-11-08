@@ -145,7 +145,7 @@ shinyUI(
                 br(),
                 br(),
                 br(),
-                p("last updated: 07/05/2020")
+                p("last updated: Nov 2023")
                 
                 
                 
@@ -173,6 +173,9 @@ shinyUI(
                 The data comes from both marker transfer in-vitro experiments and characterised clinical isolates.
                 
                 We update the database manually circa every quarter with new data."), 
+                textOutput("about_db_total"),
+                textOutput("about_db_unique"),
+                textOutput("about_db_most_recent"),
                 br(),
                 
                 strong("Method:"),
@@ -198,7 +201,7 @@ shinyUI(
                 
                 strong("Contact & Referencing"),
                 p("The main developer is Oscar Charles who can be contacted at this", HTML(paste0(a("Email.  ", href = "mailto:ocar.charles.18@ucl.ac.uk"))),
-                  "To reference HerpeDRG please cite ", a("this article.", href = "https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2")), 
+                  "To reference HerpesDRG please cite ", a("this article.", href = "https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2")), 
                 
                 strong("Ackowledgements"),
                 p("We would like to thank the MRC and Wellcome Trust as sponsors of this work."),
