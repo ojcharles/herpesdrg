@@ -150,11 +150,12 @@ shinyServer(function(input, output, session) {
      g = ggplot2::ggplot(data = resistance_filt_dbmetric) +
       ggplot2::geom_tile(ggplot2::aes(x = .data$Drug, y = .data$gene, fill = .data$Number_of_entries)) +
       ggplot2::theme_classic() +
-      ggplot2::scale_fill_gradient(low="white", high="red") +
+      ggplot2::scale_fill_viridis_c() +
       ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45,vjust = 0.5)) +
       ggplot2::xlab("Drug") +
       ggplot2::ylab("Gene") +
-      ggplot2::guides(fill = ggplot2::guide_legend(title="Number of entries"))
+      ggplot2::geom_label(ggplot2::aes(x = .data$Drug, y = .data$gene, label = .data$Number_of_entries))
+      #ggplot2::guides(fill = ggplot2::guide_legend(title="Number of entries"))
     }
     return(g)
   })
