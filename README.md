@@ -15,18 +15,16 @@ bytes](https://img.shields.io/github/languages/code-size/ojcharles/herpesdrg.svg
 
 ## Overview
 
-herpesdrg is a R package to enable antiviral drug resistance genotyping,
-with Herpes Simplex Virus 1, HSV 2, Human Cytomegalovirus and Varicella
-zoster virus sequencing data. Accepted inputs are FASTA (whole genomes &
-fragments) which will be mapped to RefSeq NC\_001806.2. NGS variant data
-assembled to NC\_001806.2 is accepted in VCF \>= ver4.0 & Varscan2 tab
-formats.
+HerpesDRG is an open database of herpesvirus mutations and their impact on antiviral sensitivity. 
+
+This herpesdrg R package enables geneticists to make use of this database and annotate any present resistance mutations in herpesvirus sequencing data. Currently this includes HSV1, HSV2, HCMV, VZV, HHVb6.
+
+Accepted variant file formats are VCF \>= ver4.0 or Varscan2 tab, which must be assembled against the NCBI reference strain. Accepted sequence inputs are FASTA (whole genome, or genetic fragments), which are internally aligned to the reference. 
+
+For further information, or if you use HerpesDRG as part of your research, please cite [the HerpesDRG article](https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2)
 
 #### Database
-
-All data extracted from literature sources and contains the
-relationships between:
-
+The HerpesDRG database consists of over 1700 manually curated entries extracted from primary literature and detail the relationship between a
   - Virus
   - Gene
   - Mutation
@@ -110,7 +108,7 @@ head(mutations_res[,c(1,8,21,32:40)],)
 #> 1000    UL54_883 21.15% not translated        <NA>      <NA>      <NA>
 #> 1001    UL54_885 91.02% not translated        <NA>      <NA>      <NA>
 #> 1002 UL54_A1108T 99.05%  nonsynonymous        <NA>      <NA>      <NA>
-#>      Foscarnet Brincidofovir Letermovir Brivudine Pencyclovir Tomeglovir
+#>      Foscarnet Brincidofovir Letermovir Brivudine Penciclovir Tomeglovir
 #> 996       <NA>            NA       <NA>      <NA>        <NA>         NA
 #> 997       <NA>            NA       <NA>      <NA>        <NA>         NA
 #> 999       <NA>            NA       <NA>      <NA>        <NA>         NA
@@ -153,8 +151,8 @@ my_sequence = system.file("testdata", "HSV1_F716L.fasta", package = "herpesdrg")
 dat = call_resistance(infile = my_sequence, all_mutations = F,virus = "HSV1")
 #> [1] "fasta found"
 
-head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Pencyclovir", "ref_doi")])
-#>       change freq REFCODON VARCODON virus Aciclovir Cidofovir Pencyclovir
+head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Penciclovir", "ref_doi")])
+#>       change freq REFCODON VARCODON virus Aciclovir Cidofovir Penciclovir
 #> 1 UL30_F716L 100%      TTC      CTC  HSV1         6       0.1         2.2
 #>                              ref_doi
 #> 1 doi: 10.1128/AAC.49.2.606-611.2005

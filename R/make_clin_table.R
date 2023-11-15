@@ -58,7 +58,7 @@ make_clin_table = function(f.dat){
       fs_genes = stringr::str_split(f.dat[f.dat$tm_class == "expected_frameshift",]$change, "_",simplify = T)[,1]
       
       # if frameshift in TK genes then impacts certain drugs
-      if( col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Pencyclovir","Cyclopropavir") &
+      if( col.name %in% c("Aciclovir","Ganciclovir","Cidofovir","Brincidofovir","Penciclovir","Cyclopropavir") &
           sum(c("UL97", "UL23") %in% fs_genes) > 0 ){
         res.pheno = "High level"
         res.ev = "Frameshifts arrest drug activity"
