@@ -91,7 +91,7 @@ shinyUI(
                 p(""),
                 br(),
                 selectInput("dbmetric_virus", label = "Virus choice", choices = c("HCMV", "HSV1", "HSV2", "VZV", "HHV6b"),multiple = T, selected = c("HCMV", "HSV1")),
-                selectInput("dbmetric_drug", label = "Antiviral choice", choices = c("Ganciclovir", "Aciclovir", "Cidofovir", "Foscarnet", "Brincidofovir", "Letermovir", "Brivudine", "Pencyclovir", "Tomeglovir", "Maribavir", "Amenamevir"), selected = c("Aciclovir", "Letermovir"),multiple = T),
+                selectInput("dbmetric_drug", label = "Antiviral choice", choices = c("Ganciclovir", "Aciclovir", "Cidofovir", "Foscarnet", "Brincidofovir", "Letermovir", "Brivudine", "Penciclovir", "Tomeglovir", "Maribavir", "Amenamevir"), selected = c("Aciclovir", "Letermovir"),multiple = T),
                 plotOutput("res.plot.dbheatmap")
                 
        ), #tabpanel

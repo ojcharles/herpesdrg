@@ -108,7 +108,7 @@ head(mutations_res[,c(1,8,21,32:40)],)
 #> 1000    UL54_883 21.15% not translated        <NA>      <NA>      <NA>
 #> 1001    UL54_885 91.02% not translated        <NA>      <NA>      <NA>
 #> 1002 UL54_A1108T 99.05%  nonsynonymous        <NA>      <NA>      <NA>
-#>      Foscarnet Brincidofovir Letermovir Brivudine Pencyclovir Tomeglovir
+#>      Foscarnet Brincidofovir Letermovir Brivudine Penciclovir Tomeglovir
 #> 996       <NA>            NA       <NA>      <NA>        <NA>         NA
 #> 997       <NA>            NA       <NA>      <NA>        <NA>         NA
 #> 999       <NA>            NA       <NA>      <NA>        <NA>         NA
@@ -151,8 +151,8 @@ my_sequence = system.file("testdata", "HSV1_F716L.fasta", package = "herpesdrg")
 dat = call_resistance(infile = my_sequence, all_mutations = F,virus = "HSV1")
 #> [1] "fasta found"
 
-head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Pencyclovir", "ref_doi")])
-#>       change freq REFCODON VARCODON virus Aciclovir Cidofovir Pencyclovir
+head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Penciclovir", "ref_doi")])
+#>       change freq REFCODON VARCODON virus Aciclovir Cidofovir Penciclovir
 #> 1 UL30_F716L 100%      TTC      CTC  HSV1         6       0.1         2.2
 #>                              ref_doi
 #> 1 doi: 10.1128/AAC.49.2.606-611.2005

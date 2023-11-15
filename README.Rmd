@@ -105,7 +105,7 @@ my_sequence = system.file("testdata", "HSV1_F716L.fasta", package = "herpesdrg")
 
 dat = call_resistance(infile = my_sequence, all_mutations = F,virus = "HSV1")
 
-head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Pencyclovir", "ref_doi")])
+head(dat[,c("change", "freq", "REFCODON", "VARCODON", "virus","Aciclovir", "Cidofovir", "Penciclovir", "ref_doi")])
 ```
 
 

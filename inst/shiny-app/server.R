@@ -112,7 +112,7 @@ shinyServer(function(input, output, session) {
     #we really only need to present some of these columns
     # dat = data.frame( gene = dat$gene, aa_change = dat$aa_change, freq = dat$freq, "ref_var_count" = paste(dat$RefCount,	dat$VarCount, sep = "_"),
     #                   ref_pos = dat$start, Aciclovir = dat$Aciclovir, Cidofovir = dat$Cidofovir, Foscarnet = dat$Foscarnet,
-    #                   Brivudin = dat$Brivudin, Pencyclovir = dat$Pencyclovir,
+    #                   Brivudin = dat$Brivudin, Penciclovir = dat$Penciclovir,
     #                   reference = dat$ref_title, ref_link = dat$ref_link, test_method = dat$test_method, test_method_class = dat$tm_class,
     #                   co_gene = dat$co_gene, co_aa = dat$co_aa
     # )
