@@ -282,6 +282,23 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
   
   
   ##### misc small outputs & downloads 
+  output$browse_dbtable = DT::renderDT({
+    d = const_restable()
+    d$ref_title = paste0( substr(d$ref_titl, 1, 20), "..." )
+    d$note = paste0( substr(d$note, 1, 30), "..." )
+    d
+    },
+    , options = list(
+      autoWidth = TRUE,
+      #scrollX = TRUE,
+      #scrollY = TRUE,
+      dom = 'Bfrtip',
+      buttons = c('csv', 'excel'),
+      server = FALSE
+      ),
+    extensions = 'Buttons'
+  )
+  
   output$vcf.ip <- renderText({
     print(session$request$REMOTE_ADDR)
   })
