@@ -286,7 +286,14 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
     d = const_restable()
     d$ref_title = paste0( substr(d$ref_titl, 1, 20), "..." )
     d$note = paste0( substr(d$note, 1, 30), "..." )
-    d
+    d = d[d$status == "A",]
+    #d$ref_title = paste0("<a href='",d$ref_title,"'>",d$ref_link,"</a>")
+    #d$ref_title = sprintf(paste0('<a href="', URLdecode(d$ref_link),'" target="_blank">', d$ref_title ,'</a>'))
+    d$ref_title = NULL
+    d$ref_doi = NULL
+    d$status = NULL
+    colnames(d)[2:5] = c("virus_short_name", "genotype_name", "gene_name", "amino_acid_change")
+    d[,-1]
     },
     , options = list(
       autoWidth = TRUE,
@@ -296,7 +303,8 @@ output$vcf.plot.lollipop.UL27 <- renderPlot({
       buttons = c('csv', 'excel'),
       server = FALSE
       ),
-    extensions = 'Buttons'
+    extensions = 'Buttons',
+    filter = c('top')
   )
   
   output$vcf.ip <- renderText({
