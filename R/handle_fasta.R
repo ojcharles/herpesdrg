@@ -265,20 +265,18 @@ handle_fasta = function(dir) {
     # what is the reference base at this position?
     # "1\t47924\t.\tC\tT\t.\t.\t.\tGT\t0\t1"
     # are there contiguous deletions?
-    
-    # are there deltions after this one?
-    if( num_deletions - del > 3 ){
-      dels = del
-    }else{
-      if (deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
-        dels = del:(del + 2)
-      } else if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
+    dels = del
+    if( del + 1 <= num_deletions){
+      if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
         dels = del:(del + 1)
-      } else{
-        dels = del
       }
     }
-
+    if(del + 2 <= num_deletions){
+      if( deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
+      dels = del:(del + 2)
+      }
+    }
+    
     
     text = c(
       text,

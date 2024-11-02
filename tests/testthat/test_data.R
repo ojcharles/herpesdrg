@@ -117,7 +117,19 @@ test_that("insertions and deletions are handled with fasta", {
   expect_equal(length(grep("frameshift", df$consequence)), 1)
   expect_equal(length(grep("_residue_loss", df$change)), 1)
   
+  
+  # example where indels are great in number, and occur at the end of the genome too.
+  # previously logic broke when number of indels was not a multiple of 3.
+  # this broke some logic looking ahead for if the del position was part of contiguous set.
+  virus = "VZV"
+  all_mutations = T
+  infile = system.file("testdata",  "VZV_many_indel_and_at_end.fasta", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(length(grep("indel", df$consequence)), 31)
+  expect_equal(length(grep("_residue_loss", df$change)), 29)
+  
 })
+
 
 
 
