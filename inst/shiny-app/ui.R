@@ -51,6 +51,10 @@ shinyUI(
                 plotOutput("vcf.plot.lollipop.U38"),
                 plotOutput("vcf.plot.lollipop.U69")
        ), #tabpanel
+       tabPanel("Browse Mutations",
+                strong("Browse database entries using the table below:"),
+                DT::DTOutput("browse_dbtable")
+       ),
        
        
        "Information",
