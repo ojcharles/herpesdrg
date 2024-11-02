@@ -15,7 +15,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 biocViews:
 Depends:
-  R (>= 3.4.0),
+  R (>= 3.5.0),
 	shiny
 Imports:
 	  VariantAnnotation,

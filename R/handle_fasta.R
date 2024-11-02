@@ -164,7 +164,7 @@ handle_fasta = function(dir) {
   # the mafft .map file tells us which pos have indels
   t = readLines(paste0(out_msa, ".map"))
   t = t[3:length(t)]
-  df_map_query_ref_pos = read.table(text = t, sep = ",")
+  df_map_query_ref_pos = utils::read.table(text = t, sep = ",")
   names(df_map_query_ref_pos) = c("nt", "query_pos", "ref_pos")
   # now if this is a good assembly then ambiguous positions will be "n", and handled with the variant caller
   

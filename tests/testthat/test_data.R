@@ -9,12 +9,12 @@ test_that("variant files return resistance", {
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
                        all_mutations = TRUE, virus = "HCMV")
   expect_equal(nrow(df), 2981)
-  expect_equal(nrow(df[! is.na(df$mutation_id),]) , 6)
+  expect_equal(nrow(df[! is.na(df$mutation_id),]) , 7)
   
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_Q126L", "UL97_T409M" ))
+  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL54_L897S" , "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_T409M" ))
   
   #----- HSV1
   # read?
