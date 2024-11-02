@@ -133,6 +133,13 @@ test_that("insertions and deletions are handled with fasta", {
 
 
 
-
+test_that("vcf 4.2 with only allele freq not counts is handles", {
+  
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_vcf4.2_only_freq_not_counts.vcf", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 146)
+})
 
 
