@@ -157,7 +157,7 @@ handle_fasta = function(dir) {
   # there will be no insertions as mafft --add --keeplength
   # there my be deletions
   # any deletions should either be dodgy sequencing i..e "n" or are frameshifts (we don't expect residue drop in res genes)
-  command = paste("snp-sites -vc -o", out_vcf, out_msa)
+  command = paste("snp-sites -v -o", out_vcf, out_msa)
   system(command)
   
   
@@ -168,7 +168,11 @@ handle_fasta = function(dir) {
   names(df_map_query_ref_pos) = c("nt", "query_pos", "ref_pos")
   # now if this is a good assembly then ambiguous positions will be "n", and handled with the variant caller
   
+  
   text = readLines(out_vcf)
+  # as we allow non ACGT characters, we now need to wrangle the vcf output
+  text = handle_ambiguous_bases_from_snp_sites ( text)
+  
   last_vcf_entry = read.table(
     text = text[length(text)],
     sep = "\t",
@@ -312,3 +316,60 @@ handle_fasta = function(dir) {
   
   
 }
+
+
+
+#' Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50% alt frequency
+#'
+#' This is to better support sanger seq fasta files typically used in hospitals
+#' for an ambiguous base (AB), identifies positions with AB, 
+#' then replaces the vcf line with the alt choice. and sets it to 50% frequency
+#' this assumes you do not have a mixture of two alternate alleles
+#' Filters away all over AB
+#'
+#'
+#' @param vcf_text a text list of the vcf file from snp-sites
+#' @return the same vcf text but altered AB's
+#' @keywords internal
+#'
+handle_ambiguous_bases_from_snp_sites = function(vcf_text){
+
+  chrom_line = grep("#CHROM", vcf_text)
+  
+  t_df = utils::read.table(text = vcf_text,colClasses = c("V4"="character",
+                                                   "V5"="character")) # will ignore the header automatically
+  
+  # remove n or N - these cannot be analysed
+  # also for now removes trimer calls
+  t_df = t_df[!toupper(t_df$V5) %in% c("N", "B", "D", "H", "V"),]
+  
+  # handle bases can be 1 of 2
+  ambig_base_codes = c("R", "Y", "K", "M", "S", "W")
+  ambig_base_opt1 = c("A", "C", "G", "A", "C", "A")
+  ambig_base_opt2 = c("G", "T", "T", "C", "G", "T")
+  
+  for( i in 1:length(ambig_base_codes) ){
+    ambig_code = ambig_base_codes[i]
+    nuc_pos_of_ambig_code = t_df[toupper(t_df$V5) == ambig_code,]$V2
+    for(nuc_pos in nuc_pos_of_ambig_code){
+      if( t_df[t_df$V2 == nuc_pos,]$V4 == ambig_base_opt1[i] ){
+        t_df[t_df$V2 == nuc_pos,]$V5 = ambig_base_opt2[i]
+      }else{
+        t_df[t_df$V2 == nuc_pos,]$V5 = ambig_base_opt1[i]
+      }
+      t_df[t_df$V2 == nuc_pos,]$V10 = 1
+    }
+  }
+
+  t = readr::format_tsv(t_df)
+  output = c(vcf_text[1:chrom_line],
+             unlist(strsplit(t,"\n"))[-1])
+  return(output)
+}
+
+
+
+
+
+
+
