@@ -24,7 +24,7 @@ handle_fasta = function(dir) {
   out_vcf_deletions = stringr::str_replace(out_msa, pattern = ".fasta", replacement = "_deletions.vcf")
   
   
-  print("fasta found")
+  #print("fasta found")
   fa.text <- readLines(in_fasta)
   fa.header = fa.text[1]
   fa.body <- fa.text[2:length(fa.text)]
@@ -71,13 +71,13 @@ handle_fasta = function(dir) {
   
   # if is fairly long i.e. not a pcr product
   if (fa.genome_len > 10000) {
-    print("mafft alignment started")
+    #print("mafft alignment started")
     command = paste("mafft --keeplength --mapout  --add  ",
                     in_fasta,
                     ref_fasta)
     t = system(command, intern = T, ignore.stderr = T) # by internalising, we remove the many mafft messages
     writeLines(t, out_msa)
-    print("mafft alignment finished")
+    #print("mafft alignment finished")
     
     file.copy(
       stringr::str_replace(in_fasta, pattern = ".fasta", replacement = ".fasta.map") ,
@@ -100,7 +100,7 @@ handle_fasta = function(dir) {
     
     
     # now run mafft add for both
-    print("mafft alignment started")
+    #print("mafft alignment started")
     command = paste("mafft --keeplength --mapout --add  ",
                     in_fasta,
                     ref_fasta)
@@ -112,7 +112,7 @@ handle_fasta = function(dir) {
                     ref_fasta)
     t = system(command, intern = T, ignore.stderr = T)
     writeLines(t, in_rc_msa_fasta)
-    print("mafft alignment finished")
+    #print("mafft alignment finished")
     
     # decide whether the original or RC is the better match
     
@@ -157,18 +157,22 @@ handle_fasta = function(dir) {
   # there will be no insertions as mafft --add --keeplength
   # there my be deletions
   # any deletions should either be dodgy sequencing i..e "n" or are frameshifts (we don't expect residue drop in res genes)
-  command = paste("snp-sites -vc -o", out_vcf, out_msa)
+  command = paste("snp-sites -v -o", out_vcf, out_msa)
   system(command)
   
   
   # the mafft .map file tells us which pos have indels
   t = readLines(paste0(out_msa, ".map"))
   t = t[3:length(t)]
-  t2 = read.table(text = t, sep = ",")
-  names(t2) = c("nt", "query_pos", "ref_pos")
+  df_map_query_ref_pos = read.table(text = t, sep = ",")
+  names(df_map_query_ref_pos) = c("nt", "query_pos", "ref_pos")
   # now if this is a good assembly then ambiguous positions will be "n", and handled with the variant caller
   
+  
   text = readLines(out_vcf)
+  # as we allow non ACGT characters, we now need to wrangle the vcf output
+  text = handle_ambiguous_bases_from_snp_sites ( text)
+  
   last_vcf_entry = read.table(
     text = text[length(text)],
     sep = "\t",
@@ -179,9 +183,9 @@ handle_fasta = function(dir) {
   ############ now we need to append to the vcf entry, indels, in the format we get from an actual vcf
   
   # insertions
-  mafft_map_index_insertion =  grep("-", t2$ref_pos)
-  mafft_map_insertion_query_pos = t2$query_pos[mafft_map_index_insertion]
-  mafft_map_insertion_ref_pos = t2$ref_pos[mafft_map_index_insertion - 1]
+  mafft_map_index_insertion =  grep("-", df_map_query_ref_pos$ref_pos)
+  mafft_map_insertion_query_pos = df_map_query_ref_pos$query_pos[mafft_map_index_insertion]
+  mafft_map_insertion_ref_pos = df_map_query_ref_pos$ref_pos[mafft_map_index_insertion - 1]
   mafft_map_num_insertions = length(mafft_map_index_insertion)
   num_insertions = length(mafft_map_index_insertion)
   
@@ -208,12 +212,12 @@ handle_fasta = function(dir) {
       
       # which var pos map to this ref site?
       i_site_varposs = which(mafft_map_insertion_ref_pos == i_site)
-      # which positions in t2 are this?
+      # which positions in df_map_query_ref_pos are this?
       i_site_varposs_index = mafft_map_index_insertion[i_site_varposs]
       # what is the ref nt?
-      i_ref_nt = t2$nt[i_site_varposs_index[1] - 1]
+      i_ref_nt = df_map_query_ref_pos$nt[i_site_varposs_index[1] - 1]
       #what are the nt's inserted?'
-      i_var_nts = paste0(i_ref_nt , paste0(t2$nt[i_site_varposs_index],collapse = "") )
+      i_var_nts = paste0(i_ref_nt , paste0(df_map_query_ref_pos$nt[i_site_varposs_index],collapse = "") )
       
       text = c(
         text,
@@ -242,15 +246,19 @@ handle_fasta = function(dir) {
     sep = "\t",
     colClasses = c("V4" = "character", "V5" = "character")
   )
-  t2 = t2[- mafft_map_index_insertion, ]
-  t2$ref_pos = as.numeric(t2$ref_pos)
+  df_map_query_ref_pos = df_map_query_ref_pos[- mafft_map_index_insertion, ]
+  df_map_query_ref_pos$ref_pos = as.numeric(df_map_query_ref_pos$ref_pos)
   
   
-  
-  deletions_relative_to_reference =  setdiff((min(t2$ref_pos):max(t2$ref_pos)),
-                                             t2$ref_pos)
+  if( nrow(df_map_query_ref_pos) == 0){
+    num_deletions = 0
+  }else{
+    deletions_relative_to_reference =  setdiff((min(df_map_query_ref_pos$ref_pos):max(df_map_query_ref_pos$ref_pos)),
+                                               df_map_query_ref_pos$ref_pos)
+    num_deletions = length(deletions_relative_to_reference)
+  }
+
   # now append this to the vcf file
-  num_deletions = length(deletions_relative_to_reference)
   del = 1
   while (del <= num_deletions) {
     iter = 1
@@ -259,15 +267,20 @@ handle_fasta = function(dir) {
     del_ref_prior_nt = ref.text[del_ref_prior_pos]
     
     # what is the reference base at this position?
-    "1\t47924\t.\tC\tT\t.\t.\t.\tGT\t0\t1"
-    # are there contiguous deletion?
-    if (deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
-      dels = del:(del + 2)
-    } else if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
-      dels = del:(del + 1)
-    } else{
-      dels = del
+    # "1\t47924\t.\tC\tT\t.\t.\t.\tGT\t0\t1"
+    # are there contiguous deletions?
+    dels = del
+    if( del + 1 <= num_deletions){
+      if (deletions_relative_to_reference[del + 1] == del_ref_pos + 1) {
+        dels = del:(del + 1)
+      }
     }
+    if(del + 2 <= num_deletions){
+      if( deletions_relative_to_reference[del + 2] == del_ref_pos + 2) {
+      dels = del:(del + 2)
+      }
+    }
+    
     
     text = c(
       text,
@@ -303,3 +316,60 @@ handle_fasta = function(dir) {
   
   
 }
+
+
+
+#' Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50% alt frequency
+#'
+#' This is to better support sanger seq fasta files typically used in hospitals
+#' for an ambiguous base (AB), identifies positions with AB, 
+#' then replaces the vcf line with the alt choice. and sets it to 50% frequency
+#' this assumes you do not have a mixture of two alternate alleles
+#' Filters away all over AB
+#'
+#'
+#' @param vcf_text a text list of the vcf file from snp-sites
+#' @return the same vcf text but altered AB's
+#' @keywords internal
+#'
+handle_ambiguous_bases_from_snp_sites = function(vcf_text){
+
+  chrom_line = grep("#CHROM", vcf_text)
+  
+  t_df = utils::read.table(text = vcf_text,colClasses = c("V4"="character",
+                                                   "V5"="character")) # will ignore the header automatically
+  
+  # remove n or N - these cannot be analysed
+  # also for now removes trimer calls
+  t_df = t_df[!toupper(t_df$V5) %in% c("N", "B", "D", "H", "V"),]
+  
+  # handle bases can be 1 of 2
+  ambig_base_codes = c("R", "Y", "K", "M", "S", "W")
+  ambig_base_opt1 = c("A", "C", "G", "A", "C", "A")
+  ambig_base_opt2 = c("G", "T", "T", "C", "G", "T")
+  
+  for( i in 1:length(ambig_base_codes) ){
+    ambig_code = ambig_base_codes[i]
+    nuc_pos_of_ambig_code = t_df[toupper(t_df$V5) == ambig_code,]$V2
+    for(nuc_pos in nuc_pos_of_ambig_code){
+      if( t_df[t_df$V2 == nuc_pos,]$V4 == ambig_base_opt1[i] ){
+        t_df[t_df$V2 == nuc_pos,]$V5 = ambig_base_opt2[i]
+      }else{
+        t_df[t_df$V2 == nuc_pos,]$V5 = ambig_base_opt1[i]
+      }
+      t_df[t_df$V2 == nuc_pos,]$V10 = 1
+    }
+  }
+
+  t = readr::format_tsv(t_df)
+  output = c(vcf_text[1:chrom_line],
+             unlist(strsplit(t,"\n"))[-1])
+  return(output)
+}
+
+
+
+
+
+
+

@@ -117,9 +117,40 @@ test_that("insertions and deletions are handled with fasta", {
   expect_equal(length(grep("frameshift", df$consequence)), 1)
   expect_equal(length(grep("_residue_loss", df$change)), 1)
   
+  
+  # example where indels are great in number, and occur at the end of the genome too.
+  # previously logic broke when number of indels was not a multiple of 3.
+  # this broke some logic looking ahead for if the del position was part of contiguous set.
+  virus = "VZV"
+  all_mutations = T
+  infile = system.file("testdata",  "VZV_many_indel_and_at_end.fasta", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(length(grep("indel", df$consequence)), 31)
+  expect_equal(length(grep("_residue_loss", df$change)), 29)
+  
 })
 
 
+
+
+test_that("vcf 4.2 with only allele freq not counts is handles", {
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_vcf4.2_only_freq_not_counts.vcf", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_equal(nrow(df), 146)
+})
+
+
+
+test_that("handles fasta with non-acgt codes", {
+  virus = "HCMV"
+  all_mutations = T
+  infile = system.file("testdata",  "HCMV_UL97_ACGT+_codes.fa", package = "herpesdrg")
+  df = call_resistance(infile, virus, all_mutations)
+  expect_true("A594V" %in% df$aa_change)
+  expect_true("C603W" %in% df$aa_change)
+})
 
 
 

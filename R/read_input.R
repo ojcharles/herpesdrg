@@ -177,13 +177,36 @@ parse_vcf_4_2 = function(infile){
   refs = as.character(r@fixed$REF)
   alts = r@fixed$ALT
   
-  # ref/varcounts
-  if( is.null(t$AO) ){ dp4_true = T }else{ dp4_true = F }
-  if( ! dp4_true ){
-    # ref / var count method 1
+  
+  
+  ##### ref/varcounts 
+  # VCF files are horribly inconsistent, the below code attempts to identify a various flavour of version 4.2 and handle it appropriately.
+  # This list will likely grow..
+  # in each logic block return ref_counts & var_counts
+  
+  vcf_case_1_res_var_counts = ! is.null(t$AO) & ! is.null(t$RO)
+  vcf_case_2_allele_freq_only = is.null(t$AO) &  is.null(t$RO) & ! is.null(t$AF)
+  
+  
+  if( vcf_case_1_res_var_counts ){
+    # CASE 1 - default. ref and var counts are present in the FORMAT section
+    case = 1
     var_counts = data.frame(t$AO)
     ref_counts = t$RO
+    
+    
+  }else if( vcf_case_2_allele_freq_only ){
+    # CASE 2 - where allele frequency (AF) FORMAT only is available ( frequency of alt & assume no counts)
+   case = 2
+    varfreq = as.numeric(t$AF)  # now have equal length vectors of ref, alt, and freqofalt
+    # fudge to return var and ref counts
+    var_counts = varfreq
+    ref_counts = 1-varfreq
+
+    
   }else{
+    # CASE 3 = the normal FORMAT columns are not available so DP4 is used, as an alternative data source  
+    case = 3
     # ref/varcounts 2
     # ref and alt counts can be specified as above, but there is also an alternative
     # ID=DP4 is number of high-quality ref-forward , ref-reverse, alt-forward and alt-reverse bases
@@ -206,7 +229,7 @@ parse_vcf_4_2 = function(infile){
     a[i,5] = refs[index]
     a[i,6] = ref_counts[index]
     
-    if (dp4_true){
+    if (case %in% c(2,3)){
       # assume only 1 var per postion, means simply return index of var count vector
       a[i,7] = var_counts[index]
       
