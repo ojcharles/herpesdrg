@@ -2,7 +2,7 @@
 % Please edit documentation in R/handle_fasta.R
 \name{handle_ambiguous_bases_from_snp_sites}
 \alias{handle_ambiguous_bases_from_snp_sites}
-\title{Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50% alt frequency}
+\title{Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50:50 alt frequency}
 \usage{
 handle_ambiguous_bases_from_snp_sites(vcf_text)
 }

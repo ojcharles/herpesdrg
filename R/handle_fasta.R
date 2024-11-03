@@ -246,7 +246,7 @@ handle_fasta = function(dir) {
     sep = "\t",
     colClasses = c("V4" = "character", "V5" = "character")
   )
-  df_map_query_ref_pos = df_map_query_ref_pos[- mafft_map_index_insertion, ]
+  if(length(mafft_map_index_insertion) > 0){df_map_query_ref_pos = df_map_query_ref_pos[- mafft_map_index_insertion, ]}
   df_map_query_ref_pos$ref_pos = as.numeric(df_map_query_ref_pos$ref_pos)
   
   
@@ -319,7 +319,7 @@ handle_fasta = function(dir) {
 
 
 
-#' Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50% alt frequency
+#' Converts ambiguous ( dimer) base calls in the vcf from snp-sites, to 50:50 alt frequency
 #'
 #' This is to better support sanger seq fasta files typically used in hospitals
 #' for an ambiguous base (AB), identifies positions with AB, 

@@ -9,12 +9,12 @@ test_that("variant files return resistance", {
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.tab", package = "herpesdrg"),
                        all_mutations = TRUE, virus = "HCMV")
   expect_equal(nrow(df), 2981)
-  expect_equal(nrow(df[! is.na(df$mutation_id),]) , 7)
+  expect_equal(nrow(df[! is.na(df$mutation_id),]) , 8)
   
   # calls resistance?
   df = call_resistance(infile = system.file("testdata",  "HCMV_A10.vcf", package = "herpesdrg"),
                        all_mutations = FALSE, virus = "HCMV")
-  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL54_L897S" , "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_T409M" ))
+  expect_equal(unique(df$change), c("UL54_709_frameshift", "UL54_883_frameshift", "UL54_D588N", "UL54_L897S", "UL54_T885_residue_gain", "UL97_C480F", "UL97_C592G", "UL97_H411Y", "UL97_T409M" ))
   
   #----- HSV1
   # read?
@@ -65,7 +65,7 @@ test_that("insertions and deletions are handled with vcf", {
   df = call_resistance(infile, virus, all_mutations)
   expect_equal(nrow(df), 5)
   expect_equal( sum(grepl("frameshift", df$consequence)), 1)
-  expect_equal(sum(grepl("residue", df$change)), 2)
+  expect_equal(sum(grepl("indel", df$consequence)), 2)
   
   
   
@@ -115,7 +115,7 @@ test_that("insertions and deletions are handled with fasta", {
   infile = system.file("testdata",  "HSV2_tk_RC_frameshift_indel.fasta", package = "herpesdrg")
   df = call_resistance(infile, virus, all_mutations)
   expect_equal(length(grep("frameshift", df$consequence)), 1)
-  expect_equal(length(grep("_residue_loss", df$change)), 1)
+  expect_equal(length(grep("indel", df$consequence)), 1)
   
   
   # example where indels are great in number, and occur at the end of the genome too.
@@ -126,7 +126,7 @@ test_that("insertions and deletions are handled with fasta", {
   infile = system.file("testdata",  "VZV_many_indel_and_at_end.fasta", package = "herpesdrg")
   df = call_resistance(infile, virus, all_mutations)
   expect_equal(length(grep("indel", df$consequence)), 31)
-  expect_equal(length(grep("_residue_loss", df$change)), 29)
+  expect_equal(length(grep("del", df$change)), 29)
   
 })
 
@@ -150,6 +150,16 @@ test_that("handles fasta with non-acgt codes", {
   df = call_resistance(infile, virus, all_mutations)
   expect_true("A594V" %in% df$aa_change)
   expect_true("C603W" %in% df$aa_change)
+})
+
+
+
+test_that("handles del only from fasta", {
+  virus = "HCMV"
+  all_mutations = T
+  infile = "inst/testdata/HCMV_indel_in_UL97.fa"
+  df = call_resistance(infile, virus, all_mutations)
+  expect_true( nrow(df[df$consequence == "indel",]) == 3)
 })
 
 

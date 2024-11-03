@@ -112,7 +112,7 @@ annotate_variants = function(toannotate,global){
         }else if( nchar(new_refAA) == 1 & new_varAA == "" ){ # deletion
           t1$VARAA = ""
           t1$VARCODON = ""
-          t1$change = paste0(t1$GENEID, "_", t1$REFAA, t1$PROTEINLOC, "_residue_loss")
+          t1$change = paste0(t1$GENEID, "_del", t1$PROTEINLOC)
           t1$CONSEQUENCE = "indel"
         }else{ stop ("wha?")}
         
