@@ -16,7 +16,7 @@ add_resistance_info <-
            virus) {
     
     coding_df <- f.dat
-    resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")[,1:30]
+    resistance = utils::read.delim(resistance_table, header = TRUE,sep = "\t")
     
     # filter status - records on-revision may be below the data quality we expect, and are flagged.
     resistance = resistance[resistance$status == "A", ]
@@ -33,9 +33,9 @@ add_resistance_info <-
     )
     
     
-    # annotate any frameshift mutations in resgenes
-    if(length(grep("frameshift", coding_df_res$change)) > 0){
-      is.fs = grepl("frameshift", coding_df_res$change)
+    # annotate any frameshift or indelss in resgenes
+    if(length(grep("frameshift|indel", coding_df_res$consequence)) > 0){
+      is.fs = grepl("frameshift|indel", coding_df_res$consequence)
       t.genes = stringr::str_split(coding_df_res$change, "_",simplify = T)[,1]
       is.in_resgenes = (t.genes %in% unique(resistance$gene))
       is.fs_and_resgene = is.fs & is.in_resgenes
@@ -44,8 +44,8 @@ add_resistance_info <-
 
       
       
-      coding_df_res[is.fs_and_resgene,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Pencyclovir")] = "Resistant"
-      coding_df_res[is.fs_and_resgene,"note"] = "Frameshifts often result in premature stop codons, which heavily reduce antiviral efficacy"
+      coding_df_res[is.fs_and_resgene,c("Aciclovir", "Ganciclovir", "Cidofovir", "Brincidofovir", "Penciclovir")] = "Resistant"
+      coding_df_res[is.fs_and_resgene,"note"] = "Suspected resistant. Frameshifts & indels often attenuate antiviral efficacy. Check manually"
       coding_df_res[is.fs_and_resgene,"mutation_id"] = 0
       
       #coding_df_res <- cbind(resistance_site,coding_df)

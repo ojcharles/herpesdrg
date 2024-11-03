@@ -31,7 +31,10 @@ shinyServer(function(input, output, session) {
   })
   
   
-  const_restable = reactive({ utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t") })
+  const_restable = reactive({ 
+    d = utils::read.delim(global()$res_table, header = TRUE,na.strings = c("", "NA"), stringsAsFactors = F, sep = "\t") 
+    d = d[d$status == "A",]
+    })
   
   
   
