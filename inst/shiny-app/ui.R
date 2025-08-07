@@ -204,7 +204,7 @@ shinyUI(
                 
                 
                 strong("Contact & Referencing"),
-                p("The main developer is Oscar Charles who can be contacted at this", HTML(paste0(a("Email.  ", href = "mailto:ocar.charles.18@ucl.ac.uk"))),
+                p("The main developer is Oscar Charles who can be contacted at this", HTML(paste0(a("Email.  ", href = "mailto:oscar.charles.18@ucl.ac.uk"))),
                   "To reference HerpesDRG please cite ", a("this article.", href = "https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2")), 
                 
                 strong("Ackowledgements"),
