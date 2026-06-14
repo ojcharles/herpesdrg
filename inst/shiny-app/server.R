@@ -55,6 +55,11 @@ shinyServer(function(input, output, session) {
     # returns minimum intermediate table
     dat1 <- herpesdrg::read_input(inFile$datapath, global())
     
+    # Check if no SNPs were detected
+    if (nrow(dat1) == 0 && !is.null(attr(dat1, "no_snps_message"))) {
+      return(dat1)
+    }
+    
     ### annotate variants
     # used in optional processes, i.e. identifying syn / nonsynonymous mutations in resistance genes.
     dat2 <- herpesdrg::annotate_variants(dat1, global())
@@ -73,6 +78,11 @@ shinyServer(function(input, output, session) {
     
     dat2 = vcf.d.all()
 
+    # Check if no SNPs were detected
+    if (nrow(dat2) == 0 && !is.null(attr(dat2, "no_snps_message"))) {
+      return(dat2)
+    }
+
     ### add res info
     dat3 <- herpesdrg::add_resistance_info(f.dat = dat2, resistance_table=global()$res_table, all_muts = F, virus = input$virus)
     
@@ -88,6 +98,9 @@ shinyServer(function(input, output, session) {
   output$vcf.table_clin <- DT::renderDataTable({
     if(is.null(vcf.d.res())){
       return( NULL )}
+    # Check if no SNPs were detected
+    if(nrow(vcf.d.res()) == 0 && !is.null(attr(vcf.d.res(), "no_snps_message"))){
+      return( data.frame(msg = attr(vcf.d.res(), "no_snps_message")) )}
     if(nrow(vcf.d.res()) == 0){
       return( data.frame(msg = "no resistance data observed") )}
     # does data contain mutations with > 10% freq?
@@ -106,10 +119,13 @@ shinyServer(function(input, output, session) {
     # resistance mutation table
     if(is.null(vcf.d.res())){
       return(NULL)
-    }else if (nrow(vcf.d.res()) == 0){
+    } else if (nrow(vcf.d.res()) == 0 && !is.null(attr(vcf.d.res(), "no_snps_message"))){
+      dat <- data.frame(notes = attr(vcf.d.res(), "no_snps_message"))
+      return(dat)
+    } else if (nrow(vcf.d.res()) == 0){
       dat <- data.frame(notes = "there was no resistance identified in your sample")
-      return
-    }else{
+      return(dat)
+    } else{
     dat <- vcf.d.res()
     #full data is saved and user can DL
     #we really only need to present some of these columns

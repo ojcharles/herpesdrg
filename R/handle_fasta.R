@@ -159,8 +159,15 @@ handle_fasta = function(dir) {
   # any deletions should either be dodgy sequencing i..e "n" or are frameshifts (we don't expect residue drop in res genes)
   command = paste("snp-sites -v -o", out_vcf, out_msa)
   system(command)
-  
-  
+
+  # Check if VCF file was created and has content
+  if (!file.exists(out_vcf) || file.size(out_vcf) == 0) {
+    # Write a marker to indicate no SNPs were found
+    # Create a minimal VCF header but with NO_SNPS flag
+    warning("No SNPs were detected in the alignment. The input sequence may be identical to the reference sequence.")
+    return(NA)
+  }
+
   # the mafft .map file tells us which pos have indels
   t = readLines(paste0(out_msa, ".map"))
   t = t[3:length(t)]
@@ -173,7 +180,7 @@ handle_fasta = function(dir) {
   # as we allow non ACGT characters, we now need to wrangle the vcf output
   text = handle_ambiguous_bases_from_snp_sites ( text)
   
-  last_vcf_entry = read.table(
+  last_vcf_entry = utils::read.table(
     text = text[length(text)],
     sep = "\t",
     colClasses = c("V4" = "character", "V5" = "character")
@@ -241,7 +248,7 @@ handle_fasta = function(dir) {
   }
   
   # remove insertions
-  last_vcf_entry = read.table(
+  last_vcf_entry = utils::read.table(
     text = text[length(text)],
     sep = "\t",
     colClasses = c("V4" = "character", "V5" = "character")

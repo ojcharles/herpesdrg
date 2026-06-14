@@ -176,7 +176,7 @@ shinyUI(
                 
                 The data comes from both marker transfer in-vitro experiments and characterised clinical isolates.
                 
-                We update the database manually circa every quarter with new data."), 
+                We update the database manually circa every quarter with new data, you can track updates in GitHub (see below)."), 
                 textOutput("about_db_total"),
                 textOutput("about_db_unique"),
                 textOutput("about_db_most_recent"),
@@ -199,13 +199,16 @@ shinyUI(
                 
                 p(HTML(paste0("Link to the ",a("herpesdrg-db github reposisitory", href = "https://github.com/ojcharles/herpesdrg-db")))) ,
                 
-                p(HTML(paste0("Link to the ",a("herpesdrg R package github repository", href ="https://github.com/ucl-pathgenomics/herpesdrg")))),
+                p(HTML(paste0("Link to the ",a("herpesdrg R package github repository", href ="https://github.com/ojcharles/herpesdrg")))),
                 br(),br(),
                 
+                strong("Recent News"),
+                p("2026 Feb - We had an issue with the webserver causing a blackout for 2 weeks."),
                 
+                br(),br(),
                 strong("Contact & Referencing"),
-                p("The main developer is Oscar Charles who can be contacted at this", HTML(paste0(a("Email.  ", href = "mailto:oscar.charles.18@ucl.ac.uk"))),
-                  "To reference HerpesDRG please cite ", a("this article.", href = "https://www.biorxiv.org/content/10.1101/2020.05.15.097907v2")), 
+                p("The main developer is Oscar Charles who can be contacted by starting an issue in GitHub ", HTML(paste0(a("here.  ", href = "https://github.com/ojcharles/herpesdrg/issues/new/choose"))),
+                  "To reference HerpesDRG please cite ", a("this article.", href = "https://link.springer.com/article/10.1186/s12859-024-05885-5")), 
                 
                 strong("Ackowledgements"),
                 p("We would like to thank the MRC and Wellcome Trust as sponsors of this work."),
