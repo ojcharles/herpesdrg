@@ -49,7 +49,26 @@ read_input <- function(infile, global){
     file.copy(infile, query_file_loc,overwrite = T)
     file.copy(global$path_fasta_file, ref_file_loc,overwrite = T)
     fasta_out = file.path(global$dir, "out_msa.fasta")
-    vcf_file = handle_fasta(dir =  global$dir) 
+    vcf_file = handle_fasta(dir =  global$dir)
+    
+    # Check if handle_fasta returned NA (indicating no SNPs found)
+    if (is.na(vcf_file)) {
+      # Return a special dataframe indicating no SNPs were found
+      out <- data.frame(
+        Position = integer(0),
+        Ref = character(0),
+        Var = character(0),
+        Ref.count = integer(0),
+        Var.count = integer(0),
+        VarFreq = character(0),
+        Sample = character(0),
+        stringsAsFactors = F
+      )
+      # Add an attribute to flag this as a no-SNPs result
+      attr(out, "no_snps_message") <- "No SNPs were detected in the input file. Please check that your sequence contains variations relative to the reference sequence."
+      return(out)
+    }
+    
     text <- readLines(vcf_file)
     start <- base::grep('chrom',ignore.case = T, text)
     vcf = utils::read.delim(vcf_file, sep = "\t", as.is = T, skip = start - 1,colClasses = c("character"))

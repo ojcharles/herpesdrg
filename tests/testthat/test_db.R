@@ -5,7 +5,6 @@ context("Database Integrity")
 # virus names are not perfect
 # wt AA's are not the same as ref strains
 # there's any kink in the reference data
-
 library(herpesdrg)
 library(stringr)
 library(ape)
